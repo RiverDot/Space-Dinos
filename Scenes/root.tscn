@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bbc3fne25sjt5"]
+[gd_scene load_steps=7 format=3 uid="uid://bbc3fne25sjt5"]
 
 [ext_resource type="Script" path="res://Scripts/SceneManager.gd" id="1_5gnlg"]
 [ext_resource type="PackedScene" uid="uid://cxxj8bsi7a4bf" path="res://Scenes/main_menu.tscn" id="2_171hv"]
 [ext_resource type="PackedScene" uid="uid://bvybgfmwwmo11" path="res://Scenes/temp_game_scene.tscn" id="3_koaaf"]
 [ext_resource type="PackedScene" uid="uid://uwlhbwprci07" path="res://Nodes/options.tscn" id="4_0qf1t"]
+[ext_resource type="Script" path="res://Scripts/SFXPlayer.gd" id="5_dnklm"]
+[ext_resource type="PackedScene" uid="uid://cnuwxbvdwubyh" path="res://Nodes/sfx.tscn" id="6_xs2al"]
 
 [node name="SceneManager" type="Node2D" groups=["Root"]]
 process_mode = 3
@@ -12,3 +14,7 @@ MenuScene = ExtResource("2_171hv")
 GameScene = ExtResource("3_koaaf")
 
 [node name="Options" parent="." instance=ExtResource("4_0qf1t")]
+
+[node name="SFXPlayer" type="Node" parent="." groups=["SFXPlayer"]]
+script = ExtResource("5_dnklm")
+soundIns = ExtResource("6_xs2al")
