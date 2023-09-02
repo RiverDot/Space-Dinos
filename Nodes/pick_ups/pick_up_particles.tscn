@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://4jvi8v3rne0l"]
+
+[ext_resource type="Script" path="res://Nodes/pick_ups/pick_up_particles.gd" id="1_nafno"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7ihla"]
+
+[node name="CPUParticles2D" type="CPUParticles2D"]
+material = SubResource("CanvasItemMaterial_7ihla")
+lifetime = 0.2
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 9.245)
+initial_velocity_min = 80.46
+initial_velocity_max = 80.46
+damping_min = 100.0
+damping_max = 100.0
+scale_amount_min = 9.4
+scale_amount_max = 9.4
+color = Color(0, 0.45098, 0, 1)
+script = ExtResource("1_nafno")
