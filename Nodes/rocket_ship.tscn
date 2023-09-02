@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://oygquj0itsko"]
 
-[ext_resource type="Script" path="res://Assets/Scripts/Rocket Ship Control.gd" id="1_j04c7"]
+[ext_resource type="Script" path="res://Scripts/Rocket Ship Control.gd" id="1_3qelb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mpnah"]
 radius = 23.0
@@ -19,7 +19,7 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 1)
 
 [node name="Rocket Ship" type="CharacterBody2D"]
-script = ExtResource("1_j04c7")
+script = ExtResource("1_3qelb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_mpnah")
