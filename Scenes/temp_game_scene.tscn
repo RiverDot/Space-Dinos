@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvybgfmwwmo11"]
+
+[ext_resource type="Texture2D" uid="uid://csu4nuk4edq52" path="res://Assets/Art/Other/icon.svg" id="1_jnh2g"]
+[ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_n8lmr"]
+[ext_resource type="Script" path="res://Scripts/moveTest.gd" id="2_o8os0"]
+
+[node name="TempGameScene" type="Node2D"]
+script = ExtResource("1_n8lmr")
+
+[node name="Game" type="Node2D" parent="."]
+process_mode = 1
+
+[node name="to test if pause works" type="Sprite2D" parent="Game"]
+position = Vector2(318.847, 229.848)
+texture = ExtResource("1_jnh2g")
+script = ExtResource("2_o8os0")
+
+[node name="PauseScreen" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ScreenTint" type="ColorRect" parent="PauseScreen"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.611765)
+
+[node name="ResumeButton" type="Button" parent="PauseScreen"]
+offset_left = 510.0
+offset_top = 268.0
+offset_right = 649.0
+offset_bottom = 306.0
+text = "Resume"
+
+[node name="MenuButton" type="Button" parent="PauseScreen"]
+offset_left = 513.0
+offset_top = 356.0
+offset_right = 652.0
+offset_bottom = 394.0
+text = "Menu
+"
+
+[connection signal="pressed" from="PauseScreen/ResumeButton" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PauseScreen/MenuButton" to="." method="_on_menu_pressed"]
