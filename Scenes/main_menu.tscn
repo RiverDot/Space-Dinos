@@ -6,17 +6,24 @@
 script = ExtResource("1_b3tu2")
 
 [node name="StartButton" type="Button" parent="."]
-offset_left = 144.0
-offset_top = 445.0
-offset_right = 271.0
-offset_bottom = 494.0
+offset_left = 141.0
+offset_top = 410.0
+offset_right = 268.0
+offset_bottom = 459.0
 text = "Start"
+
+[node name="OptionsButton" type="Button" parent="."]
+offset_left = 143.0
+offset_top = 472.0
+offset_right = 270.0
+offset_bottom = 521.0
+text = "Options"
 
 [node name="QuitButton" type="Button" parent="."]
 offset_left = 143.0
-offset_top = 503.0
+offset_top = 534.0
 offset_right = 270.0
-offset_bottom = 552.0
+offset_bottom = 583.0
 text = "Quit
 "
 
@@ -37,4 +44,5 @@ offset_bottom = 106.0
 text = "(please remember to actually make a game name and not just keep it as this)"
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="OptionsButton" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_pressed"]
