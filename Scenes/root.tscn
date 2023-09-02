@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://Scripts/SceneManager.gd" id="1_5gnlg"]
 [ext_resource type="PackedScene" uid="uid://cxxj8bsi7a4bf" path="res://Scenes/main_menu.tscn" id="2_171hv"]
-[ext_resource type="PackedScene" uid="uid://bvybgfmwwmo11" path="res://Scenes/temp_game_scene.tscn" id="3_koaaf"]
+[ext_resource type="PackedScene" uid="uid://ca7wmvcnq7335" path="res://Scenes/flight scene.tscn" id="3_pkfl8"]
 
 [node name="SceneManager" type="Node2D" groups=["Root"]]
 process_mode = 3
 script = ExtResource("1_5gnlg")
 MenuScene = ExtResource("2_171hv")
-GameScene = ExtResource("3_koaaf")
+GameScene = ExtResource("3_pkfl8")

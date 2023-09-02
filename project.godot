@@ -14,7 +14,7 @@ config/name="Space Dinos"
 config/tags=PackedStringArray("game", "jam", "4.x")
 run/main_scene="res://Scenes/root.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
-config/icon="res://Assets/Art/Other/Assets/Art/Other/icon.svg"
+config/icon="res://Assets/Art/Other/icon.svg"
 
 [input]
 
