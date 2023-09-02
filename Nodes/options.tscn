@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=3 uid="uid://uwlhbwprci07"]
+
+[ext_resource type="Script" path="res://Scripts/Options.gd" id="1_4jx5w"]
+
+[node name="Options" type="CanvasLayer" groups=["Options"]]
+layer = 10
+visible = false
+script = ExtResource("1_4jx5w")
+
+[node name="OptionsBackground" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.690196, 0.34902, 0.309804, 1)
+
+[node name="ReturnButton" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -70.0
+offset_top = -148.0
+offset_right = 70.0
+offset_bottom = -104.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+text = "Return
+"
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "TODO: add settings n stuff"
+
+[connection signal="pressed" from="ReturnButton" to="." method="_set_open" binds= [false]]

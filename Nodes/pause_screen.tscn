@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbhqebqg5o58g"]
+
+[ext_resource type="Script" path="res://Scripts/pause.gd" id="1_a3ug3"]
+
+[node name="PauseScreen" type="CanvasLayer"]
+layer = 2
+visible = false
+script = ExtResource("1_a3ug3")
+
+[node name="ScreenTint" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.611765)
+
+[node name="ResumeButton" type="Button" parent="."]
+offset_left = 510.0
+offset_top = 268.0
+offset_right = 649.0
+offset_bottom = 306.0
+text = "Resume"
+
+[node name="OptionsButton" type="Button" parent="."]
+offset_left = 512.0
+offset_top = 312.0
+offset_right = 651.0
+offset_bottom = 350.0
+text = "Options"
+
+[node name="MenuButton" type="Button" parent="."]
+offset_left = 512.0
+offset_top = 357.0
+offset_right = 651.0
+offset_bottom = 395.0
+text = "Menu
+"
+
+[connection signal="pressed" from="ResumeButton" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="OptionsButton" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="MenuButton" to="." method="_on_menu_pressed"]
