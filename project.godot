@@ -16,6 +16,10 @@ run/main_scene="res://Scenes/root.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://Assets/Art/Other/icon.svg"
 
+[autoload]
+
+SharedData="*res://Scripts/Shared Data.gd"
+
 [input]
 
 Pause={
