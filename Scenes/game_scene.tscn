@@ -1,19 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://bvybgfmwwmo11"]
+[gd_scene load_steps=7 format=3 uid="uid://bvybgfmwwmo11"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_qxjhp"]
 [ext_resource type="Script" path="res://Scripts/MoneyManager.gd" id="2_0di4y"]
 [ext_resource type="PackedScene" uid="uid://ivk3e10f30ur" path="res://Scenes/flight scene.tscn" id="2_i3mqi"]
+[ext_resource type="Script" path="res://Scripts/GameScenes.gd" id="2_t76yl"]
+[ext_resource type="PackedScene" uid="uid://b325ltamoinhg" path="res://Scenes/base_scene.tscn" id="3_vy7xh"]
 [ext_resource type="PackedScene" uid="uid://cbhqebqg5o58g" path="res://Nodes/pause_screen.tscn" id="4_opjyg"]
 
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_qxjhp")
 
-[node name="GameLogic" type="Node2D" parent="."]
+[node name="GameLogic" type="Node2D" parent="." groups=["GameScene"]]
 process_mode = 1
+script = ExtResource("2_t76yl")
+BaseScene = ExtResource("3_vy7xh")
+FlightScene = ExtResource("2_i3mqi")
 
 [node name="MoneyManager" type="Node2D" parent="GameLogic" groups=["MoneyManager"]]
 script = ExtResource("2_0di4y")
-
-[node name="Flight Screen" parent="GameLogic" instance=ExtResource("2_i3mqi")]
 
 [node name="PauseScreen" parent="." instance=ExtResource("4_opjyg")]
