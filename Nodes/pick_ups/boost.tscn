@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://bcpg4ih72ntjc"]
+
+[ext_resource type="Script" path="res://Scripts/boost.gd" id="1_q7gfk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hom1q"]
+size = Vector2(63, 21)
+
+[sub_resource type="Gradient" id="Gradient_ywln0"]
+offsets = PackedFloat32Array(0, 0.503356, 1)
+colors = PackedColorArray(0, 0, 0, 1, 2.59906e-06, 0.590616, 0.468471, 1, 0.440004, 1, 0.771533, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_phila"]
+gradient = SubResource("Gradient_ywln0")
+fill = 1
+
+[node name="boost" type="Node2D"]
+script = ExtResource("1_q7gfk")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, 1.5)
+shape = SubResource("RectangleShape2D_hom1q")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 1.5)
+scale = Vector2(1, 0.328125)
+texture = SubResource("GradientTexture2D_phila")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
