@@ -9,7 +9,7 @@ var height: float = 0
 
 @onready var rocket_ship = $"Rocket Ship"
 @onready var speed_label = $SpeedLabel
-@onready var bg_sprite: Node2D = self.get_child(0)
+@onready var bg_sprite: Node2D = $Background
 var format_string = "Vertical Speed: {vert} \nHeight: {height}"
 
 func _process(_delta):
