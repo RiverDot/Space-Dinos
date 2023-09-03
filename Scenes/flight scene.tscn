@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ca7wmvcnq7335"]
+[gd_scene load_steps=6 format=3 uid="uid://ivk3e10f30ur"]
 
 [ext_resource type="Script" path="res://Scripts/flightScene.gd" id="1_kq1b0"]
 [ext_resource type="PackedScene" uid="uid://oygquj0itsko" path="res://Nodes/rocket_ship.tscn" id="1_vms8s"]
@@ -21,15 +21,16 @@ vert_speed_multiplier = 1.0
 path_to_rocket_ship = NodePath("Rocket Ship")
 metadata/_edit_lock_ = true
 
-[node name="Camera2D" type="Camera2D" parent="."]
-
 [node name="Background" type="Node2D" parent="."]
 script = ExtResource("3_3r5i2")
 
 [node name="Sprite2D" type="Sprite2D" parent="Background"]
-scale = Vector2(10, 30)
+position = Vector2(0, 1120)
+scale = Vector2(40, 80)
 texture = SubResource("GradientTexture2D_s7k00")
 offset = Vector2(0, -400)
 script = ExtResource("4_dfvw1")
 
 [node name="Rocket Ship" parent="." instance=ExtResource("1_vms8s")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
