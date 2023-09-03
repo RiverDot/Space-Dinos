@@ -1,0 +1,126 @@
+[gd_scene load_steps=2 format=3 uid="uid://b325ltamoinhg"]
+
+[ext_resource type="Script" path="res://Scripts/baseManager.gd" id="1_xqynj"]
+
+[node name="BaseScene" type="Node2D"]
+script = ExtResource("1_xqynj")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Back" type="ColorRect" parent="CanvasLayer/Control"]
+offset_left = -34.0
+offset_top = -27.0
+offset_right = 1994.0
+offset_bottom = 873.0
+color = Color(0.662745, 0.662745, 0.662745, 1)
+
+[node name="Floor" type="ColorRect" parent="CanvasLayer/Control"]
+offset_left = -34.0
+offset_top = 848.0
+offset_right = 1994.0
+offset_bottom = 1121.0
+color = Color(0.470588, 0.470588, 0.470588, 1)
+
+[node name="Platform" type="ColorRect" parent="CanvasLayer/Control"]
+offset_left = 953.0
+offset_top = 802.0
+offset_right = 1404.0
+offset_bottom = 853.0
+color = Color(0.470588, 0.470588, 0.470588, 1)
+
+[node name="Parts" type="GridContainer" parent="CanvasLayer/Control"]
+offset_left = 220.0
+offset_top = 318.0
+offset_right = 711.0
+offset_bottom = 767.0
+columns = 3
+
+[node name="PartButton" type="Button" parent="CanvasLayer/Control/Parts"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+text = "Part 1"
+
+[node name="PartButton2" type="Button" parent="CanvasLayer/Control/Parts"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+text = "Part 2
+"
+
+[node name="PartButton3" type="Button" parent="CanvasLayer/Control/Parts"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+text = "Part 3
+"
+
+[node name="PartButton4" type="Button" parent="CanvasLayer/Control/Parts"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+text = "Part 4
+"
+
+[node name="PartButton5" type="Button" parent="CanvasLayer/Control/Parts"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+text = "Part 5
+"
+
+[node name="PartButton6" type="Button" parent="CanvasLayer/Control/Parts"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+text = "Part 6
+"
+
+[node name="PartButton7" type="Button" parent="CanvasLayer/Control/Parts"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+text = "Part 7
+"
+
+[node name="PartButton8" type="Button" parent="CanvasLayer/Control/Parts"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+text = "Part 8
+"
+
+[node name="FlightButton" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -331.0
+offset_top = -146.0
+offset_right = -57.0
+offset_bottom = -38.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 35
+text = "LIFT OFF!"
+
+[node name="MoneyLabel" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 116.0
+offset_top = 50.0
+offset_right = 191.0
+offset_bottom = 76.0
+theme_override_font_sizes/font_size = 30
+text = "MONEY:"
+
+[node name="Amount" type="Label" parent="CanvasLayer/Control/MoneyLabel" groups=["Money"]]
+layout_mode = 0
+offset_left = 127.0
+offset_right = 167.0
+offset_bottom = 45.0
+theme_override_font_sizes/font_size = 30
+text = "0"
+
+[connection signal="pressed" from="CanvasLayer/Control/FlightButton" to="." method="_on_liftOff_pressed"]
