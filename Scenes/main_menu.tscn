@@ -1,48 +1,75 @@
-[gd_scene load_steps=2 format=3 uid="uid://cxxj8bsi7a4bf"]
+[gd_scene load_steps=3 format=3 uid="uid://cxxj8bsi7a4bf"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_b3tu2"]
+[ext_resource type="Theme" uid="uid://cdsf3tai07fob" path="res://Resources/MainTheme.tres" id="2_p5ecx"]
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_b3tu2")
 
-[node name="StartButton" type="Button" parent="."]
-offset_left = 141.0
-offset_top = 410.0
-offset_right = 268.0
-offset_bottom = 459.0
+[node name="Canvas" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="Canvas"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_p5ecx")
+
+[node name="StartButton" type="Button" parent="Canvas/Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 100.0
+offset_top = -414.0
+offset_right = 355.0
+offset_bottom = -314.0
+grow_vertical = 0
 text = "Start"
 
-[node name="OptionsButton" type="Button" parent="."]
-offset_left = 143.0
-offset_top = 472.0
-offset_right = 270.0
-offset_bottom = 521.0
+[node name="OptionsButton" type="Button" parent="Canvas/Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 100.0
+offset_top = -303.0
+offset_right = 355.0
+offset_bottom = -203.0
+grow_vertical = 0
 text = "Options"
 
-[node name="QuitButton" type="Button" parent="."]
-offset_left = 143.0
-offset_top = 534.0
-offset_right = 270.0
-offset_bottom = 583.0
+[node name="QuitButton" type="Button" parent="Canvas/Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 100.0
+offset_top = -192.0
+offset_right = 355.0
+offset_bottom = -92.0
+grow_vertical = 0
 text = "Quit
 "
 
-[node name="Label" type="Label" parent="."]
-offset_left = 118.0
-offset_top = 72.0
-offset_right = 764.0
-offset_bottom = 190.0
-theme_override_font_sizes/font_size = 60
+[node name="Label" type="Label" parent="Canvas/Control"]
+offset_left = 148.0
+offset_top = 142.0
+offset_right = 1103.0
+offset_bottom = 282.0
+theme_override_font_sizes/font_size = 100
 text = "Space Dino Game :3"
 
-[node name="Label" type="Label" parent="Label"]
+[node name="Label" type="Label" parent="Canvas/Control/Label"]
 layout_mode = 0
-offset_left = -2.0
-offset_top = 80.0
-offset_right = 593.0
-offset_bottom = 106.0
+offset_left = 88.0
+offset_top = 140.0
+offset_right = 831.0
+offset_bottom = 171.0
 text = "(please remember to actually make a game name and not just keep it as this)"
 
-[connection signal="pressed" from="StartButton" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="OptionsButton" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="QuitButton" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Canvas/Control/StartButton" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Canvas/Control/OptionsButton" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Canvas/Control/QuitButton" to="." method="_on_quit_pressed"]
