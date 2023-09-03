@@ -1,7 +1,6 @@
 extends Node2D
 
-@export
-var money_value = 1;
+enum Boost_Type {speed, shield}
 
 const PARTICLE_RESOURCE = preload("res://Nodes/pick_ups/pick_up_particles.tscn")
 

@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://cn4xw5gvqs6cw"]
+[gd_scene load_steps=5 format=3 uid="uid://wao7fito8jpk"]
 
-[ext_resource type="Script" path="res://Scripts/static_obstacle.gd" id="1_q65wf"]
+[ext_resource type="Script" path="res://Scripts/obstacle.gd" id="1_5pgs4"]
 
 [sub_resource type="Gradient" id="Gradient_oj73b"]
 offsets = PackedFloat32Array(0, 0.593548, 1)
@@ -17,7 +17,7 @@ fill_to = Vector2(0.5, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6egx2"]
 
 [node name="static_obstacle" type="Node2D"]
-script = ExtResource("1_q65wf")
+script = ExtResource("1_5pgs4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("GradientTexture2D_fxod4")

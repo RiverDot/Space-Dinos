@@ -8,3 +8,13 @@ func _on_options_pressed():
 
 func _on_menu_pressed():
 	get_tree().get_first_node_in_group("Root")._change_scene(0)
+
+func _on_to_base_pressed():
+	get_tree().get_first_node_in_group("GameScene")._change_scene(0)
+	get_parent()._set_pause(false)
+
+func _update_buttons(scene_id):
+	if scene_id == 0:
+		$ToBaseButton.visible = false
+	else:
+		$ToBaseButton.visible = true

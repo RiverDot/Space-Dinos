@@ -1,20 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://dcekkw6jae0vv"]
+[gd_scene load_steps=4 format=3 uid="uid://4jvi8v3rne0l"]
 
-[ext_resource type="Script" path="res://pick_up_particles.gd" id="1_boss3"]
+[ext_resource type="Script" path="res://Scripts/pick_up_particles.gd" id="1_b02xm"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7ihla"]
 
+[sub_resource type="Gradient" id="Gradient_xav2y"]
+
 [node name="CPUParticles2D" type="CPUParticles2D"]
 material = SubResource("CanvasItemMaterial_7ihla")
-lifetime = 0.2
+lifetime = 0.6
+explosiveness = 1.0
 direction = Vector2(0, 0)
 spread = 180.0
-gravity = Vector2(0, 9.245)
+gravity = Vector2(0, 0)
 initial_velocity_min = 80.46
-initial_velocity_max = 80.46
-damping_min = 100.0
-damping_max = 100.0
-scale_amount_min = 9.4
-scale_amount_max = 9.4
+initial_velocity_max = 151.16
+scale_amount_min = 5.0
+scale_amount_max = 8.0
 color = Color(0, 0.45098, 0, 1)
-script = ExtResource("1_boss3")
+color_ramp = SubResource("Gradient_xav2y")
+script = ExtResource("1_b02xm")
