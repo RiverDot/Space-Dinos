@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://ca7wmvcnq7335"]
+[gd_scene load_steps=6 format=3 uid="uid://ivk3e10f30ur"]
 
 [ext_resource type="Script" path="res://Scripts/flightScene.gd" id="1_kq1b0"]
 [ext_resource type="PackedScene" uid="uid://oygquj0itsko" path="res://Nodes/rocket_ship.tscn" id="1_vms8s"]
@@ -18,15 +18,15 @@ fill_to = Vector2(0, 1)
 script = ExtResource("1_kq1b0")
 metadata/_edit_lock_ = true
 
-[node name="Rocket Ship" parent="." instance=ExtResource("1_vms8s")]
-
-[node name="Camera2D" type="Camera2D" parent="."]
-
 [node name="Background" type="Node2D" parent="."]
 script = ExtResource("3_3r5i2")
 
 [node name="Sprite2D" type="Sprite2D" parent="Background"]
-position = Vector2(0, 720)
-scale = Vector2(30, 60)
+position = Vector2(0, 1120)
+scale = Vector2(40, 80)
 texture = SubResource("GradientTexture2D_s7k00")
 offset = Vector2(-0.0666667, -206.667)
+
+[node name="Rocket Ship" parent="." instance=ExtResource("1_vms8s")]
+
+[node name="Camera2D" type="Camera2D" parent="."]

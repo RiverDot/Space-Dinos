@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://4jvi8v3rne0l"]
+[gd_scene load_steps=3 format=3 uid="uid://dcekkw6jae0vv"]
 
-[ext_resource type="Script" path="res://Nodes/pick_ups/pick_up_particles.gd" id="1_nafno"]
+[ext_resource type="Script" path="res://pick_up_particles.gd" id="1_boss3"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7ihla"]
 
@@ -17,4 +17,4 @@ damping_max = 100.0
 scale_amount_min = 9.4
 scale_amount_max = 9.4
 color = Color(0, 0.45098, 0, 1)
-script = ExtResource("1_nafno")
+script = ExtResource("1_boss3")
