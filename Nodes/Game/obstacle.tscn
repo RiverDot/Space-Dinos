@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://wao7fito8jpk"]
 
-[ext_resource type="Script" path="res://Scripts/obstacle.gd" id="1_5pgs4"]
+[ext_resource type="Script" path="res://Scripts/Game/Flight/obstacle.gd" id="1_5pgs4"]
 
 [sub_resource type="Gradient" id="Gradient_oj73b"]
 offsets = PackedFloat32Array(0, 0.593548, 1)

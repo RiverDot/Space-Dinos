@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://b325ltamoinhg"]
 
-[ext_resource type="Script" path="res://Scripts/baseManager.gd" id="1_xqynj"]
+[ext_resource type="Script" path="res://Scripts/Game/Base/baseManager.gd" id="1_cc7fv"]
 
 [node name="BaseScene" type="Node2D"]
-script = ExtResource("1_xqynj")
+script = ExtResource("1_cc7fv")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -16,6 +16,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Back" type="ColorRect" parent="CanvasLayer/Control"]
+layout_mode = 0
 offset_left = -34.0
 offset_top = -27.0
 offset_right = 1994.0
@@ -23,6 +24,7 @@ offset_bottom = 873.0
 color = Color(0.662745, 0.662745, 0.662745, 1)
 
 [node name="Floor" type="ColorRect" parent="CanvasLayer/Control"]
+layout_mode = 0
 offset_left = -34.0
 offset_top = 848.0
 offset_right = 1994.0
@@ -30,61 +32,68 @@ offset_bottom = 1121.0
 color = Color(0.470588, 0.470588, 0.470588, 1)
 
 [node name="Platform" type="ColorRect" parent="CanvasLayer/Control"]
+layout_mode = 0
 offset_left = 953.0
 offset_top = 802.0
 offset_right = 1404.0
 offset_bottom = 853.0
 color = Color(0.470588, 0.470588, 0.470588, 1)
 
-[node name="Parts" type="GridContainer" parent="CanvasLayer/Control"]
+[node name="PartsSelector" type="Control" parent="CanvasLayer/Control"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PartsGrid" type="GridContainer" parent="CanvasLayer/Control/PartsSelector"]
+layout_mode = 0
 offset_left = 220.0
 offset_top = 318.0
 offset_right = 711.0
 offset_bottom = 767.0
 columns = 3
 
-[node name="PartButton" type="Button" parent="CanvasLayer/Control/Parts"]
+[node name="PartButton" type="Button" parent="CanvasLayer/Control/PartsSelector/PartsGrid"]
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
 text = "Part 1"
 
-[node name="PartButton2" type="Button" parent="CanvasLayer/Control/Parts"]
+[node name="PartButton2" type="Button" parent="CanvasLayer/Control/PartsSelector/PartsGrid"]
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
 text = "Part 2
 "
 
-[node name="PartButton3" type="Button" parent="CanvasLayer/Control/Parts"]
+[node name="PartButton3" type="Button" parent="CanvasLayer/Control/PartsSelector/PartsGrid"]
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
 text = "Part 3
 "
 
-[node name="PartButton4" type="Button" parent="CanvasLayer/Control/Parts"]
+[node name="PartButton4" type="Button" parent="CanvasLayer/Control/PartsSelector/PartsGrid"]
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
 text = "Part 4
 "
 
-[node name="PartButton5" type="Button" parent="CanvasLayer/Control/Parts"]
+[node name="PartButton5" type="Button" parent="CanvasLayer/Control/PartsSelector/PartsGrid"]
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
 text = "Part 5
 "
 
-[node name="PartButton6" type="Button" parent="CanvasLayer/Control/Parts"]
+[node name="PartButton6" type="Button" parent="CanvasLayer/Control/PartsSelector/PartsGrid"]
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
 text = "Part 6
 "
 
-[node name="PartButton7" type="Button" parent="CanvasLayer/Control/Parts"]
+[node name="PartButton7" type="Button" parent="CanvasLayer/Control/PartsSelector/PartsGrid"]
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
 text = "Part 7
 "
 
-[node name="PartButton8" type="Button" parent="CanvasLayer/Control/Parts"]
+[node name="PartButton8" type="Button" parent="CanvasLayer/Control/PartsSelector/PartsGrid"]
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
 text = "Part 8

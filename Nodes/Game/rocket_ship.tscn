@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://oygquj0itsko"]
 
-[ext_resource type="Script" path="res://Scripts/Rocket Ship Control.gd" id="1_3qelb"]
+[ext_resource type="Script" path="res://Scripts/Game/Flight/Rocket Ship Control.gd" id="1_3qelb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mpnah"]
 radius = 23.0

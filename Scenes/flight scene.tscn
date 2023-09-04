@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://ivk3e10f30ur"]
 
-[ext_resource type="Script" path="res://Scripts/flightScene.gd" id="1_kq1b0"]
-[ext_resource type="PackedScene" uid="uid://oygquj0itsko" path="res://Nodes/rocket_ship.tscn" id="1_vms8s"]
-[ext_resource type="Script" path="res://Scripts/FlightBackground.gd" id="3_3r5i2"]
-[ext_resource type="Script" path="res://Scripts/GradientBG.gd" id="4_dfvw1"]
+[ext_resource type="Script" path="res://Scripts/Game/Flight/flightScene.gd" id="1_kq1b0"]
+[ext_resource type="PackedScene" uid="uid://oygquj0itsko" path="res://Nodes/Game/rocket_ship.tscn" id="1_vms8s"]
+[ext_resource type="Script" path="res://Scripts/Game/Flight/FlightBackground.gd" id="2_ewd1n"]
+[ext_resource type="Script" path="res://Scripts/Game/Flight/GradientBG.gd" id="3_dsqqs"]
 
 [sub_resource type="Gradient" id="Gradient_hsxl2"]
 offsets = PackedFloat32Array(0, 0.352459, 0.725714, 1)
@@ -22,14 +22,14 @@ drag_mod = 0.001
 metadata/_edit_lock_ = true
 
 [node name="Background" type="Node2D" parent="."]
-script = ExtResource("3_3r5i2")
+script = ExtResource("2_ewd1n")
 
 [node name="Sprite2D" type="Sprite2D" parent="Background"]
 position = Vector2(0, 550)
 scale = Vector2(20, 80)
 texture = SubResource("GradientTexture2D_s7k00")
 offset = Vector2(0, -400)
-script = ExtResource("4_dfvw1")
+script = ExtResource("3_dsqqs")
 
 [node name="Rocket Ship" parent="." instance=ExtResource("1_vms8s")]
 
