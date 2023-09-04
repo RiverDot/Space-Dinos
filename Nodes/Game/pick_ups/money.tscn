@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://7obvhm6trfsf"]
 
-[ext_resource type="Script" path="res://Scripts/money.gd" id="1_na4n0"]
+[ext_resource type="Script" path="res://Scripts/Game/Flight/money.gd" id="1_na4n0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hom1q"]
 size = Vector2(63, 21)

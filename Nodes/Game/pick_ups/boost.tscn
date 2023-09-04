@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bcpg4ih72ntjc"]
 
-[ext_resource type="Script" path="res://Scripts/boost.gd" id="1_q7gfk"]
+[ext_resource type="Script" path="res://Scripts/Game/Flight/boost.gd" id="1_q7gfk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hom1q"]
 size = Vector2(63, 21)
