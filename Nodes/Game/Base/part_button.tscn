@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://cotwtaxqvntkk"]
+
+[ext_resource type="Script" path="res://Scripts/Game/Base/part_button.gd" id="1_xyf75"]
+
+[node name="PartButton" type="Button"]
+custom_minimum_size = Vector2(120, 120)
+text = "Part 1"
+script = ExtResource("1_xyf75")
+
+[node name="CostLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 86.0
+offset_right = 112.0
+offset_bottom = 112.0
+bbcode_enabled = true
+text = "
+"
