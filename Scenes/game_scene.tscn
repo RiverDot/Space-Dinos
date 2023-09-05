@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ivk3e10f30ur" path="res://Scenes/flight scene.tscn" id="2_i3mqi"]
 [ext_resource type="Script" path="res://Scripts/Game/GameScenes.gd" id="2_t76yl"]
 [ext_resource type="PackedScene" uid="uid://b325ltamoinhg" path="res://Scenes/base_scene.tscn" id="3_vy7xh"]
-[ext_resource type="PackedScene" uid="uid://cbhqebqg5o58g" path="res://Nodes/pause_screen.tscn" id="4_opjyg"]
+[ext_resource type="PackedScene" uid="uid://cbhqebqg5o58g" path="res://Nodes/Other/pause_screen.tscn" id="4_opjyg"]
 
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_qxjhp")
