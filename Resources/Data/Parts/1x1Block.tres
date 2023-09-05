@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Part" load_steps=3 format=3 uid="uid://bl33im0eflrcw"]
+
+[ext_resource type="Script" path="res://Scripts/Game/Base/Parts/Part.gd" id="1_pirui"]
+[ext_resource type="PackedScene" uid="uid://cunmtbjtdb83d" path="res://Nodes/Game/ShipParts/block.tscn" id="1_uacuk"]
+
+[resource]
+script = ExtResource("1_pirui")
+id = 0
+name = "Block"
+node = ExtResource("1_uacuk")
+part_category = 2
+cost = 10
+limit = -1

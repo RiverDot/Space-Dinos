@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Part" load_steps=3 format=3 uid="uid://j0wi0sr2ja0s"]
+
+[ext_resource type="PackedScene" uid="uid://cunmtbjtdb83d" path="res://Nodes/Game/ShipParts/block.tscn" id="1_cytyr"]
+[ext_resource type="Script" path="res://Scripts/Game/Base/Parts/Part.gd" id="1_o83h7"]
+
+[resource]
+script = ExtResource("1_o83h7")
+id = 1
+name = "Cockpit"
+node = ExtResource("1_cytyr")
+part_category = 1
+cost = 0
+limit = 1

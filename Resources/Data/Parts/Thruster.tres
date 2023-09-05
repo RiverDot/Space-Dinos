@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Part" load_steps=3 format=3 uid="uid://d1w6yfndy05xv"]
+
+[ext_resource type="PackedScene" uid="uid://cunmtbjtdb83d" path="res://Nodes/Game/ShipParts/block.tscn" id="1_1wend"]
+[ext_resource type="Script" path="res://Scripts/Game/Base/Parts/Part.gd" id="1_7k0g1"]
+
+[resource]
+script = ExtResource("1_7k0g1")
+id = 3
+name = "Thruster"
+node = ExtResource("1_1wend")
+part_category = 4
+cost = 150
+limit = -1

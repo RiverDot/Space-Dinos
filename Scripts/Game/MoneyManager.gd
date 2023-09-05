@@ -4,6 +4,7 @@ var money = 200
 
 func _change_money(amount):
 	money += amount
+	_update_labels()
 
 func _try_spend_money(amount) -> bool:
 	if money >= amount:
