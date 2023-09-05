@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://ivk3e10f30ur"]
+[gd_scene load_steps=8 format=3 uid="uid://ivk3e10f30ur"]
 
 [ext_resource type="Script" path="res://Scripts/Game/Flight/flightScene.gd" id="1_kq1b0"]
 [ext_resource type="PackedScene" uid="uid://oygquj0itsko" path="res://Nodes/Game/rocket_ship.tscn" id="1_vms8s"]
 [ext_resource type="Script" path="res://Scripts/Game/Flight/FlightBackground.gd" id="2_ewd1n"]
 [ext_resource type="Script" path="res://Scripts/Game/Flight/GradientBG.gd" id="3_dsqqs"]
+[ext_resource type="Script" path="res://Scenes/Spawner.gd" id="5_camfu"]
 
 [sub_resource type="Gradient" id="Gradient_hsxl2"]
 offsets = PackedFloat32Array(0, 0.352459, 0.725714, 1)
@@ -47,3 +48,6 @@ offset_right = 949.0
 offset_bottom = 526.0
 grow_horizontal = 0
 grow_vertical = 0
+
+[node name="Spawner" type="Node2D" parent="."]
+script = ExtResource("5_camfu")
