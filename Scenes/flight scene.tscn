@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://ivk3e10f30ur"]
+[gd_scene load_steps=12 format=3 uid="uid://ivk3e10f30ur"]
 
 [ext_resource type="Script" path="res://Scripts/Game/Flight/flightScene.gd" id="1_kq1b0"]
 [ext_resource type="PackedScene" uid="uid://oygquj0itsko" path="res://Nodes/Game/rocket_ship.tscn" id="1_vms8s"]
 [ext_resource type="Script" path="res://Scripts/Game/Flight/FlightBackground.gd" id="2_ewd1n"]
 [ext_resource type="Script" path="res://Scripts/Game/Flight/GradientBG.gd" id="3_dsqqs"]
 [ext_resource type="Script" path="res://Scripts/GameOver.gd" id="5_bamem"]
+[ext_resource type="PackedScene" uid="uid://bhkpb4tor5ec7" path="res://Nodes/Game/spawner.tscn" id="6_yaaor"]
 
 [sub_resource type="Gradient" id="Gradient_hsxl2"]
 offsets = PackedFloat32Array(0, 0.352459, 0.725714, 1)
@@ -105,3 +106,5 @@ grow_vertical = 2
 text = "9999
 "
 label_settings = SubResource("LabelSettings_pkb3u")
+
+[node name="Spawner" parent="." instance=ExtResource("6_yaaor")]

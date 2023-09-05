@@ -3,7 +3,7 @@ extends Node2D
 @export
 var money_value = 1;
 
-const PARTICLE_RESOURCE = preload("res://Nodes/pick_ups/pick_up_particles.tscn")
+const PARTICLE_RESOURCE = preload("res://Nodes/Game/pick_ups/pick_up_particles.tscn")
 
 func _on_area_2d_body_entered(_body):
 	if  "Rocket Ship" in _body.name:
