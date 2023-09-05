@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://Scripts/Menus/SceneManager.gd" id="1_8bovu"]
 [ext_resource type="PackedScene" uid="uid://cxxj8bsi7a4bf" path="res://Scenes/main_menu.tscn" id="2_171hv"]
 [ext_resource type="PackedScene" uid="uid://bvybgfmwwmo11" path="res://Scenes/game_scene.tscn" id="3_wws5g"]
-[ext_resource type="PackedScene" uid="uid://l25ehdaamqdb" path="res://Nodes/options.tscn" id="4_0qf1t"]
+[ext_resource type="PackedScene" uid="uid://l25ehdaamqdb" path="res://Nodes/Other/options.tscn" id="4_0qf1t"]
 [ext_resource type="Script" path="res://Scripts/Other/SFXPlayer.gd" id="5_722ta"]
-[ext_resource type="PackedScene" uid="uid://cvxyj7wnhyilk" path="res://Nodes/sfx.tscn" id="6_xs2al"]
+[ext_resource type="PackedScene" uid="uid://cvxyj7wnhyilk" path="res://Nodes/Other/sfx.tscn" id="6_xs2al"]
 [ext_resource type="Script" path="res://Scripts/Other/SaveSystem.gd" id="7_f3elw"]
 
 [node name="SceneManager" type="Node2D" groups=["Root"]]
