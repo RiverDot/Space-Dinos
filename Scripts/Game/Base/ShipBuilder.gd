@@ -102,6 +102,7 @@ func _add_part(part: PartBase):
 	ship.add_child(part)
 	ship.parts.append(part)
 
+# comment colour
 func _check_limit(id: int, limit: int) -> bool:
 	if limit == 0:
 		return true
@@ -151,20 +152,87 @@ func _try_raycast_part() -> PartBase:
 	return null
 
 func _check_requirements() -> bool:
-	if _has_part(1):
-		return true
-	else:
+	if !_has_part(1):
 		$ErrorLabel.text = "Cockpit Missing!"
 		$ErrorLabel.modulate = Color(0.6, 0.26, 0.2, 1)
 		var tween = get_tree().create_tween()
 		tween.tween_property($ErrorLabel, "modulate", Color(0.6, 0.26, 0.2, 0), 1)
-	return false
+		return false
+	if !_check_if_all_parts_connected():
+		$ErrorLabel.text = "Not all parts connected!"
+		$ErrorLabel.modulate = Color(0.6, 0.26, 0.2, 1)
+		var tween = get_tree().create_tween()
+		tween.tween_property($ErrorLabel, "modulate", Color(0.6, 0.26, 0.2, 0), 1)
+		return false
+
+	return true
 
 func _has_part(part_id: int) -> bool:
 	for part in ship.parts:
 		if part.id == part_id:
 			return true
 	return false
+
+func _get_part(part_id: int) -> PartBase:
+	for part in ship.parts:
+		if part.id == part_id:
+			return part
+	return null
+
+func _get_part_at_grid_pos(grid_pos: Vector2) -> PartBase:
+	for part in ship.parts:
+		if part.grid_pos == grid_pos:
+			return part
+	return null
+
+func _check_if_all_parts_connected() -> bool:
+	var connected_parts = []
+	var main_part = _get_part(1)
+	if main_part:
+		connected_parts = _get_connection_web(main_part)
+
+	print("connected: "+str(connected_parts.size())+" total: "+str(_count_parts_in_grid()))
+		
+	if connected_parts.size() == _count_parts_in_grid():
+		return true
+
+	return false
+
+func _get_connection_web(main_part) -> Array:
+	var parts_to_check = []
+	var connected_parts = []
+
+	parts_to_check.append(main_part)
+	connected_parts.append(main_part)
+
+	while parts_to_check.size() > 0:
+		var part = parts_to_check.pop_back()
+		if part.grid_pos.x > 0:
+			if ship.grid[part.grid_pos.x - 1][part.grid_pos.y] != -1:
+				var part_to_check = _get_part_at_grid_pos(Vector2(part.grid_pos.x - 1, part.grid_pos.y))
+				if part_to_check not in connected_parts:
+					parts_to_check.append(part_to_check)
+					connected_parts.append(part_to_check)
+		if part.grid_pos.x < 8:
+			if ship.grid[part.grid_pos.x + 1][part.grid_pos.y] != -1:
+				var part_to_check = _get_part_at_grid_pos(Vector2(part.grid_pos.x + 1, part.grid_pos.y))
+				if part_to_check not in connected_parts:
+					parts_to_check.append(part_to_check)
+					connected_parts.append(part_to_check)
+		if part.grid_pos.y > 0:
+			if ship.grid[part.grid_pos.x][part.grid_pos.y - 1] != -1:
+				var part_to_check = _get_part_at_grid_pos(Vector2(part.grid_pos.x, part.grid_pos.y - 1))
+				if part_to_check not in connected_parts:
+					parts_to_check.append(part_to_check)
+					connected_parts.append(part_to_check)
+		if part.grid_pos.y < 8:
+			if ship.grid[part.grid_pos.x][part.grid_pos.y + 1] != -1:
+				var part_to_check = _get_part_at_grid_pos(Vector2(part.grid_pos.x, part.grid_pos.y + 1))
+				if part_to_check not in connected_parts:
+					parts_to_check.append(part_to_check)
+					connected_parts.append(part_to_check)
+
+	return connected_parts
 
 func _count_parts_in_grid() -> int:
 	var i = 0

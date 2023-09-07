@@ -5,7 +5,7 @@ var damage_value = 1;
 @export
 var movementVector = Vector2(0,0)
 
-func _process(delta):
+func _process(_delta):
 	translate(movementVector)
 
 func _on_area_2d_body_entered(_body):
