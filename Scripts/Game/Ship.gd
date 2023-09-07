@@ -40,7 +40,8 @@ func _load_part(grid_pos: Vector2, part_id: int):
 			if get_tree().get_first_node_in_group("GameScene").current_scene == 0: # equal to BASE
 				new_part.position = get_tree().get_first_node_in_group("ShipBuilder")._get_grid_pos(grid_pos)
 			else:
-				new_part.position = Vector2(grid_pos.x * 48, grid_pos.y * 48) - Vector2(24 * 8, 24 * 8)
+				new_part.position = Vector2(grid_pos.x * 24, grid_pos.y * 24) - Vector2(12 * 8, 12 * 8)
+				new_part._get_sprite().scale = Vector2(0.19, 0.19)
 			add_child(new_part)
 			parts.append(new_part)
 			break

@@ -18,3 +18,6 @@ func _setup(part: Part):
 
 	height = 1
 	width = 1
+
+func _get_sprite():
+	return $Sprite
