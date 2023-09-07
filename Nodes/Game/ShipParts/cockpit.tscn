@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://ieodofe0bnj"]
+
+[ext_resource type="Script" path="res://Scripts/Game/Base/Parts/PartBase.gd" id="1_qarye"]
+[ext_resource type="Texture2D" uid="uid://csu4nuk4edq52" path="res://Assets/Art/Other/icon.svg" id="2_kkgxw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s8xvm"]
+size = Vector2(48, 48)
+
+[node name="CockPit" type="StaticBody2D" groups=["Part"]]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_qarye")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 1, 1)
+scale = Vector2(0.37, 0.37)
+texture = ExtResource("2_kkgxw")
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_s8xvm")

@@ -10,6 +10,8 @@ var height: int
 
 var width: int
 
+var grid_pos: Vector2
+
 func _setup(part: Part):
 	id = part.id
 	value = part.cost

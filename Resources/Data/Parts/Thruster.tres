@@ -9,5 +9,5 @@ id = 3
 name = "Thruster"
 node = ExtResource("1_1wend")
 part_category = 4
-cost = 150
+cost = 50
 limit = -1

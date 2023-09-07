@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bvybgfmwwmo11"]
+[gd_scene load_steps=9 format=3 uid="uid://bvybgfmwwmo11"]
 
 [ext_resource type="Script" path="res://Scripts/Game/GameManager.gd" id="1_qxjhp"]
 [ext_resource type="Script" path="res://Scripts/Game/MoneyManager.gd" id="2_0di4y"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://Scripts/Game/GameScenes.gd" id="2_t76yl"]
 [ext_resource type="PackedScene" uid="uid://b325ltamoinhg" path="res://Scenes/base_scene.tscn" id="3_vy7xh"]
 [ext_resource type="PackedScene" uid="uid://cbhqebqg5o58g" path="res://Nodes/Other/pause_screen.tscn" id="4_opjyg"]
+[ext_resource type="Script" path="res://Scripts/Game/ShipManager.gd" id="6_rvgl2"]
+[ext_resource type="PackedScene" uid="uid://dst4s42oic56c" path="res://Nodes/Game/ship.tscn" id="7_p5o31"]
 
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_qxjhp")
@@ -18,5 +20,9 @@ FlightScene = ExtResource("2_i3mqi")
 
 [node name="MoneyManager" type="Node2D" parent="GameLogic" groups=["MoneyManager"]]
 script = ExtResource("2_0di4y")
+
+[node name="ShipManager" type="Node2D" parent="GameLogic" groups=["ShipManager"]]
+script = ExtResource("6_rvgl2")
+ship_node = ExtResource("7_p5o31")
 
 [node name="PauseScreen" parent="." instance=ExtResource("4_opjyg")]

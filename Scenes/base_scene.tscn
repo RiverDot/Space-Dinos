@@ -114,10 +114,16 @@ offset_bottom = 45.0
 theme_override_font_sizes/font_size = 30
 text = "0"
 
+[node name="Button" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 1420.0
+offset_top = 787.0
+offset_right = 1566.0
+offset_bottom = 833.0
+text = "CLEAR ALL"
+
 [node name="ShipBuilder" type="Node2D" parent="." groups=["ShipBuilder"]]
 script = ExtResource("6_u5k66")
-
-[node name="Ship" type="Node2D" parent="ShipBuilder"]
 
 [node name="BuilderGrid" type="TileMap" parent="ShipBuilder"]
 material = SubResource("CanvasItemMaterial_jg4g5")
@@ -133,4 +139,12 @@ scale = Vector2(4, 4)
 blend_mode = 2
 texture = SubResource("GradientTexture2D_jdlbd")
 
+[node name="ErrorLabel" type="Label" parent="ShipBuilder"]
+offset_left = 1600.0
+offset_top = 778.0
+offset_right = 1910.0
+offset_bottom = 825.0
+theme_override_font_sizes/font_size = 24
+
 [connection signal="pressed" from="CanvasLayer/Control/FlightButton" to="." method="_on_liftOff_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Button" to="ShipBuilder" method="_clear_all_button"]

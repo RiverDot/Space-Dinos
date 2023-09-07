@@ -1,105 +1,175 @@
 extends Node2D
 
-var ship_parts: Array[PartBase]
-
 var selected_part = null
+var moving = false
 
 var selected_grid: Vector2
 
-var ship_grid: Array[Array]
+var buildLimitsStart = Vector2(960, 336)
+var buildLimitsEnd = Vector2(1392, 768)
+var cellS = 48
 
-func _ready():
-    ship_grid = []
-    for i in range(0, 9):
-        ship_grid.append([])
-        for j in range(0, 9):
-            ship_grid[i].append(-1)
+var ship
 
 func _on_part_selected(part: Part):
-    if selected_part:
-        selected_part.queue_free()
+	if selected_part:
+		selected_part.queue_free()
 
-    var newPart = part.node.instantiate()
-    newPart._setup(part)
-    add_child(newPart)
-    selected_part = newPart
+	var newPart = part.node.instantiate()
+	newPart._setup(part)
+	add_child(newPart)
+	selected_part = newPart
 
 func _process(_delta):
-    if selected_part:
-        $BuildLight.visible = true
-        $BuildLight.position = get_viewport().get_mouse_position()
-        selected_part.position = get_viewport().get_mouse_position()
+	if selected_part:
+		$BuildLight.visible = true
+		$BuildLight.position = get_viewport().get_mouse_position()
+		selected_part.position = get_viewport().get_mouse_position()
 
-        if _in_zone():
-            if Input.is_action_just_pressed("PointerAction"):
-                if _check_grid_space():
-                    _add_part(selected_part)
-                    ship_grid[selected_grid.x][selected_grid.y] = selected_part.id
-                    
-                    get_tree().get_first_node_in_group("MoneyManager")._try_spend_money(selected_part.value)
-                    get_tree().get_first_node_in_group("PartSelector")._update_buttons()
+		selected_part.modulate = Color(0.9, 0.3, 0.3, 0.7)
 
-                    selected_part = null
-    else:
-        $BuildLight.visible = false
-        if Input.is_action_just_pressed("PointerAction"):
-            pass # will be move part functionality
-        if Input.is_action_just_pressed("PointerActionAlt"):
-            var focused_part = _try_raycast_part()
-            if focused_part != null:
-                ship_parts.erase(focused_part)
-                get_tree().get_first_node_in_group("MoneyManager")._change_money(focused_part.value)
-                focused_part.queue_free()
-                get_tree().get_first_node_in_group("PartSelector")._update_buttons()
+		selected_part.z_index = 3
+
+		if _in_zone():
+			if _check_grid_space():
+				selected_part.modulate = Color(1, 1, 1, 0.7)
+				if moving:
+					if Input.is_action_just_released("PointerAction"):
+						ship.grid[selected_grid.x][selected_grid.y] = selected_part.id
+						selected_part.grid_pos = selected_grid
+						moving = false
+						selected_part.modulate = Color(1, 1, 1, 1)
+						selected_part.z_index = 0
+						selected_part = null
+
+						print(_count_parts_in_grid())
+				else:
+					if Input.is_action_just_pressed("PointerAction"):
+						_add_part(selected_part)
+						ship.grid[selected_grid.x][selected_grid.y] = selected_part.id
+						selected_part.grid_pos = selected_grid
+
+						selected_part.modulate = Color(1, 1, 1, 1)
+						selected_part.z_index = 0
+						
+						get_tree().get_first_node_in_group("MoneyManager")._try_spend_money(selected_part.value)
+						get_tree().get_first_node_in_group("PartSelector")._update_buttons()
+
+						selected_part = null
+		if Input.is_action_just_released("PointerAction") && moving:
+			selected_part.position = _get_grid_pos(selected_part.grid_pos)
+			ship.grid[selected_part.grid_pos.x][selected_part.grid_pos.y] = selected_part.id
+			moving = false
+			selected_part.modulate = Color(1, 1, 1, 1)
+			selected_part.z_index = 0
+			selected_part = null
+		elif Input.is_action_just_pressed("PointerActionAlt"):
+			selected_part.queue_free()
+			selected_part = null
+	else:
+		$BuildLight.visible = false
+		if Input.is_action_just_pressed("PointerAction"):
+			var focused_part = _try_raycast_part()
+			if focused_part != null:
+				moving = true
+				selected_part = focused_part
+				ship.grid[focused_part.grid_pos.x][focused_part.grid_pos.y] = -1
+		if Input.is_action_just_pressed("PointerActionAlt"):
+			var focused_part = _try_raycast_part()
+			if focused_part != null:
+				ship.grid[focused_part.grid_pos.x][focused_part.grid_pos.y] = -1
+				ship.parts.erase(focused_part)
+				get_tree().get_first_node_in_group("MoneyManager")._change_money(focused_part.value)
+				focused_part.queue_free()
+				get_tree().get_first_node_in_group("PartSelector")._update_buttons()
+
+func _get_grid_pos(grid_pos: Vector2) -> Vector2:
+	return Vector2(buildLimitsStart.x + (grid_pos.x * cellS) + (cellS / 2.0), buildLimitsStart.y + (grid_pos.y * cellS) + (cellS / 2.0))
 
 func _snap_to_grid(mouse_pos: Vector2):
-    selected_part.position = Vector2((round((mouse_pos.x + 24) / 48) * 48) - 24, (round((mouse_pos.y + 24) / 48) * 48) - 24)
-    selected_grid = Vector2(round((mouse_pos.x - 984) / 48), round((mouse_pos.y - 360) / 48))
+	selected_part.position = Vector2((round((mouse_pos.x + (cellS / 2.0)) / cellS) * cellS) - (cellS / 2.0), (round((mouse_pos.y + (cellS / 2.0)) / cellS) * cellS) - (cellS / 2.0))
+	selected_grid = Vector2(round((mouse_pos.x - (buildLimitsStart.x + (cellS / 2.0))) / cellS), round((mouse_pos.y - (buildLimitsStart.y + (cellS / 2.0))) / cellS))
 
 func _in_zone() -> bool:
-    var mousePos = get_viewport().get_mouse_position()
-    if mousePos.x > 960 and mousePos.x < 1392 and mousePos.y > 336 and mousePos.y < 768:
-        _snap_to_grid(mousePos)
-        return true
-    return false
+	var mousePos = get_viewport().get_mouse_position()
+	if mousePos.x > buildLimitsStart.x and mousePos.x < buildLimitsEnd.x and mousePos.y > buildLimitsStart.y and mousePos.y < buildLimitsEnd.y:
+		_snap_to_grid(mousePos)
+		return true
+	return false
 
 func _add_part(part: PartBase):
-    part.get_parent().remove_child(part)
-    $Ship.add_child(part)
-    ship_parts.append(part)
+	part.get_parent().remove_child(part)
+	ship.add_child(part)
+	ship.parts.append(part)
 
 func _check_limit(id: int, limit: int) -> bool:
-    if limit == 0:
-        return true
-    var i = 0
-    for part in ship_parts:
-        if part.id == id:
-            i += 1
-            if i == limit:
-                return true
-    return false
+	if limit == 0:
+		return true
+	elif limit == -1:
+		return false
+	var i = 0
+	for part in ship.parts:
+		if part.id == id:
+			i += 1
+			if i == limit:
+				return true
+	return false
 
 func _check_grid_space() -> bool:
-    var part = selected_part
-    var x = selected_grid.x
-    var y = selected_grid.y
-    var w = part.width
-    var h = part.height
-    if x + w > 9 or y + h > 9:
-        return false
-    for i in range(x, x + w):
-        for j in range(y, y + h):
-            if ship_grid[i][j] != -1:
-                return false
-    return true
+	var part = selected_part
+	var x = selected_grid.x
+	var y = selected_grid.y
+	var w = part.width
+	var h = part.height
+	if x + w > 9 or y + h > 9:
+		return false
+	for i in range(x, x + w):
+		for j in range(y, y + h):
+			if ship.grid[i][j] != -1:
+				return false
+	return true
+
+func _clear_all_button():
+	for part in ship.parts:
+		get_tree().get_first_node_in_group("MoneyManager")._change_money(part.value)
+		part.queue_free()
+	ship.parts.clear()
+	for i in range(0, 9):
+		for j in range(0, 9):
+			ship.grid[i][j] = -1
+	get_tree().get_first_node_in_group("PartSelector")._update_buttons()
 
 func _try_raycast_part() -> PartBase:
-    var space_state = get_world_2d().direct_space_state
-    var query = PhysicsPointQueryParameters2D.new()
-    query.position = get_viewport().get_mouse_position()
-    var res = space_state.intersect_point(query)
-    if res:
-        for col in res:
-            if col.collider is PartBase:
-                return col.collider
-    return null
+	var space_state = get_world_2d().direct_space_state
+	var query = PhysicsPointQueryParameters2D.new()
+	query.position = get_viewport().get_mouse_position()
+	var res = space_state.intersect_point(query)
+	if res:
+		for col in res:
+			if col.collider is PartBase:
+				return col.collider
+	return null
+
+func _check_requirements() -> bool:
+	if _has_part(1):
+		return true
+	else:
+		$ErrorLabel.text = "Cockpit Missing!"
+		$ErrorLabel.modulate = Color(0.6, 0.26, 0.2, 1)
+		var tween = get_tree().create_tween()
+		tween.tween_property($ErrorLabel, "modulate", Color(0.6, 0.26, 0.2, 0), 1)
+	return false
+
+func _has_part(part_id: int) -> bool:
+	for part in ship.parts:
+		if part.id == part_id:
+			return true
+	return false
+
+func _count_parts_in_grid() -> int:
+	var i = 0
+	for row in ship.grid:
+		for part in row:
+			if part != -1:
+				i += 1
+	return i

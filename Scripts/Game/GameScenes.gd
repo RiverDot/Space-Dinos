@@ -19,6 +19,9 @@ func _change_scene(scene: Scene):
 	if current_scene == scene:
 		return
 
+	current_scene = scene
+
+
 	if current_scene_node != null:
 		current_scene_node.queue_free()
 
@@ -32,8 +35,15 @@ func _change_scene(scene: Scene):
 	add_child(new_scene)
 	current_scene_node = new_scene
 
-	current_scene = scene
-
+	
 	get_tree().get_first_node_in_group("PauseScreen")._update_buttons(current_scene)
+
+	if current_scene == Scene.FLIGHT:
+		_load_ship()
+
+func _load_ship():
+	get_tree().get_first_node_in_group("ShipManager")._load_ship(get_child(3).get_child(1))
+
+
 
 	

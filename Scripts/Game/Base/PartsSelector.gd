@@ -15,6 +15,7 @@ enum PartCategory {
 }
 
 func _ready():
+	get_tree().get_first_node_in_group("ShipManager")._load_ship(get_tree().get_first_node_in_group("ShipBuilder"))
 	for part in parts_list:
 		var button = part_button.instantiate()
 		button._setup(part)
