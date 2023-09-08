@@ -42,7 +42,7 @@ func _change_scene(scene: Scene):
 		_load_ship()
 
 func _load_ship():
-	get_tree().get_first_node_in_group("ShipManager")._load_ship(get_child(3).get_child(1))
+	get_tree().get_first_node_in_group("ShipManager")._load_ship(get_tree().get_first_node_in_group("PlayerShip"))
 
 
 
