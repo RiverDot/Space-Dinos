@@ -14,7 +14,7 @@ colors = PackedColorArray(0, 0, 0, 1, 0.47, 0.47, 0.47, 1, 0.529412, 0.807843, 0
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_s7k00"]
 gradient = SubResource("Gradient_hsxl2")
-width = 50
+width = 1
 height = 800
 fill_to = Vector2(0, 1)
 
@@ -44,7 +44,7 @@ script = ExtResource("2_ewd1n")
 
 [node name="Sprite2D" type="Sprite2D" parent="Background"]
 position = Vector2(0, 550)
-scale = Vector2(20, 80)
+scale = Vector2(1000, 80)
 texture = SubResource("GradientTexture2D_s7k00")
 offset = Vector2(0, -400)
 script = ExtResource("3_dsqqs")
@@ -65,10 +65,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -259.0
-offset_top = -154.0
-offset_right = -29.0
-offset_bottom = -19.0
+offset_left = -1898.0
+offset_top = -638.0
+offset_right = -1489.0
+offset_bottom = -494.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "Speed

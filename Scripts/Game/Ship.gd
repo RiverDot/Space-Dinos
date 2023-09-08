@@ -46,6 +46,10 @@ func _load_part(grid_pos: Vector2, part_id: int):
 			parts.append(new_part)
 			break
 
+	if get_tree().get_first_node_in_group("GameScene").current_scene != 0: # not equal to BASE
+		var cockpit_pos: Vector2 = _get_part(1).grid_pos
+		position = -Vector2(cockpit_pos.x * 24, cockpit_pos.y * 24) + Vector2(12 * 8, 12 * 8)
+
 func _dir_contents(path) -> Array:
 	var files: Array = []
 	var dir = DirAccess.open(path)
@@ -61,3 +65,9 @@ func _dir_contents(path) -> Array:
 	else:
 		print("An error occurred when trying to access the path.")
 	return files
+
+func _get_part(part_id: int) -> PartBase:
+	for part in parts:
+		if part.id == part_id:
+			return part
+	return null
