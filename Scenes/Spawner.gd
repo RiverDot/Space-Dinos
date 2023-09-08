@@ -21,12 +21,29 @@ func _ready():
 	
 
 func _spawn_obstacle():
-	var random_number = rng.randf_range(-225, 225)
-	var obstacle = OBSTACLE.instantiate()
-	obstacle.transform = Transform2D(0, Vector2(random_number, (background.position.y*-1)-20))
-	obstacle.movementVector = Vector2(rng.randf_range(-2, 2), rng.randf_range(0,2))
-	background.add_child(obstacle)
-	print(random_number)
+	var spawnerNumber = rng.randi_range(1,3)
+	if spawnerNumber == 1:
+		var obstacle = OBSTACLE.instantiate()
+		var random_number = rng.randf_range(-225, 225)
+		obstacle.transform = Transform2D(0, Vector2(random_number, (background.position.y*-1)-20))
+		obstacle.movementVector = Vector2(rng.randf_range(-2, 2), rng.randf_range(0,2))
+		background.add_child(obstacle)
+		print(random_number)
+	elif spawnerNumber == 2:
+		var obstacle = OBSTACLE.instantiate()
+		var random_number = rng.randf_range(-1000, 20)
+		obstacle.transform = Transform2D(0, Vector2(-525, (background.position.y*-1)-random_number))
+		obstacle.movementVector = Vector2(1, 0)
+		background.add_child(obstacle)
+		print(random_number)
+	elif spawnerNumber == 3:
+		var obstacle = OBSTACLE.instantiate()
+		var random_number = rng.randf_range(-1000, 20)
+		obstacle.transform = Transform2D(0, Vector2(525, (background.position.y*-1)-random_number))
+		obstacle.movementVector = Vector2(-1, 0)
+		background.add_child(obstacle)
+		print(random_number)
+		
 	current_obstacle_cooldown = obstacle_cooldown
 	
 

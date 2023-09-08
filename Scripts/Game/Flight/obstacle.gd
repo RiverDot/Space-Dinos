@@ -15,3 +15,7 @@ func _on_area_2d_body_entered(_body):
 		get_tree().get_first_node_in_group("SFXPlayer")._play_sound(load("res://Assets/Audio/SFX/ping.mp3"), 0)
 		# Damage Ship
 		queue_free()
+
+func _on_area_2d_area_entered(area):
+	if "Right_Border_Area" in area.name or "Bottom_Border_Area" in area.name or "Lef_Border_Area" in area.name:
+		queue_free()

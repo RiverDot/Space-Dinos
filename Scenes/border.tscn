@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3 uid="uid://pwhee57u4idu"]
+
+[sub_resource type="Gradient" id="Gradient_fpnkf"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_w5qjv"]
+gradient = SubResource("Gradient_fpnkf")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y6ifh"]
+size = Vector2(216.336, 2.32222)
+
+[node name="Border" type="Node"]
+
+[node name="Right_Block" type="Sprite2D" parent="."]
+position = Vector2(2041, 540)
+scale = Vector2(4.53, 1080)
+texture = SubResource("GradientTexture1D_w5qjv")
+
+[node name="Right_Border_Area" type="Area2D" parent="Right_Block"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right_Block/Right_Border_Area"]
+position = Vector2(18.7638, -0.280555)
+shape = SubResource("RectangleShape2D_y6ifh")
+
+[node name="Bottom_Block" type="Sprite2D" parent="."]
+position = Vector2(954, 1141)
+scale = Vector2(10, 120)
+texture = SubResource("GradientTexture1D_w5qjv")
+
+[node name="Bottom_Border_Area" type="Area2D" parent="Bottom_Block"]
+position = Vector2(0, 1.69167)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom_Block/Bottom_Border_Area"]
+position = Vector2(18.7638, -0.280555)
+shape = SubResource("RectangleShape2D_y6ifh")
+
+[node name="Left_Block" type="Sprite2D" parent="."]
+position = Vector2(-120, 540)
+scale = Vector2(4.53, 1090)
+texture = SubResource("GradientTexture1D_w5qjv")
+
+[node name="Left_Border_Area" type="Area2D" parent="Left_Block"]
+position = Vector2(-22.2958, 0.0779816)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left_Block/Left_Border_Area"]
+position = Vector2(18.7638, -0.280555)
+shape = SubResource("RectangleShape2D_y6ifh")

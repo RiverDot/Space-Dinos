@@ -13,3 +13,8 @@ func _on_area_2d_body_entered(_body):
 		var particles = PARTICLE_RESOURCE.instantiate()
 		particles.transform = transform
 		queue_free()
+
+
+func _on_area_2d_area_entered(area):
+	if "Right_Border_Area" in area.name or "Bottom_Border_Area" in area.name or "Lef_Border_Area" in area.name:
+		queue_free()
