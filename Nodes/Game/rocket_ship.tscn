@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://oygquj0itsko"]
+[gd_scene load_steps=3 format=3 uid="uid://oygquj0itsko"]
 
 [ext_resource type="Script" path="res://Scripts/Game/Flight/Rocket Ship Control.gd" id="1_3qelb"]
 
@@ -6,23 +6,9 @@
 radius = 23.0
 height = 46.0
 
-[sub_resource type="Gradient" id="Gradient_vcx4u"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.180328, 0.322404, 0.513661)
-colors = PackedColorArray(1, 1, 1, 1, 0.960784, 0.662745, 0.721569, 1, 0.356863, 0.807843, 0.980392, 1, 0.356863, 0.807843, 0.980392, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_hrwac"]
-gradient = SubResource("Gradient_vcx4u")
-use_hdr = true
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(1, 1)
-
-[node name="Rocket Ship" type="CharacterBody2D"]
+[node name="Rocket Ship" type="CharacterBody2D" groups=["PlayerShip"]]
 script = ExtResource("1_3qelb")
+horizontal_bounds = Vector2(460, 1460)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_mpnah")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("GradientTexture2D_hrwac")
