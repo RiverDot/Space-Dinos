@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Part" load_steps=3 format=3 uid="uid://cyne3r68a7y0w"]
+
+[ext_resource type="PackedScene" uid="uid://shtqc017sgov" path="res://Nodes/Game/ShipParts/tall_block.tscn" id="1_4gr37"]
+[ext_resource type="Script" path="res://Scripts/Game/Base/Parts/Part.gd" id="2_c06kd"]
+
+[resource]
+script = ExtResource("2_c06kd")
+id = 5
+name = "Tall Block"
+node = ExtResource("1_4gr37")
+part_category = 2
+cost = 18
+limit = -1
+size = Vector2(1, 2)

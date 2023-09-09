@@ -1,13 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://b325ltamoinhg"]
+[gd_scene load_steps=11 format=3 uid="uid://b325ltamoinhg"]
 
 [ext_resource type="Script" path="res://Scripts/Game/Base/baseManager.gd" id="1_cc7fv"]
 [ext_resource type="Script" path="res://Scripts/Game/Base/PartsSelector.gd" id="2_ne55d"]
 [ext_resource type="PackedScene" uid="uid://cotwtaxqvntkk" path="res://Nodes/Game/Base/part_button.tscn" id="3_7bcl0"]
-[ext_resource type="Resource" uid="uid://j0wi0sr2ja0s" path="res://Resources/Data/Parts/Cockpit.tres" id="4_itiox"]
-[ext_resource type="Resource" uid="uid://bl33im0eflrcw" path="res://Resources/Data/Parts/1x1Block.tres" id="5_ivoud"]
 [ext_resource type="Script" path="res://Scripts/Game/Base/ShipBuilder.gd" id="6_u5k66"]
-[ext_resource type="Resource" uid="uid://bjybxj8pasms6" path="res://Resources/Data/Parts/FuelCell.tres" id="6_x6ho8"]
-[ext_resource type="Resource" uid="uid://d1w6yfndy05xv" path="res://Resources/Data/Parts/Thruster.tres" id="7_7nkkb"]
 [ext_resource type="Texture2D" uid="uid://dm3dvh6dagm6v" path="res://Assets/Art/UI/grid.png" id="9_qg4wt"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jg4g5"]
@@ -71,7 +67,6 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("2_ne55d")
 part_button = ExtResource("3_7bcl0")
-parts_list = Array[Resource("res://Scripts/Game/Base/Parts/Part.gd")]([ExtResource("4_itiox"), ExtResource("5_ivoud"), ExtResource("6_x6ho8"), ExtResource("7_7nkkb")])
 
 [node name="PartsGrid" type="GridContainer" parent="CanvasLayer/Control/PartsSelector"]
 layout_mode = 0

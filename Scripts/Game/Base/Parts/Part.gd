@@ -13,3 +13,5 @@ class_name Part
 @export var cost: int
 
 @export var limit: int
+
+@export var size: Vector2

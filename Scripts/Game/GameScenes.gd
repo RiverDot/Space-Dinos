@@ -35,6 +35,7 @@ func _change_scene(scene: Scene):
 	add_child(new_scene)
 	current_scene_node = new_scene
 
+	get_tree().get_first_node_in_group("SFXPlayer")._destroy_game_sounds()
 	
 	get_tree().get_first_node_in_group("PauseScreen")._update_buttons(current_scene)
 
