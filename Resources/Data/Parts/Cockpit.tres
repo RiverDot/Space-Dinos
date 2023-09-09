@@ -1,13 +1,14 @@
 [gd_resource type="Resource" script_class="Part" load_steps=3 format=3 uid="uid://j0wi0sr2ja0s"]
 
-[ext_resource type="PackedScene" uid="uid://ieodofe0bnj" path="res://Nodes/Game/ShipParts/cockpit.tscn" id="1_crall"]
+[ext_resource type="PackedScene" uid="uid://shtqc017sgov" path="res://Nodes/Game/ShipParts/tall_block.tscn" id="1_iklvv"]
 [ext_resource type="Script" path="res://Scripts/Game/Base/Parts/Part.gd" id="1_o83h7"]
 
 [resource]
 script = ExtResource("1_o83h7")
 id = 1
 name = "Cockpit"
-node = ExtResource("1_crall")
+node = ExtResource("1_iklvv")
 part_category = 1
 cost = 0
 limit = 1
+size = Vector2(1, 2)

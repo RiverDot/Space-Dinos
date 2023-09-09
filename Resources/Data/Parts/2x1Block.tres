@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Part" load_steps=3 format=3 uid="uid://b06qkpadbc7tu"]
+
+[ext_resource type="PackedScene" uid="uid://dvbv4ja7jdjw5" path="res://Nodes/Game/ShipParts/wide_block.tscn" id="1_gsrxk"]
+[ext_resource type="Script" path="res://Scripts/Game/Base/Parts/Part.gd" id="2_a0o80"]
+
+[resource]
+script = ExtResource("2_a0o80")
+id = 6
+name = "Wide Block"
+node = ExtResource("1_gsrxk")
+part_category = 2
+cost = 16
+limit = -1
+size = Vector2(2, 1)

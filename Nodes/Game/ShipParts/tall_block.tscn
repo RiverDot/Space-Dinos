@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://shtqc017sgov"]
+
+[ext_resource type="Script" path="res://Scripts/Game/Base/Parts/PartBase.gd" id="1_jth21"]
+[ext_resource type="Texture2D" uid="uid://csu4nuk4edq52" path="res://Assets/Art/Other/icon.svg" id="2_gd20x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s8xvm"]
+resource_local_to_scene = true
+size = Vector2(48, 96)
+
+[node name="Big_Block" type="StaticBody2D" groups=["Part"]]
+collision_layer = 3
+collision_mask = 2
+script = ExtResource("1_jth21")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, 24)
+scale = Vector2(0.37, 0.75)
+texture = ExtResource("2_gd20x")
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+position = Vector2(0, 24)
+shape = SubResource("RectangleShape2D_s8xvm")

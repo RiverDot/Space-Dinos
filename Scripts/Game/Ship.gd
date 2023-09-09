@@ -45,7 +45,10 @@ func _load_part(grid_pos: Vector2, part_id: int):
 				new_part.position = get_tree().get_first_node_in_group("ShipBuilder")._get_grid_pos(grid_pos)
 			else:
 				new_part.position = Vector2(grid_pos.x * 24, grid_pos.y * 24) - Vector2(12 * 8, 12 * 8)
-				new_part._get_sprite().scale = Vector2(0.19, 0.19)
+				new_part._get_sprite().scale *= 0.5
+				new_part._get_sprite().position *= 0.5
+				new_part._get_shape().shape.extents *= 0.5
+				new_part._get_shape().position *= 0.5
 			add_child(new_part)
 			parts.append(new_part)
 			break
@@ -109,32 +112,30 @@ func _get_connection_web(main_part) -> Array:
 
 	while parts_to_check.size() > 0:
 		var part = parts_to_check.pop_back()
-		if part.grid_pos.x > 0:
-			if grid[part.grid_pos.x - 1][part.grid_pos.y] != -1:
-				var part_to_check = _get_part_at_grid_pos(Vector2(part.grid_pos.x - 1, part.grid_pos.y))
-				if part_to_check not in connected_parts:
-					parts_to_check.append(part_to_check)
-					connected_parts.append(part_to_check)
-		if part.grid_pos.x < 8:
-			if grid[part.grid_pos.x + 1][part.grid_pos.y] != -1:
-				var part_to_check = _get_part_at_grid_pos(Vector2(part.grid_pos.x + 1, part.grid_pos.y))
-				if part_to_check not in connected_parts:
-					parts_to_check.append(part_to_check)
-					connected_parts.append(part_to_check)
-		if part.grid_pos.y > 0:
-			if grid[part.grid_pos.x][part.grid_pos.y - 1] != -1:
-				var part_to_check = _get_part_at_grid_pos(Vector2(part.grid_pos.x, part.grid_pos.y - 1))
-				if part_to_check not in connected_parts:
-					parts_to_check.append(part_to_check)
-					connected_parts.append(part_to_check)
-		if part.grid_pos.y < 8:
-			if grid[part.grid_pos.x][part.grid_pos.y + 1] != -1:
-				var part_to_check = _get_part_at_grid_pos(Vector2(part.grid_pos.x, part.grid_pos.y + 1))
-				if part_to_check not in connected_parts:
-					parts_to_check.append(part_to_check)
-					connected_parts.append(part_to_check)
+		for i in range(part.grid_pos.y, part.grid_pos.y + part.size.y):
+			if i > 0:
+				_check_connection_at(Vector2(part.grid_pos.x, i) + Vector2(-1, 0), parts_to_check, connected_parts)
+			if i < 9 - part.size.y:
+				_check_connection_at(Vector2(part.grid_pos.x, i) + Vector2(part.size.x, 0), parts_to_check, connected_parts)
+		for i in range(part.grid_pos.x, part.grid_pos.x + part.size.x):
+			if i > 0:
+				_check_connection_at(Vector2(i, part.grid_pos.y) + Vector2(0, -1), parts_to_check, connected_parts)
+			if i < 9 - part.size.x:
+				_check_connection_at(Vector2(i, part.grid_pos.y) + Vector2(0, part.size.y), parts_to_check, connected_parts)
 
 	return connected_parts
+
+func _check_connection_at(grid_pos: Vector2, parts_to_check: Array, connected_parts: Array):
+	while grid[grid_pos.x][grid_pos.y] == 100 || grid[grid_pos.x][grid_pos.y] == 101:
+		if grid[grid_pos.x][grid_pos.y] == 100:
+			grid_pos.x -= 1
+		else:
+			grid_pos.y -= 1
+	if grid[grid_pos.x][grid_pos.y] != -1:
+		var part_to_check = _get_part_at_grid_pos(Vector2(grid_pos.x, grid_pos.y))
+		if part_to_check not in connected_parts:
+			parts_to_check.append(part_to_check)
+			connected_parts.append(part_to_check)
 
 func _get_part_at_grid_pos(grid_pos: Vector2) -> PartBase:
 	for part in parts:

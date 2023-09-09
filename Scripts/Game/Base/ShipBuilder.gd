@@ -35,33 +35,24 @@ func _process(_delta):
 				selected_part.modulate = Color(1, 1, 1, 0.7)
 				if moving:
 					if Input.is_action_just_released("PointerAction"):
-						ship.grid[selected_grid.x][selected_grid.y] = selected_part.id
-						selected_part.grid_pos = selected_grid
+						_place_part_at_grid_pos(selected_part, selected_grid)
 						moving = false
 						selected_part.modulate = Color(1, 1, 1, 1)
 						selected_part.z_index = 0
 						selected_part = null
-
-						print(_count_parts_in_grid())
 				else:
 					if Input.is_action_just_pressed("PointerAction"):
 						_add_part(selected_part)
-						ship.grid[selected_grid.x][selected_grid.y] = selected_part.id
-						selected_part.grid_pos = selected_grid
-
-						selected_part.modulate = Color(1, 1, 1, 1)
-						selected_part.z_index = 0
+						_place_part_at_grid_pos(selected_part, selected_grid)
 						
 						get_tree().get_first_node_in_group("MoneyManager")._try_spend_money(selected_part.value)
 						get_tree().get_first_node_in_group("PartSelector")._update_buttons()
 
 						selected_part = null
 		if Input.is_action_just_released("PointerAction") && moving:
+			_place_part_at_grid_pos(selected_part, selected_part.grid_pos)
 			selected_part.position = _get_grid_pos(selected_part.grid_pos)
-			ship.grid[selected_part.grid_pos.x][selected_part.grid_pos.y] = selected_part.id
 			moving = false
-			selected_part.modulate = Color(1, 1, 1, 1)
-			selected_part.z_index = 0
 			selected_part = null
 		elif Input.is_action_just_pressed("PointerActionAlt"):
 			selected_part.queue_free()
@@ -73,15 +64,47 @@ func _process(_delta):
 			if focused_part != null:
 				moving = true
 				selected_part = focused_part
-				ship.grid[focused_part.grid_pos.x][focused_part.grid_pos.y] = -1
+				_remove_part_at_grid_pos(selected_part, selected_part.grid_pos)
 		if Input.is_action_just_pressed("PointerActionAlt"):
 			var focused_part = _try_raycast_part()
 			if focused_part != null:
-				ship.grid[focused_part.grid_pos.x][focused_part.grid_pos.y] = -1
+				_remove_part_at_grid_pos(focused_part, focused_part.grid_pos)
 				ship.parts.erase(focused_part)
 				get_tree().get_first_node_in_group("MoneyManager")._change_money(focused_part.value)
 				focused_part.queue_free()
 				get_tree().get_first_node_in_group("PartSelector")._update_buttons()
+
+func _place_part_at_grid_pos(part, grid_pos):
+	ship.grid[grid_pos.x][grid_pos.y] = part.id
+	part.grid_pos = grid_pos
+
+	if part.size.x > 1:
+		for i in range(grid_pos.x + 1, grid_pos.x + part.size.x):
+			ship.grid[i][grid_pos.y] = 100
+	
+	if part.size.y > 1:
+		for i in range(grid_pos.y + 1, grid_pos.y + part.size.y):
+			ship.grid[grid_pos.x][i] = 101
+			if part.size.x > 1:
+				for j in range(grid_pos.x + 1, grid_pos.x + part.size.x):
+					ship.grid[j][i] = 101
+
+	part.modulate = Color(1, 1, 1, 1)
+	part.z_index = 0
+
+func _remove_part_at_grid_pos(part, grid_pos):
+	ship.grid[grid_pos.x][grid_pos.y] = -1
+
+	if part.size.x > 1:
+		for i in range(grid_pos.x + 1, grid_pos.x + part.size.x):
+			ship.grid[i][grid_pos.y] = -1
+
+	if part.size.y > 1:
+		for i in range(grid_pos.y + 1, grid_pos.y + part.size.y):
+			ship.grid[grid_pos.x][i] = -1
+			if part.size.x > 1:
+				for j in range(grid_pos.x + 1, grid_pos.x + part.size.x):
+					ship.grid[j][i] = -1
 
 func _get_grid_pos(grid_pos: Vector2) -> Vector2:
 	return Vector2(buildLimitsStart.x + (grid_pos.x * cellS) + (cellS / 2.0), buildLimitsStart.y + (grid_pos.y * cellS) + (cellS / 2.0))
@@ -120,8 +143,8 @@ func _check_grid_space() -> bool:
 	var part = selected_part
 	var x = selected_grid.x
 	var y = selected_grid.y
-	var w = part.width
-	var h = part.height
+	var w = part.size.x
+	var h = part.size.y
 	if x + w > 9 or y + h > 9:
 		return false
 	for i in range(x, x + w):
@@ -179,7 +202,7 @@ func _check_if_all_parts_connected() -> bool:
 	if main_part:
 		connected_parts = ship._get_connection_web(main_part)
 
-	print("connected: "+str(connected_parts.size())+" total: "+str(_count_parts_in_grid()))
+	print("Parts connected: "+str(connected_parts.size())+"/"+str(_count_parts_in_grid()))
 		
 	if connected_parts.size() == _count_parts_in_grid():
 		return true
@@ -190,6 +213,6 @@ func _count_parts_in_grid() -> int:
 	var i = 0
 	for row in ship.grid:
 		for part in row:
-			if part != -1:
+			if part != -1 and part != 100 and part != 101:
 				i += 1
 	return i
