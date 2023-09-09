@@ -19,5 +19,8 @@ func _setup(part: Part):
 	height = 1
 	width = 1
 
+func _damage(_damage_value: int):
+	get_tree().get_first_node_in_group("PlayerShip")._destroy_part(self)
+
 func _get_sprite():
 	return $Sprite

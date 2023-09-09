@@ -26,7 +26,7 @@ func _spawn_obstacle():
 	obstacle.transform = Transform2D(0, Vector2(random_number, (background.position.y*-1)-20))
 	obstacle.movementVector = Vector2(rng.randf_range(-2, 2), rng.randf_range(0,2))
 	background.add_child(obstacle)
-	print(random_number)
+	# print(random_number)
 	current_obstacle_cooldown = obstacle_cooldown
 	
 
@@ -35,7 +35,7 @@ func _spawn_money():
 	var money = MONEY.instantiate()
 	money.transform = Transform2D(0, Vector2(random_number, (background.position.y*-1)-20))
 	background.add_child(money)
-	print(random_number)
+	# print(random_number)
 	current_money_cooldown = money_cooldown
 
 func _spawn_booster():
@@ -51,8 +51,8 @@ func _process(delta):
 	current_money_cooldown = current_money_cooldown - delta
 	current_booster_cooldown = current_booster_cooldown - delta
 	
-	print("Background")
-	print(background.position.y)
+	#print("Background")
+	#print(background.position.y)
 	if current_obstacle_cooldown < 0:
 		_spawn_obstacle()
 	if current_money_cooldown < 0:

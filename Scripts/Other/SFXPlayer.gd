@@ -19,3 +19,10 @@ func _play_sound(sound: AudioStream, type: SFXType, pitch: float = 1.0, volume: 
 		sfx.process_mode = Node.PROCESS_MODE_PAUSABLE
 	elif type == SFXType.UI:
 		sfx.bus = "UI"
+
+func _destroy_game_sounds():
+	for child in get_children():
+		if child is SFX:
+			if child.bus == "SFX":
+				child.stop()
+				child.queue_free()

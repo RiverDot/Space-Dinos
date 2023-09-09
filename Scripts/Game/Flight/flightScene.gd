@@ -7,6 +7,7 @@ extends Node2D
 
 var height: float = 0
 var max_height: float = 0
+var game_over = false
 
 signal gameover(score: float)
 
@@ -22,3 +23,7 @@ func _physics_process(_delta):
 
 	if max_height < height:
 		max_height = height
+
+func _on_game_over():
+	game_over = true
+	emit_signal("gameover", height/1000)
