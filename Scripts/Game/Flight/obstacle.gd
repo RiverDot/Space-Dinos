@@ -1,14 +1,13 @@
 extends Node2D
 
+class_name Obstacle
+
 @export
 var damage_value = 1;
 @export
 var movementVector = Vector2(0,0)
 
 var done_damage = false
-
-func _process(_delta):
-	translate(movementVector)
 
 func _on_area_2d_body_entered(_body):
 	if _body.is_in_group("Part") && !done_damage:
