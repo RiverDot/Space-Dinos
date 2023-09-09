@@ -1,11 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://ieodofe0bnj"]
+[gd_scene load_steps=5 format=3 uid="uid://ieodofe0bnj"]
 
 [ext_resource type="Script" path="res://Scripts/Game/Base/Parts/PartBase.gd" id="1_qarye"]
-[ext_resource type="Texture2D" uid="uid://csu4nuk4edq52" path="res://Assets/Art/Other/icon.svg" id="2_kkgxw"]
+[ext_resource type="Texture2D" uid="uid://bcexnpmmlua65" path="res://Assets/Art/Objects/cockpit.png" id="2_qrclq"]
+[ext_resource type="Texture2D" uid="uid://bcbgg7ed2i1tw" path="res://Assets/Art/Objects/cockpit_window.png" id="3_ju2a6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s8xvm"]
 resource_local_to_scene = true
-size = Vector2(48, 48)
+size = Vector2(48, 96)
 
 [node name="CockPit" type="StaticBody2D" groups=["Part"]]
 collision_layer = 3
@@ -13,9 +14,13 @@ collision_mask = 2
 script = ExtResource("1_qarye")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-modulate = Color(1, 0, 1, 1)
-scale = Vector2(0.37, 0.37)
-texture = ExtResource("2_kkgxw")
+position = Vector2(0, 24)
+scale = Vector2(0.39, 0.39)
+texture = ExtResource("2_qrclq")
+
+[node name="Window" type="Sprite2D" parent="Sprite"]
+texture = ExtResource("3_ju2a6")
 
 [node name="Shape" type="CollisionShape2D" parent="."]
+position = Vector2(0, 24)
 shape = SubResource("RectangleShape2D_s8xvm")
