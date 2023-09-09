@@ -11,3 +11,4 @@ node = ExtResource("1_1wend")
 part_category = 4
 cost = 50
 limit = -1
+size = Vector2(1, 1)

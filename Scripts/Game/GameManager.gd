@@ -7,6 +7,9 @@ func _ready():
 
 func _process(_delta):
 	if Input.is_action_just_pressed("Pause") && get_tree().get_first_node_in_group("Options").open == false:
+		if get_tree().get_first_node_in_group("FlightScreen") != null:
+			if get_tree().get_first_node_in_group("FlightScreen").game_over == true:
+				return
 		_set_pause(!paused)
 
 func _set_pause(_paused):

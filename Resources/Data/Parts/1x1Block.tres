@@ -11,3 +11,4 @@ node = ExtResource("1_uacuk")
 part_category = 2
 cost = 10
 limit = -1
+size = Vector2(1, 1)
