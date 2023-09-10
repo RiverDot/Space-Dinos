@@ -12,8 +12,15 @@ var max_vertical_velocity = 20
 var air_resistence = 0.99
 var terminal_fall_velocity = 100
 var floor_height = 0
+
+var ship_destroyed = false
 	
 func _physics_process(delta):
+
+	if ship_destroyed:
+		vertical_velocity = 0
+		return
+
 	var moveLR = Input.get_axis("Player Left", "Player Right")
 	var moveUD = Input.get_axis("Player Up", "Player Down")
 	var move = Vector2(moveLR , 0)
@@ -50,6 +57,7 @@ func _physics_process(delta):
 
 func _destroy_part(part):
 	if (part.id == 1):
+		ship_destroyed = true
 		$Ship._destroy_ship()
 		get_parent()._on_game_over()
 	else:
