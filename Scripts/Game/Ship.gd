@@ -81,7 +81,11 @@ func _remove_from_grid(part: PartBase):
 func _destroy_part(part):
 	parts.erase(part)
 	_remove_from_grid(part)
-	part.queue_free()
+	var part_pos = part.global_position
+	remove_child(part)
+	part.collision_layer = 0
+	part.collision_mask = 0
+	call_deferred("_call", part, part_pos)
 
 	var web = _get_connection_web(_get_part(1))
 	var destroy_list: Array = []
@@ -94,10 +98,16 @@ func _destroy_part(part):
 		_destroy_part_no_check(destroy_list[0])
 		destroy_list.erase(destroy_list[0])
 
+func _call(part, part_pos):
+	get_tree().get_first_node_in_group("FlightScreen").bg_sprite.add_child(part)
+	part._break_part(part_pos)
+
 func _destroy_part_no_check(part):
 	parts.erase(part)
 	_remove_from_grid(part)
-	part.queue_free()
+	var part_pos = part.global_position
+	remove_child(part)
+	call_deferred("_call", part, part_pos)
 
 func _destroy_ship():
 	while !parts.is_empty():
