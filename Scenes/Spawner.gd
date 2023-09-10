@@ -12,6 +12,9 @@ var booster_cooldown = 17
 var current_booster_cooldown = 0
 const FLYING_DINO = preload("res://Nodes/Game/Obstacle/flying_dino.tscn")
 const PLANE = preload("res://Nodes/Game/Obstacle/plane.tscn")
+const BALLOON = preload("res://Nodes/Game/Obstacle/balloon.tscn")
+const METEOR = preload("res://Nodes/Game/Obstacle/meteor.tscn")
+const SATELLITE = preload("res://Nodes/Game/Obstacle/satellite.tscn")
 const OBSTACLE = preload("res://Nodes/Game/Obstacle/obstacle.tscn")
 const MONEY = preload("res://Nodes/Game/pick_ups/money.tscn")
 const BOOSTER = preload("res://Nodes/Game/pick_ups/boost.tscn")
@@ -31,77 +34,56 @@ func _get_current_zone():
 		if Zones[key] > (height/1000):
 			return key
 	
-	
-func _spawn_troposphere_obstacle():
-	var spawnerNumber = rng.randi_range(1,3)
+func _spawn_at_spawner_point(obstacle, spawnerNumber):
 	if spawnerNumber == 1:
-		var obstacle = OBSTACLE.instantiate()
 		var random_number = rng.randf_range(-225, 225)
 		obstacle.transform = Transform2D(0, Vector2(random_number, (background.position.y*-1)-20))
 		obstacle.movementVector = Vector2(rng.randf_range(-2, 2), rng.randf_range(0,2))
 		background.add_child(obstacle)
-		print(random_number)
+		(random_number)
 	elif spawnerNumber == 2:
-		var obstacle = FLYING_DINO.instantiate()
 		var random_number = rng.randf_range(-1000, 20)
 		obstacle.transform = Transform2D(0, Vector2(-525, (background.position.y*-1)-random_number))
 		obstacle.movementVector = Vector2(rng.randf_range(1, 8), 0)
 		background.add_child(obstacle)
 		print(random_number)
 	elif spawnerNumber == 3:
-		var obstacle = PLANE.instantiate()
 		var random_number = rng.randf_range(-1000, 20)
 		obstacle.transform = Transform2D(0, Vector2(525, (background.position.y*-1)-random_number))
 		obstacle.movementVector = Vector2(rng.randf_range(-1, -8), 0)
 		background.add_child(obstacle)
 		print(random_number)
+	
+func _spawn_troposphere_obstacle():
+	var obstacleNumber = rng.randi_range(1,2)
+	var spawnerNumber = rng.randi_range(1,3)
+	if obstacleNumber == 1:
+		var obstacle = FLYING_DINO.instantiate()
+		_spawn_at_spawner_point(obstacle, spawnerNumber)
+	elif obstacleNumber == 2:
+		var obstacle = PLANE.instantiate()
+		_spawn_at_spawner_point(obstacle, spawnerNumber)
+		
 
 func _spawn_stratosphere_obstacle():
+	var obstacleNumber = rng.randi_range(1,2)
 	var spawnerNumber = rng.randi_range(1,3)
-	if spawnerNumber == 1:
-		var obstacle = OBSTACLE.instantiate()
-		var random_number = rng.randf_range(-225, 225)
-		obstacle.transform = Transform2D(0, Vector2(random_number, (background.position.y*-1)-20))
-		obstacle.movementVector = Vector2(rng.randf_range(-2, 2), rng.randf_range(0,2))
-		background.add_child(obstacle)
-		print(random_number)
-	elif spawnerNumber == 2:
-		var obstacle = OBSTACLE.instantiate()
-		var random_number = rng.randf_range(-1000, 20)
-		obstacle.transform = Transform2D(0, Vector2(-525, (background.position.y*-1)-random_number))
-		obstacle.movementVector = Vector2(1, 0)
-		background.add_child(obstacle)
-		print(random_number)
-	elif spawnerNumber == 3:
-		var obstacle = OBSTACLE.instantiate()
-		var random_number = rng.randf_range(-1000, 20)
-		obstacle.transform = Transform2D(0, Vector2(525, (background.position.y*-1)-random_number))
-		obstacle.movementVector = Vector2(-1, 0)
-		background.add_child(obstacle)
-		print(random_number)
+	if obstacleNumber == 1:
+		var obstacle = PLANE.instantiate()
+		_spawn_at_spawner_point(obstacle, spawnerNumber)
+	elif obstacleNumber == 2:
+		var obstacle = BALLOON.instantiate()
+		_spawn_at_spawner_point(obstacle, spawnerNumber)
+
 func _spawn_mesosphere_obstacle():
+	var obstacleNumber = rng.randi_range(1,2)
 	var spawnerNumber = rng.randi_range(1,3)
-	if spawnerNumber == 1:
-		var obstacle = OBSTACLE.instantiate()
-		var random_number = rng.randf_range(-225, 225)
-		obstacle.transform = Transform2D(0, Vector2(random_number, (background.position.y*-1)-20))
-		obstacle.movementVector = Vector2(rng.randf_range(-2, 2), rng.randf_range(0,2))
-		background.add_child(obstacle)
-		print(random_number)
-	elif spawnerNumber == 2:
-		var obstacle = OBSTACLE.instantiate()
-		var random_number = rng.randf_range(-1000, 20)
-		obstacle.transform = Transform2D(0, Vector2(-525, (background.position.y*-1)-random_number))
-		obstacle.movementVector = Vector2(1, 0)
-		background.add_child(obstacle)
-		print(random_number)
-	elif spawnerNumber == 3:
-		var obstacle = OBSTACLE.instantiate()
-		var random_number = rng.randf_range(-1000, 20)
-		obstacle.transform = Transform2D(0, Vector2(525, (background.position.y*-1)-random_number))
-		obstacle.movementVector = Vector2(-1, 0)
-		background.add_child(obstacle)
-		print(random_number)
+	if obstacleNumber == 1:
+		var obstacle = SATELLITE.instantiate()
+		_spawn_at_spawner_point(obstacle, spawnerNumber)
+	elif obstacleNumber == 2:
+		var obstacle = METEOR.instantiate()
+		_spawn_at_spawner_point(obstacle, spawnerNumber)
 
 func _spawn_obstacle():
 	var current_zone = _get_current_zone()
