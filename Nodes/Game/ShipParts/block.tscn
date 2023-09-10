@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cunmtbjtdb83d"]
 
 [ext_resource type="Script" path="res://Scripts/Game/Base/Parts/PartBase.gd" id="1_se1ix"]
-[ext_resource type="Texture2D" uid="uid://csu4nuk4edq52" path="res://Assets/Art/Other/icon.svg" id="2_h8yvh"]
+[ext_resource type="Texture2D" uid="uid://57gmrqqo82b4" path="res://Assets/Art/Objects/block.png" id="2_hgyu2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s8xvm"]
 resource_local_to_scene = true
@@ -13,8 +13,8 @@ collision_mask = 2
 script = ExtResource("1_se1ix")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-scale = Vector2(0.37, 0.37)
-texture = ExtResource("2_h8yvh")
+scale = Vector2(0.39, 0.39)
+texture = ExtResource("2_hgyu2")
 
 [node name="Shape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_s8xvm")

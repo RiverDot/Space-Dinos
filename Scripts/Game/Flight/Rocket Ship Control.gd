@@ -30,6 +30,8 @@ func _physics_process(delta):
 	else:
 		velocity += move * horizontal_speed
 
+	$Ship.rotation = velocity.x * 0.0005
+
 	velocity = velocity.clamp(-max_velocity, max_velocity)
 	move_and_slide()
 
