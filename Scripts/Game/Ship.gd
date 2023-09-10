@@ -113,14 +113,14 @@ func _get_connection_web(main_part) -> Array:
 	while parts_to_check.size() > 0:
 		var part = parts_to_check.pop_back()
 		for i in range(part.grid_pos.y, part.grid_pos.y + part.size.y):
-			if i > 0:
+			if part.grid_pos.x - 1 >= 0:
 				_check_connection_at(Vector2(part.grid_pos.x, i) + Vector2(-1, 0), parts_to_check, connected_parts)
-			if i < 9 - part.size.y:
+			if part.grid_pos.x + part.size.x <= 8:		
 				_check_connection_at(Vector2(part.grid_pos.x, i) + Vector2(part.size.x, 0), parts_to_check, connected_parts)
 		for i in range(part.grid_pos.x, part.grid_pos.x + part.size.x):
-			if i > 0:
+			if part.grid_pos.y - 1 >= 0:
 				_check_connection_at(Vector2(i, part.grid_pos.y) + Vector2(0, -1), parts_to_check, connected_parts)
-			if i < 9 - part.size.x:
+			if part.grid_pos.y + part.size.y <= 8:	
 				_check_connection_at(Vector2(i, part.grid_pos.y) + Vector2(0, part.size.y), parts_to_check, connected_parts)
 
 	return connected_parts
