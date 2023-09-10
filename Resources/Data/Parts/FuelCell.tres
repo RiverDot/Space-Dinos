@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="Part" load_steps=3 format=3 uid="uid://bjybxj8pasms6"]
 
-[ext_resource type="PackedScene" uid="uid://cunmtbjtdb83d" path="res://Nodes/Game/ShipParts/block.tscn" id="1_gt7eh"]
+[ext_resource type="PackedScene" uid="uid://dc6ippylulws" path="res://Nodes/Game/ShipParts/fuel_cell.tscn" id="1_bwc4s"]
 [ext_resource type="Script" path="res://Scripts/Game/Base/Parts/Part.gd" id="1_us6w3"]
 
 [resource]
 script = ExtResource("1_us6w3")
 id = 2
 name = "Fuel Cell"
-node = ExtResource("1_gt7eh")
+node = ExtResource("1_bwc4s")
 part_category = 8
 cost = 30
 limit = -1
