@@ -41,6 +41,10 @@ func _break_part(part_pos):
 	tween.parallel().tween_property(self, "rotation", (randf() - 0.5) * 2, 0.6).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_BOUNCE)
 	tween.tween_callback(queue_free)
 
+	for group in get_groups():
+		remove_from_group(group)
+	get_tree().get_first_node_in_group("PlayerShip")._update_ship()
+
 func _move_block(_value: float):
 	position.x += _value
 

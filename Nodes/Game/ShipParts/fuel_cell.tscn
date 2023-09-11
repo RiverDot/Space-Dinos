@@ -1,18 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://dc6ippylulws"]
+[gd_scene load_steps=7 format=3 uid="uid://dc6ippylulws"]
 
-[ext_resource type="Script" path="res://Scripts/Game/Base/Parts/PartBase.gd" id="1_tlyg2"]
+[ext_resource type="Script" path="res://Scripts/Game/Base/Parts/PartFuel.gd" id="1_oqoe5"]
 [ext_resource type="Texture2D" uid="uid://bcdbnxtvd182e" path="res://Assets/Art/Objects/fuel_cell.png" id="2_e8unv"]
 [ext_resource type="Texture2D" uid="uid://bbule7qviqx0r" path="res://Assets/Art/Objects/fuel_cell_liquid.png" id="3_nmo1i"]
 [ext_resource type="Texture2D" uid="uid://7sk74qpgxneg" path="res://Assets/Art/Objects/fuel_cell_glass.png" id="4_toxsq"]
+[ext_resource type="PackedScene" uid="uid://dt6j373l607k5" path="res://Nodes/Game/PartComponents/fuel_component.tscn" id="5_u58n6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s8xvm"]
 resource_local_to_scene = true
 size = Vector2(48, 48)
 
-[node name="Fuel_cell" type="StaticBody2D" groups=["Part"]]
+[node name="Fuel_cell" type="StaticBody2D" groups=["FuelPart", "Part"]]
 collision_layer = 3
 collision_mask = 2
-script = ExtResource("1_tlyg2")
+script = ExtResource("1_oqoe5")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 scale = Vector2(0.38, 0.38)
@@ -26,3 +27,6 @@ texture = ExtResource("4_toxsq")
 
 [node name="Shape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_s8xvm")
+
+[node name="FuelComponent" parent="." instance=ExtResource("5_u58n6")]
+max_fuel = 500.0

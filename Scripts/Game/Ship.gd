@@ -15,6 +15,9 @@ func _load():
 			for j in range(0, 9):
 				grid[i].append(-1)
 	_load_parts()
+	if get_tree().get_first_node_in_group("GameScene").current_scene == 1: # equal to FLIGHT
+		get_tree().get_first_node_in_group("PlayerShip")._update_ship()
+
 
 func _load_parts():
 	part_data = _dir_contents("res://Resources/Data/Parts/")

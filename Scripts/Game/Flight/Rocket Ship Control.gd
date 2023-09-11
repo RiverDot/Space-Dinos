@@ -14,6 +14,8 @@ var terminal_fall_velocity = 100
 var floor_height = 0
 
 var ship_destroyed = false
+
+var fuelParts: Array[PartFuel] = []
 	
 func _physics_process(delta):
 
@@ -26,7 +28,25 @@ func _physics_process(delta):
 	var move = Vector2(moveLR , 0)
 
 	if moveUD < 0:
-		vertical_velocity += thrust_force * delta
+		if fuelParts.size() != 0:
+			var fuel_conspumtion_rate = 50.0 * delta
+			var fuel_to_consume = fuel_conspumtion_rate
+			var fuel_used = 0
+			var all_empty = false
+			while fuel_to_consume > 0 and !all_empty:
+				all_empty = true
+				var useable_fuel_parts = []
+				for part in fuelParts:
+					if part._get_fuel_percent() > 0:
+						useable_fuel_parts.append(part)
+				var current_rate = fuel_to_consume / useable_fuel_parts.size()
+				for part in useable_fuel_parts:
+					var used_here = part._use_fuel(current_rate)
+					fuel_used += used_here
+					fuel_to_consume -= used_here
+			if fuel_used > 0:
+				vertical_velocity += thrust_force * delta * fuel_used/fuel_conspumtion_rate
+				get_tree().get_first_node_in_group("ShipStatus")._update_fuel(fuelParts)
 	
 	vertical_velocity -= gravity * delta
 
@@ -62,3 +82,10 @@ func _destroy_part(part):
 		get_parent()._on_game_over()
 	else:
 		$Ship._destroy_part(part)
+
+func _update_ship():
+	fuelParts.clear()
+	for part in get_tree().get_nodes_in_group("FuelPart"):
+		if is_ancestor_of(part):
+			fuelParts.append(part)
+	get_tree().get_first_node_in_group("ShipStatus")._update_fuel(fuelParts)
