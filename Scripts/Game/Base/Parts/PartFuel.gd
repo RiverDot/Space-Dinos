@@ -2,11 +2,11 @@ extends PartBase
 
 class_name PartFuel
 
+var ui_id: int
+
 var max_fuel: float
 
 var fuel: float
-
-var ui_id: int
 
 func _setup(part: Part):
 	super(part)
