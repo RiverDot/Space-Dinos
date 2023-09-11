@@ -1,18 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dqlu2pahajt28"]
+[gd_scene load_steps=4 format=3 uid="uid://dqlu2pahajt28"]
 
 [ext_resource type="Script" path="res://Nodes/Game/Obstacle/flying_dino.gd" id="1_xmo1d"]
-
-[sub_resource type="Gradient" id="Gradient_oj73b"]
-offsets = PackedFloat32Array(0, 0.593548, 1)
-colors = PackedColorArray(0.201122, 0.496633, 0.235893, 1, 0.516623, 0.784392, 0.660824, 1, 0, 0.807465, 0.397277, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_fxod4"]
-gradient = SubResource("Gradient_oj73b")
-width = 32
-height = 32
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.5, 1)
+[ext_resource type="Texture2D" uid="uid://c5butiwh2wn45" path="res://Assets/Art/Objects/flying_Dino.png" id="2_l3jyv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n8jsb"]
 
@@ -20,12 +9,13 @@ fill_to = Vector2(0.5, 1)
 script = ExtResource("1_xmo1d")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("GradientTexture2D_fxod4")
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("2_l3jyv")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-scale = Vector2(1.6, 1.6)
+scale = Vector2(2.62, 1.6)
 shape = SubResource("CircleShape2D_n8jsb")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

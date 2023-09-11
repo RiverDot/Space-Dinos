@@ -34,6 +34,22 @@ func _get_current_zone():
 		if Zones[key] > (height/1000):
 			return key
 	
+func _spawn_at_spawner_point_withoutNumber(obstacle):
+	if obstacle.spawnPoint == "TOP":
+		var random_number = rng.randf_range(-225, 225)
+		obstacle.transform = Transform2D(0, Vector2(random_number, (background.position.y*-1)-20))
+		background.add_child(obstacle)
+		#print(random_number)
+	elif obstacle.spawnPoint == "LEFT":
+		var random_number = rng.randf_range(-1000, 20)
+		obstacle.transform = Transform2D(0, Vector2(-525, (background.position.y*-1)-random_number))
+		background.add_child(obstacle)
+		#print(random_number)
+	elif obstacle.spawnPoint == "RIGHT":
+		var random_number = rng.randf_range(-1000, 20)
+		obstacle.transform = Transform2D(0, Vector2(525, (background.position.y*-1)-random_number))
+		background.add_child(obstacle)
+
 func _spawn_at_spawner_point(obstacle, spawnerNumber):
 	if spawnerNumber == 1:
 		var random_number = rng.randf_range(-225, 225)
@@ -59,10 +75,14 @@ func _spawn_troposphere_obstacle():
 	var spawnerNumber = rng.randi_range(1,3)
 	if obstacleNumber == 1:
 		var obstacle = FLYING_DINO.instantiate()
-		_spawn_at_spawner_point(obstacle, spawnerNumber)
+		obstacle._set_random_spawn_point()
+		obstacle._set_random_movement()
+		_spawn_at_spawner_point_withoutNumber(obstacle)
 	elif obstacleNumber == 2:
 		var obstacle = PLANE.instantiate()
-		_spawn_at_spawner_point(obstacle, spawnerNumber)
+		obstacle._set_random_spawn_point()
+		obstacle._set_random_movement()
+		_spawn_at_spawner_point_withoutNumber(obstacle)
 		
 
 func _spawn_stratosphere_obstacle():

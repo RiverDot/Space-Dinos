@@ -1,17 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://7obvhm6trfsf"]
+[gd_scene load_steps=4 format=3 uid="uid://7obvhm6trfsf"]
 
 [ext_resource type="Script" path="res://Scripts/Game/Flight/money.gd" id="1_na4n0"]
+[ext_resource type="Texture2D" uid="uid://b2n5oaqvd0rsa" path="res://Assets/Art/Objects/Money.png" id="2_6unk7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hom1q"]
-size = Vector2(63, 21)
-
-[sub_resource type="Gradient" id="Gradient_ywln0"]
-offsets = PackedFloat32Array(0, 0.503356, 1)
-colors = PackedColorArray(0, 0, 0, 1, 2.59906e-06, 0.590616, 0.468471, 1, 0.440004, 1, 0.771533, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_phila"]
-gradient = SubResource("Gradient_ywln0")
-fill = 1
+size = Vector2(90, 45)
 
 [node name="money" type="Node2D"]
 script = ExtResource("1_na4n0")
@@ -19,13 +12,13 @@ script = ExtResource("1_na4n0")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0.5, 1.5)
+position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_hom1q")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 1.5)
-scale = Vector2(1, 0.328125)
-texture = SubResource("GradientTexture2D_phila")
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_6unk7")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
