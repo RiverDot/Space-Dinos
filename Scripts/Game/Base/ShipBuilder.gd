@@ -1,5 +1,6 @@
 extends Node2D
 
+var selected_part_res = null
 var selected_part = null
 var moving = false
 
@@ -14,6 +15,8 @@ var ship
 func _on_part_selected(part: Part):
 	if selected_part:
 		selected_part.queue_free()
+
+	selected_part_res = part
 
 	var newPart = part.node.instantiate()
 	newPart._setup(part)
@@ -49,6 +52,11 @@ func _process(_delta):
 						get_tree().get_first_node_in_group("PartSelector")._update_buttons()
 
 						selected_part = null
+
+						if Input.is_action_pressed("Shift"):
+							if selected_part_res.cost <= get_tree().get_first_node_in_group("MoneyManager").money && !_check_limit(selected_part_res.id, selected_part_res.limit):
+								_on_part_selected(selected_part_res)
+
 		if Input.is_action_just_released("PointerAction") && moving:
 			_place_part_at_grid_pos(selected_part, selected_part.grid_pos)
 			selected_part.position = _get_grid_pos(selected_part.grid_pos)

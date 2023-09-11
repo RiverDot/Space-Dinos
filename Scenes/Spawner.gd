@@ -28,9 +28,9 @@ func _ready():
 func _get_current_zone():
 	var flightScene = get_parent()
 	var height = flightScene.height 
-	print("Height:"+ str(height/1000))
+	#print("Height:"+ str(height/1000))
 	for key in Zones:
-		print("index: %s, value: %d" % [key, Zones[key]])
+		#print("index: %s, value: %d" % [key, Zones[key]])
 		if Zones[key] > (height/1000):
 			return key
 	
@@ -40,19 +40,19 @@ func _spawn_at_spawner_point(obstacle, spawnerNumber):
 		obstacle.transform = Transform2D(0, Vector2(random_number, (background.position.y*-1)-20))
 		obstacle.movementVector = Vector2(rng.randf_range(-2, 2), rng.randf_range(0,2))
 		background.add_child(obstacle)
-		(random_number)
+		#print(random_number)
 	elif spawnerNumber == 2:
 		var random_number = rng.randf_range(-1000, 20)
 		obstacle.transform = Transform2D(0, Vector2(-525, (background.position.y*-1)-random_number))
 		obstacle.movementVector = Vector2(rng.randf_range(1, 8), 0)
 		background.add_child(obstacle)
-		print(random_number)
+		#print(random_number)
 	elif spawnerNumber == 3:
 		var random_number = rng.randf_range(-1000, 20)
 		obstacle.transform = Transform2D(0, Vector2(525, (background.position.y*-1)-random_number))
 		obstacle.movementVector = Vector2(rng.randf_range(-1, -8), 0)
 		background.add_child(obstacle)
-		print(random_number)
+		# print(random_number)
 	
 func _spawn_troposphere_obstacle():
 	var obstacleNumber = rng.randi_range(1,2)
@@ -102,7 +102,7 @@ func _spawn_money():
 	var money = MONEY.instantiate()
 	money.transform = Transform2D(0, Vector2(random_number, (background.position.y*-1)-20))
 	background.add_child(money)
-	print(random_number)
+	#print(random_number)
 	current_money_cooldown = money_cooldown
 
 func _spawn_booster():
@@ -118,8 +118,8 @@ func _process(delta):
 	current_money_cooldown = current_money_cooldown - delta
 	current_booster_cooldown = current_booster_cooldown - delta
 	
-	print("Background")
-	print(background.position.y)
+	#print("Background")
+	#print(background.position.y)
 	if current_obstacle_cooldown < 0:
 		_spawn_obstacle()
 	if current_money_cooldown < 0:
