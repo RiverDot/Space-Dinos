@@ -19,6 +19,12 @@ var fuelParts: Array[PartFuel] = []
 	
 func _physics_process(delta):
 
+	if _is_fuel_empty() && vertical_velocity <= 0:
+		ship_destroyed = true
+		$Ship._destroy_ship()
+		get_parent()._on_game_over()
+		return
+
 	if ship_destroyed:
 		vertical_velocity = 0
 		return
@@ -74,6 +80,14 @@ func _physics_process(delta):
 	if floor_height < 0:
 		floor_height = 0
 		vertical_velocity = 0
+
+func _is_fuel_empty() -> bool:
+	if fuelParts.size() == 0:
+		return true
+	for part in fuelParts:
+		if part._get_fuel_percent() > 0:
+			return false
+	return true
 
 func _destroy_part(part):
 	if (part.id == 1):

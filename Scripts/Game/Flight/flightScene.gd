@@ -25,5 +25,6 @@ func _physics_process(_delta):
 		max_height = height
 
 func _on_game_over():
-	game_over = true
-	emit_signal("gameover", height/1000)
+	if not game_over:
+		game_over = true
+		emit_signal("gameover", height/1000)
