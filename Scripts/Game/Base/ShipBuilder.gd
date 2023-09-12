@@ -207,8 +207,21 @@ func _check_requirements() -> bool:
 		var tween = get_tree().create_tween()
 		tween.tween_property($ErrorLabel, "modulate", Color(0.6, 0.26, 0.2, 0), 1)
 		return false
+	if _check_thrusters_obstructed():
+		$ErrorLabel.text = "Thrusters obstructed!"
+		$ErrorLabel.modulate = Color(0.6, 0.26, 0.2, 1)
+		var tween = get_tree().create_tween()
+		tween.tween_property($ErrorLabel, "modulate", Color(0.6, 0.26, 0.2, 0), 1)
+		return false
 
 	return true
+
+func _check_thrusters_obstructed() -> bool:
+	for part in ship.parts:
+		if part.category == Enums.PartCategory.MOBILITY:
+			if !ship._check_if_clear_below(part):
+				return true
+	return false
 
 func _has_part(part_id: int) -> bool:
 	for part in ship.parts:
