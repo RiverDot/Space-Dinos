@@ -5,6 +5,8 @@ var slow_rate = 5.0
 @export var max_velocity: Vector2 = Vector2(500.0, 0)
 @export var horizontal_bounds: Vector2 = Vector2(0, 0)
 
+@export var paraDino: PackedScene
+
 var vertical_velocity: float = 0
 var gravity = 15
 var max_vertical_velocity = 20
@@ -20,9 +22,7 @@ var thrusterParts: Array[PartThruster] = []
 func _physics_process(delta):
 
 	if (_is_fuel_empty() || !_thrusters_exist()) && vertical_velocity <= 0:
-		ship_destroyed = true
-		$Ship._destroy_ship()
-		get_parent()._on_game_over()
+		_destroy_ship()
 		return
 
 	if ship_destroyed:
@@ -118,11 +118,22 @@ func _thrusters_exist() -> bool:
 
 func _destroy_part(part):
 	if (part.id == 1):
-		ship_destroyed = true
-		$Ship._destroy_ship()
-		get_parent()._on_game_over()
+		_destroy_ship()
 	else:
 		$Ship._destroy_part(part)
+
+func _destroy_ship():
+	if ship_destroyed:
+		return
+	ship_destroyed = true
+	_spawn_paradino()
+	$Ship._destroy_ship()
+	get_parent()._on_game_over()
+
+func _spawn_paradino():
+	var para = paraDino.instantiate()
+	add_child(para)
+	para.global_position = $Ship._get_part(1).global_position
 
 func _update_ship():
 	fuelParts.clear()

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://l2hv4pfis35t"]
+
+[ext_resource type="Texture2D" uid="uid://wo2i1cpvavja" path="res://Assets/Art/Objects/paradino.png" id="1_73ak5"]
+[ext_resource type="Script" path="res://Scripts/Game/Flight/para_dino.gd" id="2_sme1m"]
+
+[node name="ParaDino" type="Sprite2D"]
+z_index = 20
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_73ak5")
+script = ExtResource("2_sme1m")
