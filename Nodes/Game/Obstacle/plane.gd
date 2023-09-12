@@ -1,14 +1,5 @@
 extends Obstacle
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	minXSpeed = 10
-	maxXSpeed = 20
-	minYSpeed = 1
-	maxYSpeed = 20
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	translate(movementVector)
@@ -21,6 +12,10 @@ func _set_random_spawn_point():
 		spawnPoint = "RIGHT"
 	
 func _set_random_movement():
+	minXSpeed = 3
+	maxXSpeed = 10
+	minYSpeed = -3
+	maxYSpeed = 3
 	movementVector = Vector2(rng.randf_range(minXSpeed, maxXSpeed), rng.randf_range(minYSpeed, maxYSpeed))
 	if spawnPoint == "RIGHT":
 		movementVector.x = movementVector.x*-1

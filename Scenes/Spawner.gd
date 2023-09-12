@@ -71,14 +71,18 @@ func _spawn_at_spawner_point(obstacle, spawnerNumber):
 		# print(random_number)
 	
 func _spawn_troposphere_obstacle():
-	var obstacleNumber = rng.randi_range(1,2)
-	var spawnerNumber = rng.randi_range(1,3)
-	if obstacleNumber == 1:
+	var obstacleNumber = rng.randi_range(1,10)
+	if obstacleNumber == 2:
+		var obstacle = METEOR.instantiate()
+		obstacle._set_random_spawn_point()
+		obstacle._set_random_movement()
+		_spawn_at_spawner_point_withoutNumber(obstacle)
+	if obstacleNumber >= 3 && obstacleNumber < 7:
 		var obstacle = FLYING_DINO.instantiate()
 		obstacle._set_random_spawn_point()
 		obstacle._set_random_movement()
 		_spawn_at_spawner_point_withoutNumber(obstacle)
-	elif obstacleNumber == 2:
+	elif obstacleNumber >= 7:
 		var obstacle = PLANE.instantiate()
 		obstacle._set_random_spawn_point()
 		obstacle._set_random_movement()

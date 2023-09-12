@@ -7,10 +7,10 @@ var rng = RandomNumberGenerator.new()
 var damage_value = 1;
 @export
 var movementVector = Vector2(0,0)
-var maxXSpeed = 1
-var minXSpeed = 1
-var maxYSpeed = 0
-var minYSpeed = 0
+var maxXSpeed
+var minXSpeed
+var maxYSpeed
+var minYSpeed
 var spawnPoint
 
 var done_damage = false

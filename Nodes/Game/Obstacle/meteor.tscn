@@ -1,31 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://cm0facop5152y"]
+[gd_scene load_steps=4 format=3 uid="uid://cm0facop5152y"]
 
-[ext_resource type="Script" path="res://Scripts/Game/Flight/obstacle.gd" id="1_l40p4"]
-
-[sub_resource type="Gradient" id="Gradient_oj73b"]
-offsets = PackedFloat32Array(0, 0.593548, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.41598, 0.41598, 0.41598, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_fxod4"]
-gradient = SubResource("Gradient_oj73b")
-width = 32
-height = 32
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.5, 1)
+[ext_resource type="Script" path="res://Nodes/Game/Obstacle/meteor.gd" id="1_86vqf"]
+[ext_resource type="Texture2D" uid="uid://bj06g72lnyfv5" path="res://Assets/Art/Objects/meteor.png" id="2_7hlc5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n8jsb"]
 
 [node name="static_obstacle" type="Node2D"]
-script = ExtResource("1_l40p4")
+script = ExtResource("1_86vqf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("GradientTexture2D_fxod4")
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_7hlc5")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-scale = Vector2(1.6, 1.6)
+scale = Vector2(2.645, 2.645)
 shape = SubResource("CircleShape2D_n8jsb")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
