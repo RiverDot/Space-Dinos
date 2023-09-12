@@ -195,12 +195,36 @@ func _check_requirements() -> bool:
 		var tween = get_tree().create_tween()
 		tween.tween_property($ErrorLabel, "modulate", Color(0.6, 0.26, 0.2, 0), 1)
 		return false
+	if !_check_if_mobility_exists():
+		$ErrorLabel.text = "Propulsion missing!"
+		$ErrorLabel.modulate = Color(0.6, 0.26, 0.2, 1)
+		var tween = get_tree().create_tween()
+		tween.tween_property($ErrorLabel, "modulate", Color(0.6, 0.26, 0.2, 0), 1)
+		return false
+	if !_check_if_fuel_exists():
+		$ErrorLabel.text = "Fuel missing!"
+		$ErrorLabel.modulate = Color(0.6, 0.26, 0.2, 1)
+		var tween = get_tree().create_tween()
+		tween.tween_property($ErrorLabel, "modulate", Color(0.6, 0.26, 0.2, 0), 1)
+		return false
 
 	return true
 
 func _has_part(part_id: int) -> bool:
 	for part in ship.parts:
 		if part.id == part_id:
+			return true
+	return false
+
+func _check_if_fuel_exists() -> bool:
+	for part in ship.parts:
+		if part.category == Enums.PartCategory.FUEL:
+			return true
+	return false
+
+func _check_if_mobility_exists() -> bool:
+	for part in ship.parts:
+		if part.category == Enums.PartCategory.MOBILITY:
 			return true
 	return false
 

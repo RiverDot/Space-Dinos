@@ -14,10 +14,13 @@ var tween: Tween
 
 var is_broken: bool = false
 
+var category: Enums.PartCategory
+
 func _setup(part: Part):
 	id = part.id
 	value = part.cost
 	size = part.size
+	category = part.category
 
 func _damage(_damage_value: int):
 	get_tree().get_first_node_in_group("PlayerShip")._destroy_part(self)
