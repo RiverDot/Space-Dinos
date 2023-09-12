@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://dnlittred5lx8"]
 
 [ext_resource type="Script" path="res://Scripts/Game/Base/Parts/PartThruster.gd" id="1_llnly"]
-[ext_resource type="Texture2D" uid="uid://dlfqekxjx1sk4" path="res://Assets/Art/Objects/thruster.png" id="2_s5wt5"]
+[ext_resource type="Texture2D" uid="uid://dlfqekxjx1sk4" path="res://Assets/Art/Objects/Parts/thruster.png" id="2_x2tgv"]
 [ext_resource type="Texture2D" uid="uid://cjbl6o46px6y5" path="res://Assets/Art/Effects/fire.png" id="3_f68r7"]
 [ext_resource type="PackedScene" uid="uid://d371ypyah51l2" path="res://Nodes/Game/PartComponents/thruster_component.tscn" id="3_vqgkl"]
 [ext_resource type="Texture2D" uid="uid://b1q7oei5v65sa" path="res://Assets/Art/Effects/cloud.png" id="4_705ow"]
@@ -31,7 +31,7 @@ shape = SubResource("RectangleShape2D_s8xvm")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 scale = Vector2(0.39, 0.39)
-texture = ExtResource("2_s5wt5")
+texture = ExtResource("2_x2tgv")
 
 [node name="FireParticles" type="CPUParticles2D" parent="Sprite"]
 visible = false

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwykbd0a0wcwe"
-path="res://.godot/imported/tall_block.png-82b0651ac3300f88a839e52105cdcba0.ctex"
+uid="uid://57gmrqqo82b4"
+path="res://.godot/imported/block.png-699726500694cfefe71b38e3efbdc092.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/Objects/tall_block.png"
-dest_files=["res://.godot/imported/tall_block.png-82b0651ac3300f88a839e52105cdcba0.ctex"]
+source_file="res://Assets/Art/Objects/Parts/block.png"
+dest_files=["res://.godot/imported/block.png-699726500694cfefe71b38e3efbdc092.ctex"]
 
 [params]
 

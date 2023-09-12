@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7sk74qpgxneg"
-path="res://.godot/imported/fuel_cell_glass.png-28a5c534b91d7b1f6d3e14d90c419508.ctex"
+uid="uid://bcexnpmmlua65"
+path="res://.godot/imported/cockpit.png-3effc1cbee5b618ef92f3cf5e157e2d4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/Objects/fuel_cell_glass.png"
-dest_files=["res://.godot/imported/fuel_cell_glass.png-28a5c534b91d7b1f6d3e14d90c419508.ctex"]
+source_file="res://Assets/Art/Objects/Parts/cockpit.png"
+dest_files=["res://.godot/imported/cockpit.png-3effc1cbee5b618ef92f3cf5e157e2d4.ctex"]
 
 [params]
 

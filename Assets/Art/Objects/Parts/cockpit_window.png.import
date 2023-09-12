@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btropsj5s2spq"
-path="res://.godot/imported/wide_block.png-41e827f3ae966d19d33f6e5e8a69cb9a.ctex"
+uid="uid://bcbgg7ed2i1tw"
+path="res://.godot/imported/cockpit_window.png-5568d149312cf0bf0d1b6d215b6c2af4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/Objects/wide_block.png"
-dest_files=["res://.godot/imported/wide_block.png-41e827f3ae966d19d33f6e5e8a69cb9a.ctex"]
+source_file="res://Assets/Art/Objects/Parts/cockpit_window.png"
+dest_files=["res://.godot/imported/cockpit_window.png-5568d149312cf0bf0d1b6d215b6c2af4.ctex"]
 
 [params]
 
