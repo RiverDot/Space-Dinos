@@ -5,6 +5,7 @@
 
 [node name="Options" type="CanvasLayer" groups=["Options"]]
 layer = 10
+visible = false
 script = ExtResource("1_4jx5w")
 
 [node name="OptionsBackground" type="ColorRect" parent="."]
