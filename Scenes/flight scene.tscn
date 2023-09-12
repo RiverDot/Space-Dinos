@@ -1,13 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://ivk3e10f30ur"]
+[gd_scene load_steps=15 format=3 uid="uid://ivk3e10f30ur"]
 
 [ext_resource type="Script" path="res://Scripts/Game/Flight/flightScene.gd" id="1_kq1b0"]
 [ext_resource type="PackedScene" uid="uid://oygquj0itsko" path="res://Nodes/Game/rocket_ship.tscn" id="1_vms8s"]
 [ext_resource type="Script" path="res://Scripts/Game/Flight/FlightBackground.gd" id="2_ewd1n"]
 [ext_resource type="Script" path="res://Scripts/Game/Flight/GradientBG.gd" id="3_dsqqs"]
-[ext_resource type="Script" path="res://Scripts/GameOver.gd" id="5_bamem"]
+[ext_resource type="PackedScene" uid="uid://l2hv4pfis35t" path="res://Nodes/Game/para_dino.tscn" id="5_plkff"]
 [ext_resource type="PackedScene" uid="uid://y3t8rmiiy6oa" path="res://Nodes/Game/ship_status.tscn" id="5_ps5b0"]
 [ext_resource type="PackedScene" uid="uid://pwhee57u4idu" path="res://Scenes/border.tscn" id="5_qw82x"]
-[ext_resource type="PackedScene" uid="uid://bhkpb4tor5ec7" path="res://Nodes/Game/spawner.tscn" id="6_yaaor"]
+[ext_resource type="PackedScene" path="res://Nodes/Game/spawner.tscn" id="6_yaaor"]
+[ext_resource type="Script" path="res://Scripts/Game/Flight/GameOver.gd" id="8_ggv0b"]
 
 [sub_resource type="Gradient" id="Gradient_hsxl2"]
 offsets = PackedFloat32Array(0, 0.352459, 0.725714, 1)
@@ -44,6 +45,7 @@ position = Vector2(960, 540)
 script = ExtResource("2_ewd1n")
 
 [node name="Sprite2D" type="Sprite2D" parent="Background"]
+z_index = -9
 position = Vector2(0, 550)
 scale = Vector2(1000, 80)
 texture = SubResource("GradientTexture2D_s7k00")
@@ -52,6 +54,7 @@ script = ExtResource("3_dsqqs")
 
 [node name="Rocket Ship" parent="." instance=ExtResource("1_vms8s")]
 position = Vector2(960, 800)
+paraDino = ExtResource("5_plkff")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
@@ -83,7 +86,7 @@ label_settings = SubResource("LabelSettings_ym4a5")
 process_mode = 3
 layer = 3
 visible = false
-script = ExtResource("5_bamem")
+script = ExtResource("8_ggv0b")
 
 [node name="GameOverText" type="Label" parent="GameOver"]
 anchors_preset = 8

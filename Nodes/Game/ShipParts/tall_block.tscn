@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://shtqc017sgov"]
 
 [ext_resource type="Script" path="res://Scripts/Game/Base/Parts/PartBase.gd" id="1_jth21"]
-[ext_resource type="Texture2D" uid="uid://bwykbd0a0wcwe" path="res://Assets/Art/Objects/tall_block.png" id="2_6i0vs"]
+[ext_resource type="Texture2D" uid="uid://bwykbd0a0wcwe" path="res://Assets/Art/Objects/Parts/tall_block.png" id="2_6i0vs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s8xvm"]
 resource_local_to_scene = true

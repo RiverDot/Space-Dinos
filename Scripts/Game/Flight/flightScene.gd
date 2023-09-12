@@ -27,4 +27,5 @@ func _physics_process(_delta):
 func _on_game_over():
 	if not game_over:
 		game_over = true
+		scroll_amount = 0
 		emit_signal("gameover", height/1000)

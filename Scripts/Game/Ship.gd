@@ -155,3 +155,10 @@ func _get_part_at_grid_pos(grid_pos: Vector2) -> PartBase:
 		if part.grid_pos == grid_pos:
 			return part
 	return null
+
+func _check_if_clear_below(part: PartBase) -> bool:
+	for i in range(part.grid_pos.x, part.grid_pos.x + part.size.x):
+		if part.grid_pos.y + part.size.y <= 8:
+			if grid[i][part.grid_pos.y + part.size.y] != -1:
+				return false
+	return true

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bcbgg7ed2i1tw"
-path="res://.godot/imported/cockpit_window.png-2a55a484152711275fff10aa40ab497b.ctex"
+path="res://.godot/imported/cockpit_window.png-5568d149312cf0bf0d1b6d215b6c2af4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/Objects/cockpit_window.png"
-dest_files=["res://.godot/imported/cockpit_window.png-2a55a484152711275fff10aa40ab497b.ctex"]
+source_file="res://Assets/Art/Objects/Parts/cockpit_window.png"
+dest_files=["res://.godot/imported/cockpit_window.png-5568d149312cf0bf0d1b6d215b6c2af4.ctex"]
 
 [params]
 

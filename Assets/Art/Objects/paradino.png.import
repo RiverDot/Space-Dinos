@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcexnpmmlua65"
-path="res://.godot/imported/cockpit.png-23d9c056b885205097d8266b231615f0.ctex"
+uid="uid://wo2i1cpvavja"
+path="res://.godot/imported/paradino.png-91332ea388d8f0432b3161cb5520784b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/Objects/cockpit.png"
-dest_files=["res://.godot/imported/cockpit.png-23d9c056b885205097d8266b231615f0.ctex"]
+source_file="res://Assets/Art/Objects/paradino.png"
+dest_files=["res://.godot/imported/paradino.png-91332ea388d8f0432b3161cb5520784b.ctex"]
 
 [params]
 

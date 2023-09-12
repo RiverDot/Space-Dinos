@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcdbnxtvd182e"
-path="res://.godot/imported/fuel_cell.png-936782d752954f7404b97e314de74328.ctex"
+uid="uid://btropsj5s2spq"
+path="res://.godot/imported/wide_block.png-ede727eff34c5cf0aabd096210c0ad4c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/Objects/fuel_cell.png"
-dest_files=["res://.godot/imported/fuel_cell.png-936782d752954f7404b97e314de74328.ctex"]
+source_file="res://Assets/Art/Objects/Parts/wide_block.png"
+dest_files=["res://.godot/imported/wide_block.png-ede727eff34c5cf0aabd096210c0ad4c.ctex"]
 
 [params]
 

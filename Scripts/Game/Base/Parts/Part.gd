@@ -8,7 +8,7 @@ class_name Part
 
 @export var node: PackedScene
 
-@export_flags("Core", "Hull", "Mobility", "Fuel", "Defence", "Utility") var part_category: int
+@export_flags("Core", "Hull", "Mobility", "Fuel", "Defence", "Utility") var category: int
 
 @export var cost: int
 

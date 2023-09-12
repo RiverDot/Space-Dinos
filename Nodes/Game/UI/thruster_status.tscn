@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://o7fxxfgl783s"]
 
-[ext_resource type="Texture2D" uid="uid://dlfqekxjx1sk4" path="res://Assets/Art/Objects/thruster.png" id="1_56u38"]
+[ext_resource type="Texture2D" uid="uid://dlfqekxjx1sk4" path="res://Assets/Art/Objects/Parts/thruster.png" id="1_56u38"]
 
 [node name="ThrusterStatus" type="TextureRect"]
 texture = ExtResource("1_56u38")

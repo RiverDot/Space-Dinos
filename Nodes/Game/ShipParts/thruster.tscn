@@ -1,25 +1,74 @@
-[gd_scene load_steps=6 format=3 uid="uid://dnlittred5lx8"]
+[gd_scene load_steps=11 format=3 uid="uid://dnlittred5lx8"]
 
 [ext_resource type="Script" path="res://Scripts/Game/Base/Parts/PartThruster.gd" id="1_llnly"]
-[ext_resource type="Texture2D" uid="uid://dlfqekxjx1sk4" path="res://Assets/Art/Objects/thruster.png" id="2_s5wt5"]
+[ext_resource type="Texture2D" uid="uid://dlfqekxjx1sk4" path="res://Assets/Art/Objects/Parts/thruster.png" id="2_x2tgv"]
+[ext_resource type="Texture2D" uid="uid://cjbl6o46px6y5" path="res://Assets/Art/Effects/fire.png" id="3_f68r7"]
 [ext_resource type="PackedScene" uid="uid://d371ypyah51l2" path="res://Nodes/Game/PartComponents/thruster_component.tscn" id="3_vqgkl"]
+[ext_resource type="Texture2D" uid="uid://b1q7oei5v65sa" path="res://Assets/Art/Effects/cloud.png" id="4_705ow"]
 [ext_resource type="Script" path="res://Scripts/Game/Base/Parts/ThrusterComponent.gd" id="4_crwd8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s8xvm"]
 resource_local_to_scene = true
 size = Vector2(48, 48)
 
+[sub_resource type="Gradient" id="Gradient_fngwk"]
+colors = PackedColorArray(1, 1, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="Curve" id="Curve_0vuov"]
+_data = [Vector2(0, 0.684211), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_b6yrd"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
 [node name="Thruster" type="StaticBody2D" groups=["Part", "ThrusterPart"]]
 collision_layer = 3
 collision_mask = 2
 script = ExtResource("1_llnly")
 
-[node name="Sprite" type="Sprite2D" parent="."]
-scale = Vector2(0.39, 0.39)
-texture = ExtResource("2_s5wt5")
-
 [node name="Shape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_s8xvm")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.39, 0.39)
+texture = ExtResource("2_x2tgv")
+
+[node name="FireParticles" type="CPUParticles2D" parent="Sprite"]
+visible = false
+z_index = -1
+position = Vector2(0, 50)
+amount = 5
+lifetime = 0.2
+local_coords = true
+texture = ExtResource("3_f68r7")
+direction = Vector2(0, 1)
+spread = 30.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 500.0
+initial_velocity_max = 500.0
+scale_amount_min = 1.4
+scale_amount_max = 1.4
+color_ramp = SubResource("Gradient_fngwk")
+
+[node name="CloudParticles" type="CPUParticles2D" parent="Sprite"]
+z_index = -2
+position = Vector2(0, 50)
+emitting = false
+lifetime = 0.5
+texture = ExtResource("4_705ow")
+direction = Vector2(0, 1)
+spread = 15.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 2000.0
+initial_velocity_max = 2000.0
+angular_velocity_min = -200.0
+angular_velocity_max = 200.0
+linear_accel_min = -300.0
+linear_accel_max = -100.0
+scale_amount_min = 0.4
+scale_amount_max = 0.4
+scale_amount_curve = SubResource("Curve_0vuov")
+color_ramp = SubResource("Gradient_b6yrd")
 
 [node name="ThrusterComponent" parent="." instance=ExtResource("3_vqgkl")]
 script = ExtResource("4_crwd8")

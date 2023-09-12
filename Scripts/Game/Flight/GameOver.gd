@@ -13,7 +13,8 @@ func display_game_over(score: float):
 	tween.tween_callback(_pause_scene)
 
 func _pause_scene():
-	get_tree().paused = true
+	pass
+	#get_tree().paused = true
 
 func _on_return_to_base():
 	get_tree().get_first_node_in_group("GameScene")._change_scene(0)

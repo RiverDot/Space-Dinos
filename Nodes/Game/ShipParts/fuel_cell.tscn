@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://dc6ippylulws"]
 
 [ext_resource type="Script" path="res://Scripts/Game/Base/Parts/PartFuel.gd" id="1_oqoe5"]
-[ext_resource type="Texture2D" uid="uid://bcdbnxtvd182e" path="res://Assets/Art/Objects/fuel_cell.png" id="2_e8unv"]
-[ext_resource type="Texture2D" uid="uid://bbule7qviqx0r" path="res://Assets/Art/Objects/fuel_cell_liquid.png" id="3_nmo1i"]
-[ext_resource type="Texture2D" uid="uid://7sk74qpgxneg" path="res://Assets/Art/Objects/fuel_cell_glass.png" id="4_toxsq"]
+[ext_resource type="Texture2D" uid="uid://bcdbnxtvd182e" path="res://Assets/Art/Objects/Parts/fuel_cell.png" id="2_ujndu"]
+[ext_resource type="Texture2D" uid="uid://bbule7qviqx0r" path="res://Assets/Art/Objects/Parts/fuel_cell_liquid.png" id="3_pktj1"]
+[ext_resource type="Texture2D" uid="uid://7sk74qpgxneg" path="res://Assets/Art/Objects/Parts/fuel_cell_glass.png" id="4_0oiq5"]
 [ext_resource type="PackedScene" uid="uid://dt6j373l607k5" path="res://Nodes/Game/PartComponents/fuel_component.tscn" id="5_u58n6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s8xvm"]
@@ -17,13 +17,13 @@ script = ExtResource("1_oqoe5")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 scale = Vector2(0.38, 0.38)
-texture = ExtResource("2_e8unv")
+texture = ExtResource("2_ujndu")
 
 [node name="Fuel" type="Sprite2D" parent="Sprite"]
-texture = ExtResource("3_nmo1i")
+texture = ExtResource("3_pktj1")
 
 [node name="Fuel_Glass" type="Sprite2D" parent="Sprite"]
-texture = ExtResource("4_toxsq")
+texture = ExtResource("4_0oiq5")
 
 [node name="Shape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_s8xvm")
