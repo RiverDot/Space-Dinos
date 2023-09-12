@@ -1,10 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://l25ehdaamqdb"]
+[gd_scene load_steps=3 format=3 uid="uid://l25ehdaamqdb"]
 
 [ext_resource type="Script" path="res://Scripts/Menus/Options.gd" id="1_4jx5w"]
+[ext_resource type="FontFile" uid="uid://dq11vssm0ygfp" path="res://Assets/Fonts/zekton rg.ttf" id="2_80wcw"]
 
 [node name="Options" type="CanvasLayer" groups=["Options"]]
 layer = 10
-visible = false
 script = ExtResource("1_4jx5w")
 
 [node name="OptionsBackground" type="ColorRect" parent="."]
@@ -28,6 +28,7 @@ offset_bottom = -104.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_80wcw")
 text = "Return
 "
 
@@ -36,6 +37,7 @@ offset_right = 204.0
 offset_bottom = 26.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_80wcw")
 text = "TODO: add settings n stuff"
 
 [node name="Sound_Options_Label" type="Label" parent="."]
@@ -43,6 +45,7 @@ offset_left = 20.0
 offset_top = 60.0
 offset_right = 135.0
 offset_bottom = 86.0
+theme_override_fonts/font = ExtResource("2_80wcw")
 text = "Sound Options"
 
 [node name="Sound_Options_Container" type="GridContainer" parent="."]
@@ -54,6 +57,7 @@ columns = 2
 
 [node name="Master_Label" type="Label" parent="Sound_Options_Container"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_80wcw")
 text = "Master Volume"
 
 [node name="Master_Slider" type="HSlider" parent="Sound_Options_Container"]
@@ -65,6 +69,7 @@ step = 0.05
 
 [node name="Music_Label" type="Label" parent="Sound_Options_Container"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_80wcw")
 text = "Music Volume"
 
 [node name="Music_Slider" type="HSlider" parent="Sound_Options_Container"]
@@ -76,6 +81,7 @@ step = 0.05
 
 [node name="SFX_Label" type="Label" parent="Sound_Options_Container"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_80wcw")
 text = "SFX Volume"
 
 [node name="SFX_Slider" type="HSlider" parent="Sound_Options_Container"]
@@ -87,6 +93,7 @@ step = 0.05
 
 [node name="UI_Label" type="Label" parent="Sound_Options_Container"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_80wcw")
 text = "UI Volume"
 
 [node name="UI_Slider" type="HSlider" parent="Sound_Options_Container"]
