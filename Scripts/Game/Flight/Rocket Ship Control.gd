@@ -33,6 +33,9 @@ func _physics_process(delta):
 	var moveUD = Input.get_axis("Player Up", "Player Down")
 	var move = Vector2(moveLR , 0)
 
+	for part in thrusterParts:
+		part._set_particles_(false)
+
 	if moveUD < 0:
 		_try_thrust(delta)
 	
@@ -71,6 +74,7 @@ func _try_thrust(delta):
 		var fuel_used = _try_consume_fuel(part.fuel_consumption * delta)
 		if fuel_used > 0:
 			total_thrust_force += part.thrust_power * fuel_used / (part.fuel_consumption * delta)
+			part._set_particles_(true)
 	
 	if total_thrust_force > 0:
 		total_thrust_force += gravity # to at least overpower gravity

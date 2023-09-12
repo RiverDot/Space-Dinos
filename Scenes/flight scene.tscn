@@ -44,6 +44,7 @@ position = Vector2(960, 540)
 script = ExtResource("2_ewd1n")
 
 [node name="Sprite2D" type="Sprite2D" parent="Background"]
+z_index = -9
 position = Vector2(0, 550)
 scale = Vector2(1000, 80)
 texture = SubResource("GradientTexture2D_s7k00")
