@@ -21,7 +21,7 @@ func _on_area_2d_body_entered(_body):
 		print("boom boom")
 		_body._damage(damage_value)
 		# Explosion Animation
-		get_tree().get_first_node_in_group("SFXPlayer")._play_sound(load("res://Assets/Audio/SFX/ping.mp3"), 0)
+		get_tree().get_first_node_in_group("SFXPlayer")._play_sound(load("res://Assets/Audio/SFX/medium-explosion-40472.mp3"), 0)
 		# Damage Ship
 		queue_free()
 

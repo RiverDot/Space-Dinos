@@ -8,9 +8,9 @@ func _set_random_spawn_point():
 	spawnPoint = "TOP"
 	
 func _set_random_movement():
-	minXSpeed = 1
+	minXSpeed = -10
 	maxXSpeed = 10
 	minYSpeed = 5
-	maxYSpeed = 10
+	maxYSpeed = 8
 	movementVector = Vector2(rng.randf_range(minXSpeed, maxXSpeed), rng.randf_range(minYSpeed, maxYSpeed))
 	

@@ -9,7 +9,7 @@ func _on_area_2d_body_entered(_body):
 	if !_body.is_in_group("Part") || picked_up:
 		return
 	print("Boost ship")
-	get_tree().get_first_node_in_group("SFXPlayer")._play_sound(load("res://Assets/Audio/SFX/ping.mp3"), 0)
+	get_tree().get_first_node_in_group("SFXPlayer")._play_sound(load("res://Assets/Audio/SFX/boost-100537.mp3"), 0)
 	var particles = PARTICLE_RESOURCE.instantiate()
 	get_parent().add_child(particles)
 	particles.transform = transform

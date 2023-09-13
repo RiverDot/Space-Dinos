@@ -115,6 +115,7 @@ func _destroy_part_no_check(part):
 func _destroy_ship():
 	while !parts.is_empty():
 		_destroy_part_no_check(parts[0])
+		get_tree().get_first_node_in_group("SFXPlayer")._play_sound(load("res://Assets/Audio/SFX/medium-explosion-40472.mp3"), 0)
 
 func _get_connection_web(main_part) -> Array:
 	var parts_to_check = []

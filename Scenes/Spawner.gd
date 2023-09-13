@@ -5,11 +5,11 @@ var rng = RandomNumberGenerator.new()
 var obstacle_cooldown = 0.5 
 var current_obstacle_cooldown = 0
 @export
-var money_cooldown = 25
-var current_money_cooldown = 0
+var money_cooldown = 11
+var current_money_cooldown = 6
 @export
-var booster_cooldown = 17 
-var current_booster_cooldown = 0
+var booster_cooldown = 10 
+var current_booster_cooldown = 10
 const FLYING_DINO = preload("res://Nodes/Game/Obstacle/flying_dino.tscn")
 const PLANE = preload("res://Nodes/Game/Obstacle/plane.tscn")
 const BALLOON = preload("res://Nodes/Game/Obstacle/balloon.tscn")

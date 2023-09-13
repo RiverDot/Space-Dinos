@@ -8,7 +8,7 @@ func _set_random_spawn_point():
 	spawnPoint = "TOP"
 	
 func _set_random_movement():
-	minXSpeed = 1
+	minXSpeed = -4
 	maxXSpeed = 4
 	minYSpeed = -1
 	maxYSpeed = -3
