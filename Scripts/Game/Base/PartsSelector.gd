@@ -24,7 +24,7 @@ func _ready():
 		button._setup(part)
 		button.pressed.connect(Callable(_on_part_selected).bind(part))
 		button_list.append(button)
-		$PartsGrid.add_child(button)
+		$Scroll/PartsGrid.add_child(button)
 	_update_buttons()
 
 func _on_part_selected(part):

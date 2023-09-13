@@ -1,4 +1,7 @@
-[gd_resource type="Theme" format=3 uid="uid://cdsf3tai07fob"]
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cdsf3tai07fob"]
+
+[ext_resource type="FontFile" uid="uid://dq11vssm0ygfp" path="res://Assets/Fonts/zekton rg.ttf" id="1_osseb"]
 
 [resource]
-default_font_size = 20
+default_font = ExtResource("1_osseb")
+default_font_size = 16

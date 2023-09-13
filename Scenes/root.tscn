@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bbc3fne25sjt5"]
+[gd_scene load_steps=10 format=3 uid="uid://bbc3fne25sjt5"]
 
 [ext_resource type="Script" path="res://Scripts/Menus/SceneManager.gd" id="1_8bovu"]
 [ext_resource type="PackedScene" uid="uid://cxxj8bsi7a4bf" path="res://Scenes/main_menu.tscn" id="2_171hv"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" path="res://Scripts/Other/SFXPlayer.gd" id="5_722ta"]
 [ext_resource type="PackedScene" uid="uid://cvxyj7wnhyilk" path="res://Nodes/Other/sfx.tscn" id="6_xs2al"]
 [ext_resource type="Script" path="res://Scripts/Other/SaveSystem.gd" id="7_f3elw"]
+[ext_resource type="Script" path="res://Scripts/Other/CheatMenu.gd" id="8_jhqgg"]
+[ext_resource type="Theme" uid="uid://cdsf3tai07fob" path="res://Resources/Theme/MainTheme.tres" id="9_agpus"]
 
 [node name="SceneManager" type="Node2D" groups=["Root"]]
 process_mode = 3
@@ -22,3 +24,31 @@ soundIns = ExtResource("6_xs2al")
 
 [node name="SaveSystem" type="Node" parent="."]
 script = ExtResource("7_f3elw")
+
+[node name="CheatMenu" type="CanvasLayer" parent="."]
+layer = 128
+visible = false
+script = ExtResource("8_jhqgg")
+
+[node name="Control" type="Control" parent="CheatMenu"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 349.0
+offset_bottom = 339.0
+theme = ExtResource("9_agpus")
+
+[node name="Block" type="ColorRect" parent="CheatMenu/Control"]
+layout_mode = 0
+offset_right = 224.0
+offset_bottom = 303.0
+color = Color(0.207843, 0, 0.215686, 1)
+
+[node name="MoneyCheat" type="Button" parent="CheatMenu/Control/Block"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 29.0
+offset_right = 179.0
+offset_bottom = 85.0
+text = "Get Money"
+
+[connection signal="pressed" from="CheatMenu/Control/Block/MoneyCheat" to="CheatMenu" method="_on_money_cheat"]
