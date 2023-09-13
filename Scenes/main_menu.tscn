@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cxxj8bsi7a4bf"]
+[gd_scene load_steps=4 format=3 uid="uid://cxxj8bsi7a4bf"]
 
 [ext_resource type="Script" path="res://Scripts/Menus/main_menu.gd" id="1_b3tu2"]
 [ext_resource type="Theme" uid="uid://cdsf3tai07fob" path="res://Resources/Theme/MainTheme.tres" id="2_p5ecx"]
 [ext_resource type="FontFile" uid="uid://d13u2amre08gf" path="res://Assets/Fonts/sofachri.ttf" id="3_gih08"]
-[ext_resource type="FontFile" uid="uid://dq11vssm0ygfp" path="res://Assets/Fonts/zekton rg.ttf" id="3_vpfml"]
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_b3tu2")
@@ -29,7 +28,6 @@ offset_top = -414.0
 offset_right = 355.0
 offset_bottom = -314.0
 grow_vertical = 0
-theme_override_fonts/font = ExtResource("3_vpfml")
 text = "Start"
 
 [node name="OptionsButton" type="Button" parent="Canvas/Control"]
@@ -42,7 +40,6 @@ offset_top = -303.0
 offset_right = 355.0
 offset_bottom = -203.0
 grow_vertical = 0
-theme_override_fonts/font = ExtResource("3_vpfml")
 text = "Options"
 
 [node name="QuitButton" type="Button" parent="Canvas/Control"]
@@ -55,11 +52,10 @@ offset_top = -192.0
 offset_right = 355.0
 offset_bottom = -92.0
 grow_vertical = 0
-theme_override_fonts/font = ExtResource("3_vpfml")
 text = "Quit
 "
 
-[node name="Label" type="Label" parent="Canvas/Control"]
+[node name="Title" type="Label" parent="Canvas/Control"]
 layout_mode = 0
 offset_left = 148.0
 offset_top = 142.0
@@ -69,13 +65,12 @@ theme_override_fonts/font = ExtResource("3_gih08")
 theme_override_font_sizes/font_size = 100
 text = "Space Dino Game :3"
 
-[node name="Label" type="Label" parent="Canvas/Control/Label"]
+[node name="Label" type="Label" parent="Canvas/Control/Title"]
 layout_mode = 0
 offset_left = 88.0
 offset_top = 140.0
 offset_right = 831.0
 offset_bottom = 171.0
-theme_override_fonts/font = ExtResource("3_vpfml")
 text = "(please remember to actually make a game name and not just keep it as this)"
 
 [connection signal="pressed" from="Canvas/Control/StartButton" to="." method="_on_start_pressed"]

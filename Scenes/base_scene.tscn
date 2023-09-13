@@ -68,12 +68,16 @@ offset_bottom = 40.0
 script = ExtResource("2_ne55d")
 part_button = ExtResource("3_7bcl0")
 
-[node name="PartsGrid" type="GridContainer" parent="CanvasLayer/Control/PartsSelector"]
+[node name="Scroll" type="ScrollContainer" parent="CanvasLayer/Control/PartsSelector"]
 layout_mode = 0
-offset_left = 220.0
-offset_top = 318.0
-offset_right = 711.0
-offset_bottom = 767.0
+offset_left = 115.0
+offset_top = 239.0
+offset_right = 517.0
+offset_bottom = 596.0
+horizontal_scroll_mode = 0
+
+[node name="PartsGrid" type="GridContainer" parent="CanvasLayer/Control/PartsSelector/Scroll"]
+layout_mode = 2
 columns = 3
 
 [node name="FlightButton" type="Button" parent="CanvasLayer/Control"]
