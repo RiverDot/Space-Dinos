@@ -18,6 +18,9 @@ var ship_destroyed = false
 
 var fuelParts: Array[PartFuel] = []
 var thrusterParts: Array[PartThruster] = []
+
+var infFuelCheat = false
+var invincibleCheat = false
 	
 func _physics_process(delta):
 
@@ -82,6 +85,8 @@ func _try_thrust(delta):
 	get_tree().get_first_node_in_group("ShipStatus")._update_fuel(fuelParts)
 
 func _try_consume_fuel(rate: float) -> float:
+	if infFuelCheat:
+		return rate
 	if fuelParts.size() == 0:
 		return 0
 	var fuel_conspumtion_rate = rate
@@ -117,6 +122,8 @@ func _thrusters_exist() -> bool:
 		return true
 
 func _destroy_part(part):
+	if invincibleCheat:
+		return
 	if (part.id == 1):
 		_destroy_ship()
 	else:
