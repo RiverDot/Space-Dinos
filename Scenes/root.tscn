@@ -51,4 +51,24 @@ offset_right = 179.0
 offset_bottom = 85.0
 text = "Get Money"
 
+[node name="FuelCheat" type="Button" parent="CheatMenu/Control/Block"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 102.0
+offset_right = 178.0
+offset_bottom = 158.0
+text = "Infinite Fuel
+"
+
+[node name="InvincibleCheat" type="Button" parent="CheatMenu/Control/Block"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 179.0
+offset_right = 179.0
+offset_bottom = 235.0
+text = "Invincibility
+"
+
 [connection signal="pressed" from="CheatMenu/Control/Block/MoneyCheat" to="CheatMenu" method="_on_money_cheat"]
+[connection signal="pressed" from="CheatMenu/Control/Block/FuelCheat" to="CheatMenu" method="_on_fuel_cheat"]
+[connection signal="pressed" from="CheatMenu/Control/Block/InvincibleCheat" to="CheatMenu" method="_on_invincible_cheat"]
