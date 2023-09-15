@@ -1,8 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://b325ltamoinhg"]
+[gd_scene load_steps=14 format=3 uid="uid://b325ltamoinhg"]
 
 [ext_resource type="Script" path="res://Scripts/Game/Base/baseManager.gd" id="1_cc7fv"]
+[ext_resource type="Theme" uid="uid://cdsf3tai07fob" path="res://Resources/Theme/MainTheme.tres" id="2_cq58m"]
 [ext_resource type="Script" path="res://Scripts/Game/Base/PartsSelector.gd" id="2_ne55d"]
 [ext_resource type="PackedScene" uid="uid://cotwtaxqvntkk" path="res://Nodes/Game/Base/part_button.tscn" id="3_7bcl0"]
+[ext_resource type="Texture2D" uid="uid://onu775t07154" path="res://Assets/Art/Environment/buildingScene.png" id="3_oo83k"]
+[ext_resource type="Script" path="res://Scripts/Other/ButtonPress.gd" id="6_bfeyj"]
 [ext_resource type="Script" path="res://Scripts/Game/Base/ShipBuilder.gd" id="6_u5k66"]
 [ext_resource type="Texture2D" uid="uid://dm3dvh6dagm6v" path="res://Assets/Art/UI/grid.png" id="9_qg4wt"]
 
@@ -30,7 +33,19 @@ fill_from = Vector2(0.5, 0.5)
 [node name="BaseScene" type="Node2D"]
 script = ExtResource("1_cc7fv")
 
+[node name="Background2" type="CanvasLayer" parent="."]
+layer = -10
+
+[node name="Background" type="TextureRect" parent="Background2"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_oo83k")
+
 [node name="Back" type="ColorRect" parent="."]
+visible = false
 offset_left = -34.0
 offset_top = -27.0
 offset_right = 1994.0
@@ -38,6 +53,7 @@ offset_bottom = 873.0
 color = Color(0.662745, 0.662745, 0.662745, 1)
 
 [node name="Floor" type="ColorRect" parent="."]
+visible = false
 offset_left = -34.0
 offset_top = 848.0
 offset_right = 1994.0
@@ -45,6 +61,7 @@ offset_bottom = 1121.0
 color = Color(0.470588, 0.470588, 0.470588, 1)
 
 [node name="Platform" type="ColorRect" parent="."]
+visible = false
 offset_left = 953.0
 offset_top = 802.0
 offset_right = 1404.0
@@ -60,6 +77,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_cq58m")
 
 [node name="PartsSelector" type="Control" parent="CanvasLayer/Control" groups=["PartSelector"]]
 anchors_preset = 0
@@ -70,10 +88,10 @@ part_button = ExtResource("3_7bcl0")
 
 [node name="Scroll" type="ScrollContainer" parent="CanvasLayer/Control/PartsSelector"]
 layout_mode = 0
-offset_left = 115.0
-offset_top = 239.0
-offset_right = 517.0
-offset_bottom = 596.0
+offset_left = 293.0
+offset_top = 298.0
+offset_right = 695.0
+offset_bottom = 666.0
 horizontal_scroll_mode = 0
 
 [node name="PartsGrid" type="GridContainer" parent="CanvasLayer/Control/PartsSelector/Scroll"]
@@ -87,21 +105,22 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -331.0
-offset_top = -146.0
-offset_right = -57.0
-offset_bottom = -38.0
+offset_left = -420.0
+offset_top = -174.0
+offset_right = -146.0
+offset_bottom = -66.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 35
 text = "LIFT OFF!"
+script = ExtResource("6_bfeyj")
 
 [node name="MoneyLabel" type="Label" parent="CanvasLayer/Control"]
 layout_mode = 0
-offset_left = 116.0
-offset_top = 50.0
-offset_right = 191.0
-offset_bottom = 76.0
+offset_left = 337.0
+offset_top = 120.0
+offset_right = 443.0
+offset_bottom = 160.0
 theme_override_font_sizes/font_size = 30
 text = "MONEY:"
 
@@ -115,16 +134,28 @@ text = "0"
 
 [node name="Button" type="Button" parent="CanvasLayer/Control"]
 layout_mode = 0
-offset_left = 1420.0
-offset_top = 787.0
-offset_right = 1566.0
-offset_bottom = 833.0
+offset_left = 1104.0
+offset_top = 849.0
+offset_right = 1250.0
+offset_bottom = 895.0
 text = "CLEAR ALL"
+script = ExtResource("6_bfeyj")
+
+[node name="Label" type="Label" parent="CanvasLayer/Control"]
+self_modulate = Color(0.792969, 0.824219, 0.265625, 1)
+layout_mode = 0
+offset_left = 936.0
+offset_top = 219.0
+offset_right = 1262.0
+offset_bottom = 295.0
+theme_override_font_sizes/font_size = 60
+text = "BUILD ZONE"
 
 [node name="ShipBuilder" type="Node2D" parent="." groups=["ShipBuilder"]]
 script = ExtResource("6_u5k66")
 
 [node name="BuilderGrid" type="TileMap" parent="ShipBuilder"]
+modulate = Color(0.780392, 1, 0.67451, 1)
 material = SubResource("CanvasItemMaterial_jg4g5")
 scale = Vector2(0.75, 0.75)
 tile_set = SubResource("TileSet_ceent")
@@ -139,11 +170,12 @@ blend_mode = 2
 texture = SubResource("GradientTexture2D_jdlbd")
 
 [node name="ErrorLabel" type="Label" parent="ShipBuilder"]
-offset_left = 1600.0
-offset_top = 778.0
-offset_right = 1910.0
-offset_bottom = 825.0
-theme_override_font_sizes/font_size = 24
+offset_left = 1458.0
+offset_top = 755.0
+offset_right = 1836.0
+offset_bottom = 810.0
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
 
 [connection signal="pressed" from="CanvasLayer/Control/FlightButton" to="." method="_on_liftOff_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/Button" to="ShipBuilder" method="_clear_all_button"]

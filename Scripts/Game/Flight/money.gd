@@ -10,7 +10,7 @@ func _on_area_2d_body_entered(_body):
 		return
 	print("Money picked up: $" + str(money_value))
 	get_tree().get_first_node_in_group("SFXPlayer")._play_sound(load("res://Assets/Audio/SFX/cash-register-fake-88639.mp3"), 0)
-	get_tree().get_first_node_in_group("MoneyManager")._change_money(money_value)
+	get_tree().get_first_node_in_group("FlightScreen").money_earned += money_value
 	var particles = PARTICLE_RESOURCE.instantiate()
 	get_parent().add_child(particles)
 	particles.transform = transform

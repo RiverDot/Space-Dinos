@@ -15,6 +15,6 @@ func _on_to_base_pressed():
 
 func _update_buttons(scene_id):
 	if scene_id == 0:
-		$ToBaseButton.visible = false
+		$Control/ToBaseButton.visible = false
 	else:
-		$ToBaseButton.visible = true
+		$Control/ToBaseButton.visible = true

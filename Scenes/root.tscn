@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bbc3fne25sjt5"]
+[gd_scene load_steps=12 format=3 uid="uid://bbc3fne25sjt5"]
 
 [ext_resource type="Script" path="res://Scripts/Menus/SceneManager.gd" id="1_8bovu"]
 [ext_resource type="PackedScene" uid="uid://cxxj8bsi7a4bf" path="res://Scenes/main_menu.tscn" id="2_171hv"]
@@ -7,8 +7,10 @@
 [ext_resource type="Script" path="res://Scripts/Other/SFXPlayer.gd" id="5_722ta"]
 [ext_resource type="PackedScene" uid="uid://cvxyj7wnhyilk" path="res://Nodes/Other/sfx.tscn" id="6_xs2al"]
 [ext_resource type="Script" path="res://Scripts/Other/SaveSystem.gd" id="7_f3elw"]
+[ext_resource type="AudioStream" uid="uid://bkrqdumlovs83" path="res://Assets/Audio/Music/A-Future-in-Space.ogg" id="7_fo6ni"]
 [ext_resource type="Script" path="res://Scripts/Other/CheatMenu.gd" id="8_jhqgg"]
 [ext_resource type="Theme" uid="uid://cdsf3tai07fob" path="res://Resources/Theme/MainTheme.tres" id="9_agpus"]
+[ext_resource type="Script" path="res://Scripts/Other/ButtonPress.gd" id="11_qa0d3"]
 
 [node name="SceneManager" type="Node2D" groups=["Root"]]
 process_mode = 3
@@ -22,7 +24,12 @@ GameScene = ExtResource("3_wws5g")
 script = ExtResource("5_722ta")
 soundIns = ExtResource("6_xs2al")
 
-[node name="SaveSystem" type="Node" parent="."]
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_fo6ni")
+autoplay = true
+bus = &"Music"
+
+[node name="SaveSystem" type="Node" parent="." groups=["SaveSystem"]]
 script = ExtResource("7_f3elw")
 
 [node name="CheatMenu" type="CanvasLayer" parent="."]
@@ -50,6 +57,7 @@ offset_top = 29.0
 offset_right = 179.0
 offset_bottom = 85.0
 text = "Get Money"
+script = ExtResource("11_qa0d3")
 
 [node name="FuelCheat" type="Button" parent="CheatMenu/Control/Block"]
 layout_mode = 0
@@ -59,6 +67,7 @@ offset_right = 178.0
 offset_bottom = 158.0
 text = "Infinite Fuel
 "
+script = ExtResource("11_qa0d3")
 
 [node name="InvincibleCheat" type="Button" parent="CheatMenu/Control/Block"]
 layout_mode = 0
@@ -68,6 +77,7 @@ offset_right = 179.0
 offset_bottom = 235.0
 text = "Invincibility
 "
+script = ExtResource("11_qa0d3")
 
 [connection signal="pressed" from="CheatMenu/Control/Block/MoneyCheat" to="CheatMenu" method="_on_money_cheat"]
 [connection signal="pressed" from="CheatMenu/Control/Block/FuelCheat" to="CheatMenu" method="_on_fuel_cheat"]

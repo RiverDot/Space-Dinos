@@ -71,7 +71,7 @@ func _spawn_troposphere_obstacle():
 
 func _spawn_stratosphere_obstacle():
 	var obstacleNumber = rng.randi_range(1,10)
-	var spawnerNumber = rng.randi_range(1,3)
+	#var spawnerNumber = rng.randi_range(1,3)
 	if obstacleNumber <= 3:
 		var obstacle = METEOR.instantiate()
 		obstacle._set_random_spawn_point()
@@ -130,6 +130,9 @@ func _spawn_booster():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if get_tree().get_first_node_in_group("FlightScreen").game_over or get_tree().get_first_node_in_group("FlightScreen").game_won:
+		return
+
 	current_obstacle_cooldown = current_obstacle_cooldown - delta
 	current_money_cooldown = current_money_cooldown - delta
 	current_booster_cooldown = current_booster_cooldown - delta

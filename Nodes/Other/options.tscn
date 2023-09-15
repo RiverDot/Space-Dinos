@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://l25ehdaamqdb"]
+[gd_scene load_steps=4 format=3 uid="uid://l25ehdaamqdb"]
 
 [ext_resource type="Script" path="res://Scripts/Menus/Options.gd" id="1_4jx5w"]
 [ext_resource type="Theme" uid="uid://cdsf3tai07fob" path="res://Resources/Theme/MainTheme.tres" id="2_afn72"]
+[ext_resource type="Script" path="res://Scripts/Other/ButtonPress.gd" id="3_7160e"]
 
 [node name="Options" type="CanvasLayer" groups=["Options"]]
 layer = 10
@@ -24,7 +25,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.690196, 0.34902, 0.309804, 1)
+color = Color(0.0823529, 0.12549, 0.203922, 1)
 
 [node name="ReturnButton" type="Button" parent="Control"]
 layout_mode = 1
@@ -33,38 +34,32 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -70.0
-offset_top = -148.0
-offset_right = 70.0
-offset_bottom = -104.0
+offset_left = -72.0
+offset_top = -314.0
+offset_right = 68.0
+offset_bottom = -270.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 4
 text = "Return
 "
-
-[node name="Label" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = 19.0
-offset_top = 10.0
-offset_right = 258.0
-offset_bottom = 38.0
-text = "TODO: add settings n stuff"
+script = ExtResource("3_7160e")
 
 [node name="Sound_Options_Label" type="Label" parent="Control"]
 layout_mode = 0
-offset_left = 20.0
-offset_top = 60.0
-offset_right = 135.0
-offset_bottom = 86.0
+offset_left = 741.0
+offset_top = 369.0
+offset_right = 1086.0
+offset_bottom = 433.0
+theme_override_font_sizes/font_size = 50
 text = "Sound Options"
 
 [node name="Sound_Options_Container" type="GridContainer" parent="Control"]
 layout_mode = 0
-offset_left = 20.0
-offset_top = 100.0
-offset_right = 1900.0
-offset_bottom = 900.0
+offset_left = 739.0
+offset_top = 454.0
+offset_right = 1205.0
+offset_bottom = 668.0
 columns = 2
 
 [node name="Master_Label" type="Label" parent="Control/Sound_Options_Container"]

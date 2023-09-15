@@ -6,7 +6,8 @@ func _ready():
 	get_parent().gameover.connect(display_game_over)
 
 func display_game_over(score: float):
-	$Score.text = str(score)
+	$Control/Score.text = "Height reached: " + str(round_to_dec(score, 2)) + "km"
+	$Control/MoneyEarned.text = "Money earned: $" + str(get_tree().get_first_node_in_group("FlightScreen").money_earned)
 	self.visible = true
 	tween = get_tree().create_tween()
 	tween.tween_interval(1)
@@ -25,3 +26,6 @@ func _exit_tree():
 		if tween.is_running():
 			tween.stop()
 			tween = null
+
+func round_to_dec(num, digit):
+	return round(num * pow(10.0, digit)) / pow(10.0, digit)

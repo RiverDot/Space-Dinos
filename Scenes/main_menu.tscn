@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cxxj8bsi7a4bf"]
+[gd_scene load_steps=5 format=3 uid="uid://cxxj8bsi7a4bf"]
 
 [ext_resource type="Script" path="res://Scripts/Menus/main_menu.gd" id="1_b3tu2"]
 [ext_resource type="Theme" uid="uid://cdsf3tai07fob" path="res://Resources/Theme/MainTheme.tres" id="2_p5ecx"]
 [ext_resource type="FontFile" uid="uid://d13u2amre08gf" path="res://Assets/Fonts/sofachri.ttf" id="3_gih08"]
+[ext_resource type="Script" path="res://Scripts/Other/ButtonPress.gd" id="3_o37vp"]
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_b3tu2")
@@ -29,6 +30,7 @@ offset_right = 355.0
 offset_bottom = -314.0
 grow_vertical = 0
 text = "Start"
+script = ExtResource("3_o37vp")
 
 [node name="OptionsButton" type="Button" parent="Canvas/Control"]
 layout_mode = 1
@@ -41,6 +43,7 @@ offset_right = 355.0
 offset_bottom = -203.0
 grow_vertical = 0
 text = "Options"
+script = ExtResource("3_o37vp")
 
 [node name="QuitButton" type="Button" parent="Canvas/Control"]
 layout_mode = 1
@@ -54,6 +57,7 @@ offset_bottom = -92.0
 grow_vertical = 0
 text = "Quit
 "
+script = ExtResource("3_o37vp")
 
 [node name="Title" type="Label" parent="Canvas/Control"]
 layout_mode = 0
@@ -63,15 +67,8 @@ offset_right = 1103.0
 offset_bottom = 282.0
 theme_override_fonts/font = ExtResource("3_gih08")
 theme_override_font_sizes/font_size = 100
-text = "Space Dino Game :3"
-
-[node name="Label" type="Label" parent="Canvas/Control/Title"]
-layout_mode = 0
-offset_left = 88.0
-offset_top = 140.0
-offset_right = 831.0
-offset_bottom = 171.0
-text = "(please remember to actually make a game name and not just keep it as this)"
+text = "DASA
+"
 
 [connection signal="pressed" from="Canvas/Control/StartButton" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Canvas/Control/OptionsButton" to="." method="_on_options_pressed"]
