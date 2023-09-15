@@ -1,10 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://ivk3e10f30ur"]
+[gd_scene load_steps=25 format=3 uid="uid://ivk3e10f30ur"]
 
 [ext_resource type="Script" path="res://Scripts/Game/Flight/flightScene.gd" id="1_kq1b0"]
 [ext_resource type="PackedScene" uid="uid://oygquj0itsko" path="res://Nodes/Game/rocket_ship.tscn" id="1_vms8s"]
 [ext_resource type="Script" path="res://Scripts/Game/Flight/FlightBackground.gd" id="2_ewd1n"]
 [ext_resource type="Gradient" uid="uid://7v5u32xypbhe" path="res://Resources/Gradients/sky_gradient.tres" id="2_yvr3l"]
 [ext_resource type="Script" path="res://Scripts/Game/Flight/GradientBG.gd" id="3_dsqqs"]
+[ext_resource type="Script" path="res://Scripts/Game/Flight/StarCycler.gd" id="4_c71uf"]
 [ext_resource type="PackedScene" uid="uid://l2hv4pfis35t" path="res://Nodes/Game/para_dino.tscn" id="5_plkff"]
 [ext_resource type="PackedScene" uid="uid://y3t8rmiiy6oa" path="res://Nodes/Game/ship_status.tscn" id="5_ps5b0"]
 [ext_resource type="PackedScene" uid="uid://pwhee57u4idu" path="res://Scenes/border.tscn" id="5_qw82x"]
@@ -21,6 +22,29 @@ gradient = SubResource("Gradient_aa640")
 width = 1
 height = 1080
 fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="Gradient_bygo7"]
+offsets = PackedFloat32Array(0.799283, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_dm5lg"]
+seed = 1
+frequency = 0.0791
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qvhi5"]
+width = 500
+height = 500
+color_ramp = SubResource("Gradient_bygo7")
+noise = SubResource("FastNoiseLite_dm5lg")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_lgj2q"]
+frequency = 0.0791
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_32g84"]
+width = 500
+height = 500
+color_ramp = SubResource("Gradient_bygo7")
+noise = SubResource("FastNoiseLite_lgj2q")
 
 [sub_resource type="Gradient" id="Gradient_ec7np"]
 offsets = PackedFloat32Array(0.688172, 0.691756)
@@ -59,6 +83,21 @@ texture = SubResource("GradientTexture2D_s7k00")
 centered = false
 script = ExtResource("3_dsqqs")
 sky_gradient = ExtResource("2_yvr3l")
+
+[node name="StarCycler" type="Node2D" parent="."]
+script = ExtResource("4_c71uf")
+
+[node name="Stars1" type="Sprite2D" parent="StarCycler"]
+z_index = -8
+position = Vector2(960, 540)
+scale = Vector2(2.2, 2.2)
+texture = SubResource("NoiseTexture2D_qvhi5")
+
+[node name="Stars2" type="Sprite2D" parent="StarCycler"]
+z_index = -8
+position = Vector2(960, 1640)
+scale = Vector2(2.2, 2.2)
+texture = SubResource("NoiseTexture2D_32g84")
 
 [node name="Background" type="Node2D" parent="."]
 position = Vector2(960, 540)

@@ -9,7 +9,7 @@ var height: float = 0
 var max_height: float = 0
 var game_over = false
 var game_won = false
-var map_size_multiplier = 4
+var map_size_multiplier: float = 4
 var height_goal = 360000 # moon distance at perigee
 
 signal gameover(score: float)
@@ -38,3 +38,6 @@ func _on_game_won():
 		scroll_amount = 0
 		game_won = true
 		get_tree().get_first_node_in_group("GameWon")._on_game_won()
+
+func _get_percent_to_goal():
+	return height/(height_goal/map_size_multiplier)
