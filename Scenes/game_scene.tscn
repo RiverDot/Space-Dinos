@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://Scripts/Game/ShipManager.gd" id="6_rvgl2"]
 [ext_resource type="PackedScene" uid="uid://dst4s42oic56c" path="res://Nodes/Game/ship.tscn" id="7_p5o31"]
 
-[node name="GameScene" type="Node2D"]
+[node name="GameScene" type="Node2D" groups=["GameManager"]]
 script = ExtResource("1_qxjhp")
 
 [node name="GameLogic" type="Node2D" parent="." groups=["GameScene"]]

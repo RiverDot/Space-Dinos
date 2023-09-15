@@ -40,6 +40,9 @@ func _set_particles_(on: bool):
 			_set_thrust_volume(false)
 
 func _set_thrust_volume(_on: bool):
+	if !is_inside_tree():
+		return
+
 	if _on:
 		thruster_tween = get_tree().create_tween()
 		thruster_tween.tween_method(_set_volume, $ThrusterSound.volume_db, 0, 0.05)

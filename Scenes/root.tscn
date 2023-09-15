@@ -29,7 +29,7 @@ stream = ExtResource("7_fo6ni")
 autoplay = true
 bus = &"Music"
 
-[node name="SaveSystem" type="Node" parent="."]
+[node name="SaveSystem" type="Node" parent="." groups=["SaveSystem"]]
 script = ExtResource("7_f3elw")
 
 [node name="CheatMenu" type="CanvasLayer" parent="."]
