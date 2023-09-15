@@ -71,7 +71,7 @@ func _spawn_troposphere_obstacle():
 
 func _spawn_stratosphere_obstacle():
 	var obstacleNumber = rng.randi_range(1,10)
-	var spawnerNumber = rng.randi_range(1,3)
+	#var spawnerNumber = rng.randi_range(1,3)
 	if obstacleNumber <= 3:
 		var obstacle = METEOR.instantiate()
 		obstacle._set_random_spawn_point()

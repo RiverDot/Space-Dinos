@@ -6,7 +6,7 @@ func _ready():
 	get_parent().gameover.connect(display_game_over)
 
 func display_game_over(score: float):
-	$Score.text = str(score)
+	$Control/Score.text = str(score)
 	self.visible = true
 	tween = get_tree().create_tween()
 	tween.tween_interval(1)

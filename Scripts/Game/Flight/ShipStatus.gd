@@ -17,7 +17,7 @@ func _setup_fuel(parts: Array):
 	for part in parts:
 		part.ui_id = fuel_bars.size()
 		var fuel_bar_instance = fuel_bar.instantiate()
-		$FuelScroll/FuelContainer.add_child(fuel_bar_instance)
+		$Control/FuelScroll/FuelContainer.add_child(fuel_bar_instance)
 		fuel_bars.append(fuel_bar_instance)
 	fuel_setup = true
 
@@ -41,7 +41,7 @@ func _setup_thrusters(parts: Array):
 	for part in parts:
 		part.ui_id = thruster_statuses.size()
 		var thruster_status_instance = thruster_status.instantiate()
-		$ThrusterScroll/ThrusterContainer.add_child(thruster_status_instance)
+		$Control/ThrusterScroll/ThrusterContainer.add_child(thruster_status_instance)
 		thruster_statuses.append(thruster_status_instance)
 	thruster_setup = true
 

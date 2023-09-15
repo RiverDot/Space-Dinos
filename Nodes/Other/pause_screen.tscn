@@ -1,13 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://cbhqebqg5o58g"]
+[gd_scene load_steps=4 format=3 uid="uid://cbhqebqg5o58g"]
 
 [ext_resource type="Script" path="res://Scripts/Game/pause.gd" id="1_a3ug3"]
+[ext_resource type="Theme" uid="uid://cdsf3tai07fob" path="res://Resources/Theme/MainTheme.tres" id="2_xq6s3"]
+[ext_resource type="Script" path="res://Scripts/Other/ButtonPress.gd" id="3_an40s"]
 
 [node name="PauseScreen" type="CanvasLayer" groups=["PauseScreen"]]
 layer = 2
 visible = false
 script = ExtResource("1_a3ug3")
 
-[node name="ScreenTint" type="ColorRect" parent="."]
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_xq6s3")
+
+[node name="ScreenTint" type="ColorRect" parent="Control"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -15,64 +27,72 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.611765)
 
-[node name="ResumeButton" type="Button" parent="."]
+[node name="ResumeButton" type="Button" parent="Control"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -119.0
-offset_right = 100.0
-offset_bottom = -59.0
+offset_left = -119.0
+offset_top = -89.0
+offset_right = 81.0
+offset_bottom = -29.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Resume"
+script = ExtResource("3_an40s")
 
-[node name="ToBaseButton" type="Button" parent="."]
+[node name="ToBaseButton" type="Button" parent="Control"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -216.0
-offset_right = 100.0
-offset_bottom = -156.0
+offset_left = -119.0
+offset_top = -186.0
+offset_right = 81.0
+offset_bottom = -126.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Return to base"
+script = ExtResource("3_an40s")
 
-[node name="OptionsButton" type="Button" parent="."]
+[node name="OptionsButton" type="Button" parent="Control"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -19.0
-offset_right = 100.0
-offset_bottom = 41.0
+offset_left = -119.0
+offset_top = 11.0
+offset_right = 81.0
+offset_bottom = 71.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Options"
+script = ExtResource("3_an40s")
 
-[node name="MenuButton" type="Button" parent="."]
+[node name="MenuButton" type="Button" parent="Control"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = 81.0
-offset_right = 100.0
-offset_bottom = 141.0
+offset_left = -119.0
+offset_top = 111.0
+offset_right = 81.0
+offset_bottom = 171.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Menu
 "
+script = ExtResource("3_an40s")
 
-[connection signal="pressed" from="ResumeButton" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="ToBaseButton" to="." method="_on_to_base_pressed"]
-[connection signal="pressed" from="OptionsButton" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="MenuButton" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="Control/ResumeButton" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Control/ToBaseButton" to="." method="_on_to_base_pressed"]
+[connection signal="pressed" from="Control/OptionsButton" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Control/MenuButton" to="." method="_on_menu_pressed"]

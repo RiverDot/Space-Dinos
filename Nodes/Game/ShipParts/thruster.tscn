@@ -80,5 +80,4 @@ fuel_consumption = 30.0
 stream = ExtResource("7_f125x")
 volume_db = -77.52
 autoplay = true
-stream_paused = true
 bus = &"SFX"

@@ -13,6 +13,7 @@ func _on_area_2d_body_entered(_body):
 	var particles = PARTICLE_RESOURCE.instantiate()
 	get_parent().add_child(particles)
 	particles.transform = transform
+	get_tree().get_first_node_in_group("PlayerShip")._boost()
 	queue_free()
 
 func _on_area_2d_area_entered(area):

@@ -189,33 +189,33 @@ func _try_raycast_part() -> PartBase:
 func _check_requirements() -> bool:
 	if !_has_part(1):
 		$ErrorLabel.text = "Cockpit Missing!"
-		$ErrorLabel.modulate = Color(0.6, 0.26, 0.2, 1)
+		$ErrorLabel.modulate = Color(0.8, 0.26, 0.2, 1)
 		var tween = get_tree().create_tween()
-		tween.tween_property($ErrorLabel, "modulate", Color(0.6, 0.26, 0.2, 0), 1)
+		tween.tween_property($ErrorLabel, "modulate", Color(0.8, 0.26, 0.2, 0), 1)
 		return false
 	if !_check_if_all_parts_connected():
-		$ErrorLabel.text = "Not all parts connected!"
-		$ErrorLabel.modulate = Color(0.6, 0.26, 0.2, 1)
+		$ErrorLabel.text = "Parts not connected!"
+		$ErrorLabel.modulate = Color(0.8, 0.26, 0.2, 1)
 		var tween = get_tree().create_tween()
-		tween.tween_property($ErrorLabel, "modulate", Color(0.6, 0.26, 0.2, 0), 1)
+		tween.tween_property($ErrorLabel, "modulate", Color(0.8, 0.26, 0.2, 0), 1)
 		return false
 	if !_check_if_mobility_exists():
 		$ErrorLabel.text = "Propulsion missing!"
-		$ErrorLabel.modulate = Color(0.6, 0.26, 0.2, 1)
+		$ErrorLabel.modulate = Color(0.8, 0.26, 0.2, 1)
 		var tween = get_tree().create_tween()
-		tween.tween_property($ErrorLabel, "modulate", Color(0.6, 0.26, 0.2, 0), 1)
+		tween.tween_property($ErrorLabel, "modulate", Color(0.8, 0.26, 0.2, 0), 1)
 		return false
 	if !_check_if_fuel_exists():
 		$ErrorLabel.text = "Fuel missing!"
-		$ErrorLabel.modulate = Color(0.6, 0.26, 0.2, 1)
+		$ErrorLabel.modulate = Color(0.8, 0.26, 0.2, 1)
 		var tween = get_tree().create_tween()
-		tween.tween_property($ErrorLabel, "modulate", Color(0.6, 0.26, 0.2, 0), 1)
+		tween.tween_property($ErrorLabel, "modulate", Color(0.8, 0.26, 0.2, 0), 1)
 		return false
 	if _check_thrusters_obstructed():
 		$ErrorLabel.text = "Thrusters obstructed!"
-		$ErrorLabel.modulate = Color(0.6, 0.26, 0.2, 1)
+		$ErrorLabel.modulate = Color(0.8, 0.26, 0.2, 1)
 		var tween = get_tree().create_tween()
-		tween.tween_property($ErrorLabel, "modulate", Color(0.6, 0.26, 0.2, 0), 1)
+		tween.tween_property($ErrorLabel, "modulate", Color(0.8, 0.26, 0.2, 0), 1)
 		return false
 
 	return true

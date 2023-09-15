@@ -22,6 +22,8 @@ var infFuelCheat = false
 var invincibleCheat = false
 
 var flight_scene
+
+var tween: Tween
 	
 func _ready():
 	flight_scene = get_tree().get_first_node_in_group("FlightScreen")
@@ -164,3 +166,20 @@ func _update_ship():
 		if is_ancestor_of(part):
 			thrusterParts.append(part)
 	get_tree().get_first_node_in_group("ShipStatus")._update_thrusters(thrusterParts)
+
+func _boost():
+	air_resistence = 1
+
+	tween = get_tree().create_tween()
+	tween.tween_method(_set_air, 1.0, 0.99, 1)
+
+func _set_air(new_res: float):
+	air_resistence = new_res
+
+func _exit_tree():
+	if tween == null:
+		return
+	if tween.is_running():
+		tween.stop()
+		tween = null
+
