@@ -45,7 +45,7 @@ func _set_thrust_volume(_on: bool):
 
 	if _on:
 		thruster_tween = get_tree().create_tween()
-		thruster_tween.tween_method(_set_volume, $ThrusterSound.volume_db, 0, 0.05)
+		thruster_tween.tween_method(_set_volume, $ThrusterSound.volume_db, -10, 0.05)
 	else:
 		thruster_tween = get_tree().create_tween()
 		thruster_tween.tween_method(_set_volume, $ThrusterSound.volume_db, -80, 0.05)
