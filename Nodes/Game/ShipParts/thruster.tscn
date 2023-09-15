@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dnlittred5lx8"]
+[gd_scene load_steps=12 format=3 uid="uid://dnlittred5lx8"]
 
 [ext_resource type="Script" path="res://Scripts/Game/Base/Parts/PartThruster.gd" id="1_llnly"]
 [ext_resource type="Texture2D" uid="uid://dlfqekxjx1sk4" path="res://Assets/Art/Objects/Parts/thruster.png" id="2_x2tgv"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d371ypyah51l2" path="res://Nodes/Game/PartComponents/thruster_component.tscn" id="3_vqgkl"]
 [ext_resource type="Texture2D" uid="uid://b1q7oei5v65sa" path="res://Assets/Art/Effects/cloud.png" id="4_705ow"]
 [ext_resource type="Script" path="res://Scripts/Game/Base/Parts/ThrusterComponent.gd" id="4_crwd8"]
+[ext_resource type="AudioStream" uid="uid://dakaji6e63y5i" path="res://Assets/Audio/SFX/takeoff_flat_2.ogg" id="7_f125x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s8xvm"]
 resource_local_to_scene = true
@@ -74,3 +75,10 @@ color_ramp = SubResource("Gradient_b6yrd")
 script = ExtResource("4_crwd8")
 thrust_power = 4.0
 fuel_consumption = 30.0
+
+[node name="ThrusterSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_f125x")
+volume_db = -77.52
+autoplay = true
+stream_paused = true
+bus = &"SFX"

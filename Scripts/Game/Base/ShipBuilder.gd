@@ -100,6 +100,8 @@ func _place_part_at_grid_pos(part, grid_pos):
 	part.modulate = Color(1, 1, 1, 1)
 	part.z_index = 0
 
+	get_tree().get_first_node_in_group("SFXPlayer")._play_sound(load("res://Assets/Audio/SFX/landing" + str(randi() % 4 + 1) + ".wav"), 0, randf() * 0.2 + 0.9)
+
 func _remove_part_at_grid_pos(part, grid_pos):
 	ship.grid[grid_pos.x][grid_pos.y] = -1
 
@@ -113,6 +115,8 @@ func _remove_part_at_grid_pos(part, grid_pos):
 			if part.size.x > 1:
 				for j in range(grid_pos.x + 1, grid_pos.x + part.size.x):
 					ship.grid[j][i] = -1
+	
+	get_tree().get_first_node_in_group("SFXPlayer")._play_sound(load("res://Assets/Audio/SFX/landing" + str(randi() % 4 + 1) + ".wav"), 0, randf() * 0.2 + 0.9)
 
 func _get_grid_pos(grid_pos: Vector2) -> Vector2:
 	return Vector2(buildLimitsStart.x + (grid_pos.x * cellS) + (cellS / 2.0), buildLimitsStart.y + (grid_pos.y * cellS) + (cellS / 2.0))
