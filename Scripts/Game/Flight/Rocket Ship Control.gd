@@ -9,7 +9,6 @@ var slow_rate = 5.0
 
 var vertical_velocity: float = 0
 var gravity = 15
-var max_vertical_velocity = 20
 var air_resistence = 0.99
 var terminal_fall_velocity = 100
 var floor_height = 0
@@ -21,11 +20,16 @@ var thrusterParts: Array[PartThruster] = []
 
 var infFuelCheat = false
 var invincibleCheat = false
+
+var flight_scene
 	
+func _ready():
+	flight_scene = get_tree().get_first_node_in_group("FlightScreen")
+
 func _physics_process(delta):
 
 	if (_is_fuel_empty() || !_thrusters_exist()) && vertical_velocity <= 0:
-		_destroy_ship()
+		_destroy_ship(true)
 		return
 
 	if ship_destroyed:
@@ -68,6 +72,10 @@ func _physics_process(delta):
 	if floor_height < 0:
 		floor_height = 0
 		vertical_velocity = 0
+
+	if floor_height > flight_scene.height_goal / flight_scene.map_size_multiplier:
+		_destroy_ship(false)
+		flight_scene._on_game_won()
 
 func _try_thrust(delta):
 	if thrusterParts.size() == 0:
@@ -125,17 +133,20 @@ func _destroy_part(part):
 	if invincibleCheat:
 		return
 	if (part.id == 1):
-		_destroy_ship()
+		_destroy_ship(true)
 	else:
 		$Ship._destroy_part(part)
 
-func _destroy_ship():
+func _destroy_ship(lose: bool):
 	if ship_destroyed:
 		return
 	ship_destroyed = true
-	_spawn_paradino()
+	vertical_velocity = 0
+	if lose:
+		get_parent()._on_game_over()
+		_spawn_paradino()
 	$Ship._destroy_ship()
-	get_parent()._on_game_over()
+	
 
 func _spawn_paradino():
 	var para = paraDino.instantiate()

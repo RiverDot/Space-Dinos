@@ -8,6 +8,9 @@ extends Node2D
 var height: float = 0
 var max_height: float = 0
 var game_over = false
+var game_won = false
+var map_size_multiplier = 4
+var height_goal = 360000 # moon distance at perigee
 
 signal gameover(score: float)
 
@@ -19,7 +22,7 @@ var format_string = "Vertical Velocity: {vert}m/s \nHeight: {height}km \nMax Hei
 func _physics_process(_delta):
 	scroll_amount = rocket_ship.vertical_velocity
 	height = bg_sprite.position.y
-	speed_label.text = format_string.format({"vert": snapped(scroll_amount,0.1), "height": snapped(height/1000,0.1), "max_height": snapped(max_height/1000,0.1)})
+	speed_label.text = format_string.format({"vert": snapped(scroll_amount * map_size_multiplier, 0.1), "height": snapped(height/(1000.0/map_size_multiplier),0.1), "max_height": snapped(max_height/(1000.0/map_size_multiplier),0.1)})
 
 	if max_height < height:
 		max_height = height
@@ -29,3 +32,9 @@ func _on_game_over():
 		game_over = true
 		scroll_amount = 0
 		emit_signal("gameover", height/1000)
+
+func _on_game_won():
+	if not game_won:
+		scroll_amount = 0
+		game_won = true
+		get_tree().get_first_node_in_group("GameWon")._on_game_won()
