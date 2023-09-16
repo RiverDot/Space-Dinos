@@ -21,6 +21,8 @@ var thrusterParts: Array[PartThruster] = []
 var infFuelCheat = false
 var invincibleCheat = false
 
+var boosting = false
+
 var flight_scene
 
 var tween: Tween
@@ -45,7 +47,9 @@ func _physics_process(delta):
 	for part in thrusterParts:
 		part._set_particles_(false)
 
-	if moveUD < 0:
+	if boosting:
+		_boost_thrust(delta)
+	elif moveUD < 0:
 		_try_thrust(delta)
 	
 	vertical_velocity -= gravity * delta
@@ -78,6 +82,21 @@ func _physics_process(delta):
 	if floor_height > flight_scene.height_goal / flight_scene.map_size_multiplier:
 		_destroy_ship(false)
 		flight_scene._on_game_won()
+
+func _boost_thrust(delta):
+	if thrusterParts.size() == 0:
+		return
+	var total_thrust_force = 0
+	for part in thrusterParts:
+		var fuel_used = part.fuel_consumption * 2 * delta
+		if fuel_used > 0:
+			total_thrust_force += part.thrust_power * fuel_used * 2 / (part.fuel_consumption * 2 * delta)
+			part._set_particles_(true, true)
+	
+	if total_thrust_force > 0:
+		total_thrust_force += gravity # to at least overpower gravity
+		vertical_velocity += total_thrust_force * delta
+	get_tree().get_first_node_in_group("ShipStatus")._update_fuel(fuelParts)
 
 func _try_thrust(delta):
 	if thrusterParts.size() == 0:
@@ -168,13 +187,13 @@ func _update_ship():
 	get_tree().get_first_node_in_group("ShipStatus")._update_thrusters(thrusterParts)
 
 func _boost():
-	air_resistence = 1
-
+	boosting = true
 	tween = get_tree().create_tween()
-	tween.tween_method(_set_air, 1.0, 0.99, 1)
+	tween.tween_interval(1)
+	tween.tween_callback(_end_boost)
 
-func _set_air(new_res: float):
-	air_resistence = new_res
+func _end_boost():
+	boosting = false
 
 func _exit_tree():
 	if tween == null:

@@ -104,6 +104,7 @@ position = Vector2(0, -90000)
 texture = ExtResource("6_rdi5x")
 
 [node name="LaunchArea" type="Sprite2D" parent="Background"]
+z_index = -7
 position = Vector2(0, 250)
 texture = ExtResource("6_xg1bv")
 

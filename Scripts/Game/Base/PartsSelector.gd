@@ -4,7 +4,7 @@ extends Control
 
 var button_list: Array[PartButton]
 
-var parts_list: Array
+var parts_list: Array[Resource]
 
 enum PartCategory { 
 	CORE = 1,
@@ -15,8 +15,8 @@ enum PartCategory {
 }
 
 func _ready():
-
-	parts_list = _dir_contents("res://Resources/Data/Parts/")
+	parts_list = get_tree().get_first_node_in_group("PartData").parts_list
+	#parts_list = _dir_contents("res://Resources/Data/Parts/")
 
 	get_tree().get_first_node_in_group("ShipManager")._load_ship(get_tree().get_first_node_in_group("ShipBuilder"))
 	for part in parts_list:

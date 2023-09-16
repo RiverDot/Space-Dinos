@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bbc3fne25sjt5"]
+[gd_scene load_steps=20 format=3 uid="uid://bbc3fne25sjt5"]
 
 [ext_resource type="Script" path="res://Scripts/Menus/SceneManager.gd" id="1_8bovu"]
 [ext_resource type="PackedScene" uid="uid://cxxj8bsi7a4bf" path="res://Scenes/main_menu.tscn" id="2_171hv"]
@@ -11,6 +11,14 @@
 [ext_resource type="Script" path="res://Scripts/Other/CheatMenu.gd" id="8_jhqgg"]
 [ext_resource type="Theme" uid="uid://cdsf3tai07fob" path="res://Resources/Theme/MainTheme.tres" id="9_agpus"]
 [ext_resource type="Script" path="res://Scripts/Other/ButtonPress.gd" id="11_qa0d3"]
+[ext_resource type="Script" path="res://Scripts/Game/PartData.gd" id="12_lk8wu"]
+[ext_resource type="Resource" uid="uid://bl33im0eflrcw" path="res://Resources/Data/Parts/1x1Block.tres" id="13_gdnu5"]
+[ext_resource type="Resource" uid="uid://cyne3r68a7y0w" path="res://Resources/Data/Parts/1x2Block.tres" id="14_u0ctw"]
+[ext_resource type="Resource" uid="uid://b06qkpadbc7tu" path="res://Resources/Data/Parts/2x1Block.tres" id="15_q8qbh"]
+[ext_resource type="Resource" uid="uid://cqt8psltdqnwx" path="res://Resources/Data/Parts/2x2Block.tres" id="16_oddvh"]
+[ext_resource type="Resource" uid="uid://j0wi0sr2ja0s" path="res://Resources/Data/Parts/Cockpit.tres" id="17_fhawe"]
+[ext_resource type="Resource" uid="uid://bjybxj8pasms6" path="res://Resources/Data/Parts/FuelCell.tres" id="18_040ov"]
+[ext_resource type="Resource" uid="uid://d1w6yfndy05xv" path="res://Resources/Data/Parts/Thruster.tres" id="19_ymevw"]
 
 [node name="SceneManager" type="Node2D" groups=["Root"]]
 process_mode = 3
@@ -78,6 +86,10 @@ offset_bottom = 235.0
 text = "Invincibility
 "
 script = ExtResource("11_qa0d3")
+
+[node name="PartData" type="Node" parent="." groups=["PartData"]]
+script = ExtResource("12_lk8wu")
+parts_list = Array[Resource]([ExtResource("13_gdnu5"), ExtResource("14_u0ctw"), ExtResource("15_q8qbh"), ExtResource("16_oddvh"), ExtResource("17_fhawe"), ExtResource("18_040ov"), ExtResource("19_ymevw")])
 
 [connection signal="pressed" from="CheatMenu/Control/Block/MoneyCheat" to="CheatMenu" method="_on_money_cheat"]
 [connection signal="pressed" from="CheatMenu/Control/Block/FuelCheat" to="CheatMenu" method="_on_fuel_cheat"]

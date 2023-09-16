@@ -23,7 +23,7 @@ func _break_part(part_pos):
 			thruster_tween.stop()
 			thruster_tween = null
 
-func _set_particles_(on: bool):
+func _set_particles_(on: bool, boost: bool = false):
 	if on:
 		$Sprite/FireParticles.visible = true
 		$Sprite/CloudParticles.emitting = true
@@ -31,6 +31,10 @@ func _set_particles_(on: bool):
 			_set_volume(-80)
 		else:
 			_set_thrust_volume(true)
+		if boost:
+			$Sprite/FireParticles.modulate = Color(0.5, 0, 1, 1)
+		else:
+			$Sprite/FireParticles.modulate = Color(1, 1, 1, 1)
 	else:
 		$Sprite/FireParticles.visible = false
 		$Sprite/CloudParticles.emitting = false
@@ -55,8 +59,7 @@ func _set_volume(_vol: float):
 
 func _exit_tree():
 	super()
-	if is_broken:
-		if thruster_tween:
-			if thruster_tween.is_running():
-				thruster_tween.stop()
-				thruster_tween = null
+	if thruster_tween:
+		if thruster_tween.is_running():
+			thruster_tween.stop()
+			thruster_tween = null

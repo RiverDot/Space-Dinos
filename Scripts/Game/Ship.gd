@@ -20,7 +20,7 @@ func _load():
 
 
 func _load_parts():
-	part_data = _dir_contents("res://Resources/Data/Parts/")
+	part_data = get_tree().get_first_node_in_group("PartData").parts_list
 
 	var i = 0
 	var j = 0

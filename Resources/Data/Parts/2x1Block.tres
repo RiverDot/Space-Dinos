@@ -9,6 +9,6 @@ id = 6
 name = "Wide Block"
 node = ExtResource("1_gsrxk")
 category = 2
-cost = 16
+cost = 8
 limit = -1
 size = Vector2(2, 1)

@@ -9,6 +9,6 @@ id = 4
 name = "Big Block"
 node = ExtResource("1_o6w20")
 category = 2
-cost = 30
+cost = 15
 limit = -1
 size = Vector2(2, 2)

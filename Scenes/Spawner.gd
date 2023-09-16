@@ -130,7 +130,7 @@ func _spawn_booster():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if get_tree().get_first_node_in_group("FlightScreen").game_over or get_tree().get_first_node_in_group("FlightScreen").game_won:
+	if get_tree().get_first_node_in_group("FlightScreen").game_over or get_tree().get_first_node_in_group("FlightScreen").game_won or get_tree().get_first_node_in_group("FlightScreen").height < 3000:
 		return
 
 	current_obstacle_cooldown = current_obstacle_cooldown - delta

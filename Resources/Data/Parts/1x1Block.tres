@@ -9,6 +9,6 @@ id = 0
 name = "Block"
 node = ExtResource("1_uacuk")
 category = 2
-cost = 10
+cost = 5
 limit = -1
 size = Vector2(1, 1)

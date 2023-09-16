@@ -9,6 +9,6 @@ id = 5
 name = "Tall Block"
 node = ExtResource("1_4gr37")
 category = 2
-cost = 18
+cost = 9
 limit = -1
 size = Vector2(1, 2)
