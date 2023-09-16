@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://l25ehdaamqdb"]
+[gd_scene load_steps=5 format=3 uid="uid://l25ehdaamqdb"]
 
 [ext_resource type="Script" path="res://Scripts/Menus/Options.gd" id="1_4jx5w"]
 [ext_resource type="Theme" uid="uid://cdsf3tai07fob" path="res://Resources/Theme/MainTheme.tres" id="2_afn72"]
+[ext_resource type="Texture2D" uid="uid://c4t8v6g62mn0b" path="res://Assets/Art/Environment/titlescreen.png" id="3_7bkoi"]
 [ext_resource type="Script" path="res://Scripts/Other/ButtonPress.gd" id="3_7160e"]
 
 [node name="Options" type="CanvasLayer" groups=["Options"]]
@@ -18,14 +19,15 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_afn72")
 
-[node name="OptionsBackground" type="ColorRect" parent="Control"]
+[node name="OptionsBackground" type="TextureRect" parent="Control"]
+self_modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.0823529, 0.12549, 0.203922, 1)
+texture = ExtResource("3_7bkoi")
 
 [node name="ReturnButton" type="Button" parent="Control"]
 layout_mode = 1
@@ -34,10 +36,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -72.0
-offset_top = -314.0
-offset_right = 68.0
-offset_bottom = -270.0
+offset_left = -67.0
+offset_top = -233.0
+offset_right = 73.0
+offset_bottom = -189.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 4
@@ -47,19 +49,20 @@ script = ExtResource("3_7160e")
 
 [node name="Sound_Options_Label" type="Label" parent="Control"]
 layout_mode = 0
-offset_left = 741.0
-offset_top = 369.0
-offset_right = 1086.0
-offset_bottom = 433.0
+offset_left = 652.0
+offset_top = 329.0
+offset_right = 1122.0
+offset_bottom = 393.0
 theme_override_font_sizes/font_size = 50
 text = "Sound Options"
+horizontal_alignment = 1
 
 [node name="Sound_Options_Container" type="GridContainer" parent="Control"]
 layout_mode = 0
-offset_left = 739.0
-offset_top = 454.0
-offset_right = 1205.0
-offset_bottom = 668.0
+offset_left = 650.0
+offset_top = 414.0
+offset_right = 1122.0
+offset_bottom = 628.0
 columns = 2
 
 [node name="Master_Label" type="Label" parent="Control/Sound_Options_Container"]
@@ -69,6 +72,7 @@ text = "Master Volume"
 [node name="Master_Slider" type="HSlider" parent="Control/Sound_Options_Container"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+size_flags_vertical = 1
 size_flags_stretch_ratio = 0.0
 max_value = 1.0
 step = 0.05
@@ -80,6 +84,7 @@ text = "Music Volume"
 [node name="Music_Slider" type="HSlider" parent="Control/Sound_Options_Container"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+size_flags_vertical = 1
 size_flags_stretch_ratio = 0.0
 max_value = 1.0
 step = 0.05
@@ -91,6 +96,7 @@ text = "SFX Volume"
 [node name="SFX_Slider" type="HSlider" parent="Control/Sound_Options_Container"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+size_flags_vertical = 1
 size_flags_stretch_ratio = 0.0
 max_value = 1.0
 step = 0.05
@@ -102,9 +108,179 @@ text = "UI Volume"
 [node name="UI_Slider" type="HSlider" parent="Control/Sound_Options_Container"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+size_flags_vertical = 1
 size_flags_stretch_ratio = 0.0
 max_value = 1.0
 step = 0.05
+
+[node name="Controls" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 1184.0
+offset_top = 319.0
+offset_right = 1654.0
+offset_bottom = 383.0
+theme_override_font_sizes/font_size = 50
+text = "Controls"
+horizontal_alignment = 1
+
+[node name="ControlsBox" type="GridContainer" parent="Control"]
+layout_mode = 0
+offset_left = 1182.0
+offset_top = 404.0
+offset_right = 1762.0
+offset_bottom = 739.0
+columns = 2
+
+[node name="Control4" type="Label" parent="Control/ControlsBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Builder controls
+"
+
+[node name="Control5" type="Label" parent="Control/ControlsBox"]
+layout_mode = 2
+text = "
+"
+
+[node name="Control" type="Label" parent="Control/ControlsBox"]
+layout_mode = 2
+text = "Left Click"
+
+[node name="Control2" type="Label" parent="Control/ControlsBox"]
+layout_mode = 2
+text = "Add Part (Drag part to move)"
+
+[node name="Control3" type="Label" parent="Control/ControlsBox"]
+layout_mode = 2
+text = "Right Click"
+
+[node name="Control6" type="Label" parent="Control/ControlsBox"]
+layout_mode = 2
+text = "Delete Part"
+
+[node name="Control7" type="Label" parent="Control/ControlsBox"]
+layout_mode = 2
+text = "Shift + Left Click"
+
+[node name="Control8" type="Label" parent="Control/ControlsBox"]
+layout_mode = 2
+text = "Add Part without losing held part"
+
+[node name="Control19" type="Label" parent="Control/ControlsBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 5
+
+[node name="Control20" type="Label" parent="Control/ControlsBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 5
+
+[node name="Control9" type="Label" parent="Control/ControlsBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Flight Controls"
+
+[node name="Control10" type="Label" parent="Control/ControlsBox"]
+layout_mode = 2
+
+[node name="Control11" type="Label" parent="Control/ControlsBox"]
+layout_mode = 2
+text = "AD / LR Arrows"
+
+[node name="Control12" type="Label" parent="Control/ControlsBox"]
+layout_mode = 2
+text = "Move Left / Right"
+
+[node name="Control13" type="Label" parent="Control/ControlsBox"]
+layout_mode = 2
+text = "W / Up Arrow"
+
+[node name="Control14" type="Label" parent="Control/ControlsBox"]
+layout_mode = 2
+text = "Use Thrusters"
+
+[node name="Control21" type="Label" parent="Control/ControlsBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 5
+
+[node name="Control22" type="Label" parent="Control/ControlsBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 5
+
+[node name="Control15" type="Label" parent="Control/ControlsBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "General"
+
+[node name="Control16" type="Label" parent="Control/ControlsBox"]
+layout_mode = 2
+
+[node name="Control17" type="Label" parent="Control/ControlsBox"]
+layout_mode = 2
+text = "Esc / P"
+
+[node name="Control18" type="Label" parent="Control/ControlsBox"]
+layout_mode = 2
+text = "Open / Close Pause Menu"
+
+[node name="Credits" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 331.0
+offset_right = 612.0
+offset_bottom = 395.0
+theme_override_font_sizes/font_size = 50
+text = "Credits"
+horizontal_alignment = 1
+
+[node name="NamesBox" type="GridContainer" parent="Control"]
+layout_mode = 0
+offset_left = 138.0
+offset_top = 416.0
+offset_right = 638.0
+offset_bottom = 662.0
+
+[node name="NameLabel" type="Label" parent="Control/NamesBox"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Design, Art & Programming"
+horizontal_alignment = 1
+
+[node name="NameLabel2" type="Label" parent="Control/NamesBox"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+text = "cyps"
+horizontal_alignment = 1
+
+[node name="NameLabel3" type="Label" parent="Control/NamesBox"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+text = "River_Dot"
+horizontal_alignment = 1
+
+[node name="NameLabel4" type="Label" parent="Control/NamesBox"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+text = "Tafode"
+horizontal_alignment = 1
+
+[node name="NameLabel5" type="Label" parent="Control/NamesBox"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="NameLabel6" type="Label" parent="Control/NamesBox"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+text = "Music by Eric Matyas"
+horizontal_alignment = 1
+
+[node name="NameLabel7" type="Label" parent="Control/NamesBox"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "www.soundimage.org"
+horizontal_alignment = 1
 
 [connection signal="pressed" from="Control/ReturnButton" to="." method="_set_open" binds= [false]]
 [connection signal="value_changed" from="Control/Sound_Options_Container/Master_Slider" to="." method="_on_master_slider_value_changed"]

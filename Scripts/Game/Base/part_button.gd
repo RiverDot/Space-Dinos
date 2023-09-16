@@ -18,7 +18,7 @@ func _set_status(can_buy: bool, maxed: bool):
 		$CostLabel.push_paragraph(1)
 		$CostLabel.push_color(Color.WHITE)
 		$CostLabel.push_bold()
-		$CostLabel.append_text("MAXED OUT")
+		$CostLabel.append_text("MAXED")
 	else:
 		if can_buy:
 			disabled = false
