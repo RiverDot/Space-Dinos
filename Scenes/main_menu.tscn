@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cxxj8bsi7a4bf"]
+[gd_scene load_steps=6 format=3 uid="uid://cxxj8bsi7a4bf"]
 
 [ext_resource type="Script" path="res://Scripts/Menus/main_menu.gd" id="1_b3tu2"]
 [ext_resource type="Theme" uid="uid://cdsf3tai07fob" path="res://Resources/Theme/MainTheme.tres" id="2_p5ecx"]
+[ext_resource type="Texture2D" uid="uid://db7pi8vgm1cat" path="res://Assets/Art/UI/DASA.png" id="3_bp3qa"]
 [ext_resource type="FontFile" uid="uid://d13u2amre08gf" path="res://Assets/Fonts/sofachri.ttf" id="3_gih08"]
 [ext_resource type="Script" path="res://Scripts/Other/ButtonPress.gd" id="3_o37vp"]
 
@@ -18,6 +19,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_p5ecx")
+
+[node name="TextureRect" type="TextureRect" parent="Canvas/Control"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 53.0
+offset_right = 692.0
+offset_bottom = 553.0
+texture = ExtResource("3_bp3qa")
 
 [node name="StartButton" type="Button" parent="Canvas/Control"]
 layout_mode = 1
@@ -61,14 +70,13 @@ script = ExtResource("3_o37vp")
 
 [node name="Title" type="Label" parent="Canvas/Control"]
 layout_mode = 0
-offset_left = 148.0
-offset_top = 142.0
-offset_right = 1103.0
-offset_bottom = 282.0
+offset_left = 87.0
+offset_top = 455.0
+offset_right = 1042.0
+offset_bottom = 595.0
 theme_override_fonts/font = ExtResource("3_gih08")
-theme_override_font_sizes/font_size = 100
-text = "DASA
-"
+theme_override_font_sizes/font_size = 16
+text = "Dinosaur Aeronautics and space administration"
 
 [connection signal="pressed" from="Canvas/Control/StartButton" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Canvas/Control/OptionsButton" to="." method="_on_options_pressed"]

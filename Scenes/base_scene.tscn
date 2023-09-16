@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://b325ltamoinhg"]
+[gd_scene load_steps=15 format=3 uid="uid://b325ltamoinhg"]
 
 [ext_resource type="Script" path="res://Scripts/Game/Base/baseManager.gd" id="1_cc7fv"]
 [ext_resource type="Theme" uid="uid://cdsf3tai07fob" path="res://Resources/Theme/MainTheme.tres" id="2_cq58m"]
 [ext_resource type="Script" path="res://Scripts/Game/Base/PartsSelector.gd" id="2_ne55d"]
+[ext_resource type="Texture2D" uid="uid://db7pi8vgm1cat" path="res://Assets/Art/UI/DASA.png" id="3_0a4vo"]
 [ext_resource type="PackedScene" uid="uid://cotwtaxqvntkk" path="res://Nodes/Game/Base/part_button.tscn" id="3_7bcl0"]
 [ext_resource type="Texture2D" uid="uid://onu775t07154" path="res://Assets/Art/Environment/buildingScene.png" id="3_oo83k"]
 [ext_resource type="Script" path="res://Scripts/Other/ButtonPress.gd" id="6_bfeyj"]
@@ -43,6 +44,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_oo83k")
+
+[node name="TextureRect" type="TextureRect" parent="Background2/Background"]
+layout_mode = 0
+offset_left = 1521.0
+offset_top = 223.0
+offset_right = 2021.0
+offset_bottom = 723.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_0a4vo")
 
 [node name="Back" type="ColorRect" parent="."]
 visible = false

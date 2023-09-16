@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://ivk3e10f30ur"]
+[gd_scene load_steps=28 format=3 uid="uid://ivk3e10f30ur"]
 
 [ext_resource type="Script" path="res://Scripts/Game/Flight/flightScene.gd" id="1_kq1b0"]
 [ext_resource type="PackedScene" uid="uid://oygquj0itsko" path="res://Nodes/Game/rocket_ship.tscn" id="1_vms8s"]
@@ -9,7 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://l2hv4pfis35t" path="res://Nodes/Game/para_dino.tscn" id="5_plkff"]
 [ext_resource type="PackedScene" uid="uid://y3t8rmiiy6oa" path="res://Nodes/Game/ship_status.tscn" id="5_ps5b0"]
 [ext_resource type="PackedScene" uid="uid://pwhee57u4idu" path="res://Scenes/border.tscn" id="5_qw82x"]
+[ext_resource type="Texture2D" uid="uid://b6h851u4bo7a1" path="res://Assets/Art/Environment/moon.png" id="6_rdi5x"]
+[ext_resource type="Texture2D" uid="uid://dek5p1lelfeod" path="res://Assets/Art/Environment/launcharea.png" id="6_xg1bv"]
 [ext_resource type="PackedScene" path="res://Nodes/Game/spawner.tscn" id="6_yaaor"]
+[ext_resource type="Texture2D" uid="uid://db7pi8vgm1cat" path="res://Assets/Art/UI/DASA.png" id="7_1sej7"]
 [ext_resource type="Script" path="res://Scripts/Game/Flight/GameOver.gd" id="8_ggv0b"]
 [ext_resource type="Theme" uid="uid://cdsf3tai07fob" path="res://Resources/Theme/MainTheme.tres" id="10_8ouof"]
 [ext_resource type="Script" path="res://Scripts/Game/Flight/GameWon.gd" id="10_ujphx"]
@@ -47,15 +50,6 @@ width = 500
 height = 500
 color_ramp = SubResource("Gradient_bygo7")
 noise = SubResource("FastNoiseLite_lgj2q")
-
-[sub_resource type="Gradient" id="Gradient_ec7np"]
-offsets = PackedFloat32Array(0.688172, 0.691756)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_1e43s"]
-gradient = SubResource("Gradient_ec7np")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ym4a5"]
 font_size = 32
@@ -107,8 +101,16 @@ script = ExtResource("2_ewd1n")
 
 [node name="Moon" type="Sprite2D" parent="Background"]
 position = Vector2(0, -90000)
-scale = Vector2(50, 50)
-texture = SubResource("GradientTexture2D_1e43s")
+texture = ExtResource("6_rdi5x")
+
+[node name="LaunchArea" type="Sprite2D" parent="Background"]
+position = Vector2(0, 250)
+texture = ExtResource("6_xg1bv")
+
+[node name="Logo" type="Sprite2D" parent="Background/LaunchArea"]
+position = Vector2(-219, -138)
+scale = Vector2(0.128, 0.128)
+texture = ExtResource("7_1sej7")
 
 [node name="Rocket Ship" parent="." instance=ExtResource("1_vms8s")]
 position = Vector2(960, 800)
